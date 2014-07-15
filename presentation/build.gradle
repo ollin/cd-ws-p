@@ -1,0 +1,14 @@
+def buildDir = new File('build')
+
+task resources << {
+    buildDir.mkdirs()
+}
+
+task presentation (type: Exec, dependsOn: 'resources'){
+    executable 'asciidoc'
+    args '--backend',  'slidy',  '-o', 'build/presentation.html', 'src/asciidoc/presentation.asciidoc'
+}
+
+task clean(type: Delete) {
+    delete buildDir
+}

@@ -1,0 +1,17 @@
+Continous Delivery - Hands on
+============================================
+:author:    Oliver Nautsch
+:backend:   slidy
+
+Ziel
+----
+
+* eine Deployment Pipeline bauen
+* ...
+
+
+Zusammenfassung
+---------------
+
+* eine Deployment Pipeline gebaut
+* ...
