@@ -24,6 +24,13 @@ Das Image enthaelt:
 - Xubuntu 14.04 Desktop 64bit
 - VirtualBox Guest Additions
 
+- Docker 1.1.1
+- Oracle JDK 8 "1.8.0_05"
+- Git 1.9.1
+- Firefox 30.0
+- Chromium 39.0 (Linux-Variante von Chrome)
+- Intellij Idea Community Edition 13.1
+
 == Links
 
 http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
