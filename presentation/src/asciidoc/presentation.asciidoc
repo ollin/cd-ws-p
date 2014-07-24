@@ -52,6 +52,7 @@ Git Essentials
 * +git reset \-- <files>+
 * +git checkout \-- <files>+
 * +git status+
+* +git log+
 * +man git-init+
 * Git Buch: http://git-scm.com/book/de
 * Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
@@ -71,6 +72,7 @@ Git Essentials Hands on
 - nochmals die Datei editieren und "Version 3" Zeile hinzufügen
 - Datei den 'index' hinzufügen (+git add+)
 - 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
+- zum Abschluss noch die History mit allen Änderungen anschauen (+git log+)
 
 Zusammenfassung
 ---------------
