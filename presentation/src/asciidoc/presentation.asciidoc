@@ -72,11 +72,6 @@ Git Essentials Hands on
 - Datei den 'index' hinzufügen (+git add+)
 - 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
 
-agile und software craftmanship
--------------------------------
-
-
-
 Zusammenfassung
 ---------------
 
