@@ -24,6 +24,35 @@ Aufgabenstellung
 * iterativ entwickeln
 * weil wir es alle kennen, oder kennen sollten :)
 
+Git Essentials
+--------------
+
+* +git init+
+* +git add <files>+
+* +git commit+
+* +git reset \-- <files>+
+* +git checkout \-- <files>+
+* +git status+
+* +man git-init+
+* Git Buch: http://git-scm.com/book/de
+* Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
+
+Git Essentials Hands on
+-----------------------
+
+- lege ein Verzeichnis +~/projects/git-ho+ an (+mkdir+, +cd+)
+- erzeuge eine Datei +README.asciidoc+ in diesem Verzeichnis und füge den Text "Version 1" und einen Zeilenumbruch ein (+vi+)
+- erzeuge ein git repository/git history (+git init+)
+- lese output von +git status+
+- fuege die Datei zum 'index' hinzu (+git add+)
+- +git status+ sagt auch hier was man tuen könnte
+- commit in die 'history' fuer diese Datei (+git commit+, erfragt wird +git config+)
+- ändere den Inhalt der Datei in dem Du eine Zeile "Version 2" hinzufügst (+vi+)
+- mache die Änderung mit der letzten Version in 'history' rückgängig (+git checkout+)
+- nochmals die Datei editieren und "Version 3" Zeile hinzufügen
+- Datei den 'index' hinzufügen (+git add+)
+- 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
+
 Zusammenfassung
 ---------------
 
