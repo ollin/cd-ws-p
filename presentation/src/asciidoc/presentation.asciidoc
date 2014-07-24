@@ -1,5 +1,5 @@
 Continous Delivery - Hands on
-============================================
+=============================
 :author:    Oliver Nautsch
 :backend:   slidy
 
@@ -7,11 +7,26 @@ Ziel
 ----
 
 * eine Deployment Pipeline bauen
-* ...
+
+Einführung
+----------
+
+=== Continous Delivery ===
+bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. (Wikipedia)
+
+=== Deployment Pipeline ===
+ist eine Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
+
+Aufgabenstellung
+----------------
+
+* ein Bug Tracking Tool
+* iterativ entwickeln
+
+
 
 
 Zusammenfassung
 ---------------
 
 * eine Deployment Pipeline gebaut
-* ...
