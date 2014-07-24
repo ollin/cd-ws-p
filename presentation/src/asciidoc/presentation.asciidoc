@@ -43,8 +43,8 @@ Aufgabenstellung
 * iterativ entwickeln
 * weil wir es alle kennen, oder kennen sollten :)
 
-Git Essentials
---------------
+Git Essentials - Local
+----------------------
 
 * +git init+
 * +git add <files>+
@@ -56,9 +56,10 @@ Git Essentials
 * +man git-init+
 * Git Buch: http://git-scm.com/book/de
 * Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
+* Git CheatSheet: http://ndpsoftware.com/git-cheatsheet.html
 
-Git Essentials Hands on
------------------------
+Git Essentials - Local - Hands on
+---------------------------------
 
 - lege ein Verzeichnis +~/projects/git-ho+ an (+mkdir+, +cd+)
 - erzeuge eine Datei +README.asciidoc+ in diesem Verzeichnis und füge den Text "Version 1" und einen Zeilenumbruch ein (+vi+)
