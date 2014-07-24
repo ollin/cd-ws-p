@@ -8,14 +8,33 @@ Ziel
 
 * eine Deployment Pipeline bauen
 
-Einführung
-----------
+Einführung - Begriffe
+---------------------
 
 === Continous Delivery ===
 bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. (Wikipedia)
 
 === Deployment Pipeline ===
 ist eine Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
+
+Einführung - Softwareentwicklungsansätze
+----------------------------------------
+
+=== Die Manifeste
+
+[width="100%",cols="^4,^1,^4,^1,^4", options="header"]
+|===============================================================================================
+|Software Craftsmanship      |    |Agile                       |    |Traditionell
+|a community of professionals|over|individuals and interactions|over|processes and tools
+|well-crafted software       |over|working software            |over|comprehensive documentation
+|productive partnerships     |over|customer collaboration      |over|contract negotiation
+|steadily adding value       |over|responding to change        |over|following a plan
+|===============================================================================================
+
+=== Principles and Practices / Prinzipien und Praktiken
+
+- Prinzipien: sind dem Anderen übergeordnet
+- Praktiken: Handlungen die bei der Umsetzung der Prinzipien helfen
 
 Aufgabenstellung
 ----------------
@@ -52,6 +71,11 @@ Git Essentials Hands on
 - nochmals die Datei editieren und "Version 3" Zeile hinzufügen
 - Datei den 'index' hinzufügen (+git add+)
 - 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
+
+agile und software craftmanship
+-------------------------------
+
+
 
 Zusammenfassung
 ---------------
