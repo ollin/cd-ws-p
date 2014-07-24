@@ -22,9 +22,7 @@ Aufgabenstellung
 
 * ein Bug Tracking Tool
 * iterativ entwickeln
-
-
-
+* weil wir es alle kennen, oder kennen sollten :)
 
 Zusammenfassung
 ---------------
