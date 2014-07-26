@@ -40,7 +40,7 @@ Einführung - Softwareentwicklungsansätze
 Aufgabenstellung
 ----------------
 
-* ein Bug Tracking Tool
+* ein Bug Tracking Tool - _issumy_
 * iterativ entwickeln
 * weil wir es alle kennen, oder kennen sollten :)
 
@@ -54,7 +54,9 @@ Git Essentials - Local
 * +git checkout \-- <files>+
 * +git status+
 * +git log+
+Manual::
 * +man git-init+
+Links::
 * Git Buch: http://git-scm.com/book/de
 * Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
 * Git CheatSheet: http://ndpsoftware.com/git-cheatsheet.html
