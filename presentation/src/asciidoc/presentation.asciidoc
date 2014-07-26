@@ -2,6 +2,7 @@ Continous Delivery - Hands on
 =============================
 :author:    Oliver Nautsch
 :backend:   slidy
+:imagesdir: images
 
 Ziel
 ----
@@ -74,6 +75,64 @@ Git Essentials - Local - Hands on
 - Datei den 'index' hinzufügen (+git add+)
 - 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
 - zum Abschluss noch die History mit allen Änderungen anschauen (+git log+)
+
+Git Essentials - Remote
+-----------------------
+
+- +git clone+
+
+
+Git Essentials - Remote - hands-on
+----------------------------------
+
+- erzeuge ein Verzeichnis +~/gitrepos+
+- clone +\~/projects/git-ho+ nach +~/gitrepos/git-ho.git+ (+git clone \--bare+)
+
+
+issumy - Iteration 1
+--------------------
+
+- UC-1: Eine Liste von Issues sehen
+- Ohne jede Infrastruktur eine Klasse bauen die eine Liste von Issues liefert
+- Einfachste Version ist eine Liste von Strings
+
+issumy - Iteration 1 - Projekt Setup - hands-on install gvm
+-----------------------------------------------------------
+
+- installiere GVM the Groovy enVironment Manager http://gvmtool.net/ .
+
+----
+~/$curl -s get.gvmtool.net | bash
+~/$source "/home/dev/.gvm/bin/gvm-init.sh"
+~/$gvm
+----
+
+- installiere Gradle http://www.gradle.org/
+
+----
+~/$gvm install gradle 2.0
+----
+
+- installiere Lazybones Project Creation Tool https://github.com/pledbrook/lazybones
+
+----
+~/$gvm install lazybones
+----
+
+- erzeuge Projekt mit Schablone aus lazybones
+
+----
+~/$projects$lazybones create java-basic issumy
+~/$projects$cd issumy
+~/$projects/issumy$>gradle tasks
+----
+
+issumy - Iteration 1 - Projekt Setup - hands-on import in IDEA
+--------------------------------------------------------------
+
+.Importiere das Projekt in Intellij IDEA
+image::iteration1-import-project.png[Import Projekt in IDEA]
+
 
 Zusammenfassung
 ---------------

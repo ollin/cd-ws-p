@@ -4,7 +4,12 @@ task resources << {
     buildDir.mkdirs()
 }
 
-task presentation (type: Exec, dependsOn: 'resources'){
+task copyImages(type: Copy) {
+    from 'src/asciidoc/images'
+    into 'build/images'
+}
+
+task presentation (type: Exec, dependsOn: ['resources', 'copyImages']){
     executable 'asciidoc'
     args '--backend',  'slidy',  '-o', 'build/presentation.html', 'src/asciidoc/presentation.asciidoc'
 }
