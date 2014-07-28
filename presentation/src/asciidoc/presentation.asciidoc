@@ -3,7 +3,7 @@ Continuous Delivery - Hands on
 :author:    Oliver Nautsch
 :backend:   slidy
 :imagesdir: images
-:icons:     font
+:icons:
 
 Ziel
 ----
