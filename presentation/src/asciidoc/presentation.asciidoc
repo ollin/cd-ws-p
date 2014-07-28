@@ -95,9 +95,7 @@ Git Essentials - Remote - hands-on
 issumy - Iteration 1
 --------------------
 
-- UC-1: Eine Liste von Issues sehen
-- Ohne jede Infrastruktur eine Klasse bauen die eine Liste von Issues liefert
-- Einfachste Version ist eine Liste von Strings
+- vert.x mit einem "verticle" laufen lassen.
 
 issumy - Iteration 1 - hands-on - install gvm
 ---------------------------------------------
@@ -189,7 +187,7 @@ from https://raw.githubusercontent.com/vert-x/vertx-examples/master/src/raw/java
 issumy - Iteration 1 - hands-on - running the example for vert.x
 ----------------------------------------------------------------
 
-- zur Zeit noch keine Abhängigkeiten definiert (rot in IDE)
+- zur Zeit noch keine Abhängigkeiten definiert (Fehler in IDE)
 - wir können es auch noch nicht mit gradle bauen
 - ... aber vert.x kann schon damit laufen
 
@@ -204,6 +202,28 @@ Succeeded in deploying verticle
 image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
 IMPORTANT: +git commit+
+
+Einführung - vert.x
+-------------------
+
+http://vertx.io/
+
+Vert.x ist ein polyglotes, ereignisorientiertes Anwendungsframework,
+das in der Java Virtual Machine läuft.
+
+- Java, JavaScript, Ruby, Python, Groovy, Clojure, Scala
+- einfache, mächtige API's zum Schreiben von netzwerkfähigen Appliktationen
+- non blocking I/O um viele Verbindungen mit wenigen Threads zu bedienen
+- einfaches "actor-like" Programmierungsmodell
+
+Features::
+
+- distributed event bus server to server
+- Support für Websockets/SockJS
+- einbetten in existierende Java-Applikationen möglich
+- Module System via Maven Central, Maven Repository oder Bintray
+- Apache Software License 2.0
+
 
 Zusammenfassung
 ---------------
