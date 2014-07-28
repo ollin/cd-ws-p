@@ -11,7 +11,7 @@ task copyImages(type: Copy) {
 
 task presentation (type: Exec, dependsOn: ['resources', 'copyImages']){
     executable 'asciidoc'
-    args '--backend',  'slidy',  '-o', 'build/presentation.html', 'src/asciidoc/presentation.asciidoc'
+    args '-o', 'build/presentation.html', 'src/asciidoc/presentation.asciidoc'
 }
 
 task clean(type: Delete) {
