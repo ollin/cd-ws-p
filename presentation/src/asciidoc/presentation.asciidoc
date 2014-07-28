@@ -202,6 +202,8 @@ Succeeded in deploying verticle
 .Run Verticle in Browser
 image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
+IMPORTANT: +git commit+
+
 Zusammenfassung
 ---------------
 
