@@ -224,6 +224,24 @@ Features::
 - Module System via Maven Central, Maven Repository oder Bintray
 - Apache Software License 2.0
 
+Einführung - vert.x - Begriffe
+------------------------------
+
+- Verticle -- Code welcher von vert.x ausgeführt wird.
+- Module   -- eine Vert.x Applikation besteht aus ein bis
+mehreren Modulen. Module können mehrere verticals enthalten. Via modules
+kann Funktionalität gekapselt und wiederverwendet werden.
+- Concurrency - ein verticle wird von einem thread verwendet
+- Event Bus - verticles kommunizieren via dem event bus miteinander
+- Asynchronous Programming Model - die meiste Zeit werden Event Handler benötigt
+- Event Loops - kleine Anzahl von Threads, welche Events an Handler weiterleiten
+- Worker Verticles - für blockierenden Code (z.B. JDBC), diese Verticles können
+durch unterschiedliche Threads benutzt werden
+
+
+IMPORTANT: Handler dürfen nicht blockieren
+
+
 
 Zusammenfassung
 ---------------
