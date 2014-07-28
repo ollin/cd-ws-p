@@ -1,5 +1,5 @@
-Continous Delivery - Hands on
-=============================
+Continuous Delivery - Hands on
+==============================
 :author:    Oliver Nautsch
 :backend:   slidy
 :imagesdir: images
@@ -13,7 +13,7 @@ Ziel
 Einführung - Begriffe
 ---------------------
 
-=== Continous Delivery ===
+=== Continuous Delivery ===
 bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. (Wikipedia)
 
 === Deployment Pipeline ===
