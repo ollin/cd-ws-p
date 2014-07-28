@@ -98,8 +98,8 @@ issumy - Iteration 1
 - Ohne jede Infrastruktur eine Klasse bauen die eine Liste von Issues liefert
 - Einfachste Version ist eine Liste von Strings
 
-issumy - Iteration 1 - Projekt Setup - hands-on install gvm
------------------------------------------------------------
+issumy - Iteration 1 - hands-on - install gvm
+---------------------------------------------
 
 - installiere GVM the Groovy enVironment Manager http://gvmtool.net/ .
 
@@ -115,6 +115,12 @@ issumy - Iteration 1 - Projekt Setup - hands-on install gvm
 ~/$gvm install gradle 2.0
 ----
 
+- installiere Vert.x http://vertx.io/
+
+----
+~/$gvm install vertx 2.1.2
+----
+
 - installiere Lazybones Project Creation Tool https://github.com/pledbrook/lazybones
 
 ----
@@ -124,17 +130,77 @@ issumy - Iteration 1 - Projekt Setup - hands-on install gvm
 - erzeuge Projekt mit Schablone aus lazybones
 
 ----
-~/$projects$lazybones create java-basic issumy
-~/$projects$cd issumy
-~/$projects/issumy$>gradle tasks
+~/$mkdir projects && cd projects
+~/projects$lazybones create java-basic issumy
+~/projects$cd issumy
+~/projects/issumy$gradle tasks
 ----
 
-issumy - Iteration 1 - Projekt Setup - hands-on import in IDEA
---------------------------------------------------------------
+issumy - Iteration 1 - hands-on - import in IDEA
+------------------------------------------------
 
 .Importiere das Projekt in Intellij IDEA
 image::iteration1-import-project.png[Import Projekt in IDEA]
 
+issumy - Iteration 1 - hands-on - an example for vert.x
+-------------------------------------------------------
+
+[source, Java]
+----
+package httphelloworld;
+
+/*
+ * Copyright 2013 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.http.HttpServerRequest;
+import org.vertx.java.platform.Verticle;
+
+import java.util.Map;
+
+public class HelloWorldServer extends Verticle {
+
+  public void start() {
+    vertx.createHttpServer().requestHandler(new Handler<HttpServerRequest>() {
+      public void handle(HttpServerRequest req) {
+        req.response().headers().set("Content-Type", "text/plain");
+        req.response().end("Hello World");
+      }
+    }).listen(8080);
+  }
+}
+----
+from https://raw.githubusercontent.com/vert-x/vertx-examples/master/src/raw/java/httphelloworld/HelloWorldServer.java
+
+issumy - Iteration 1 - hands-on - running the example for vert.x
+----------------------------------------------------------------
+
+- zur Zeit noch keine Abhängigkeiten definiert (rot in IDE)
+- wir können es auch noch nicht mit gradle bauen
+- ... aber vert.x kann schon damit laufen
+
+----
+~/projects/issumy$vertx run src/main/java/httphelloworld/HelloWorldServer.java
+Succeeded in deploying verticle
+----
+
+- öffne den Browser mit +http://localhost:8080/+
+
+.Run Verticle in Browser
+image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
 Zusammenfassung
 ---------------
