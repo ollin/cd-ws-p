@@ -47,6 +47,7 @@ Aufgabenstellung
 
 Git Essentials - Local
 ----------------------
+image::git-logo.png["Git Logo",float="right", link="http://git-scm.com/"]
 
 * +git init+
 * +git add <files>+
@@ -205,8 +206,7 @@ IMPORTANT: +git commit+
 
 Einführung - vert.x
 -------------------
-
-http://vertx.io/
+image::vertx-logo.png["Vert.x Logo",float="right", link="http://vertx.io/"]
 
 Vert.x ist ein polyglotes, ereignisorientiertes Anwendungsframework,
 das in der Java Virtual Machine läuft.
@@ -352,6 +352,26 @@ Iteration 2 - running
 ~/projects/issumy$./gradlew runMod #<1>
 ----
 <1> öffne Browser http://localhost:8080/ , beenden mit CTRL-C
+
+Einführung - Gradle
+-------------------
+image::gradle-logo.png["Gradle Logo",float="right", link="http://www.gradle.org/"]
+
+* Buildskripte heissen *build.gradle*
+* ein Buildskript ist ein Groovy-Skript, welche eine eigene DSL benutzt die erweitert oder angepasst werden kann.
+* Gradle kennt Plugins
+* Konvention vor Konfiguration (Convention over Configuration)
+  ** z.B. verwendet das http://www.gradle.org/docs/current/userguide/java_plugin.html[Java-Plugin] das Standard-Verzeichnis-Layout von Maven
+* Zwei Phasen der Abarbeitung
+  ** Konfiguration -- in der ein _Directed acyclic graph_ (kurz DAG) erzeugt wird, der alle Build-Schritte enthält
+  ** Ausführung -- alle Tasks des DAG werden abgearbeitet, wenn vorgängiger Task erfolgreich war
+* sowohl deklarativ als auch imperativer Ansatz möglich
+* der Gradle-Wrapper
+  ** downloaded Gradle und benutzt diese Version
+  ** ideal für Continuous Integration, da keine Installation notwendig ist
+
+
+
 
 
 Zusammenfassung
