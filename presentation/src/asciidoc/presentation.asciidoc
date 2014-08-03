@@ -241,9 +241,123 @@ durch unterschiedliche Threads benutzt werden
 
 IMPORTANT: Handler dürfen nicht blockieren
 
+issumy - Iteration 2
+--------------------
+
+- einfaches Verticle in Module verpacken
+
+Iteration 2 - Template kopieren
+-------------------------------
+
+- clone Template Projekt
+- kopiere Notwendiges
+
+[source, bash]
+----
+~/$cd && cd projects
+~/projects$git clone https://github.com/ollin/vertx-gradle-template.git template
+~/projects$cp -rf template/gradle issumy/                                     # <1>
+~/projects$cp template/build.gradle issumy/                                   # <2>
+~/projects$cp template/gradle.properties issumy/
+~/projects$cp template/conf.json issumy/                                      # <3>
+~/projects$mkdir issumy/src/main/resources/
+~/projects$cp template/src/main/resources/mod.json issumy/src/main/resources/ # <4>
+~/projects$cp template/gradlew* issumy/                                       # <5>
+----
+<1> kopiert Gradle Wrapper Libs und Vertx spezifische Build Skripte
+<2> kopiert das eigentliche Build Skript und in der nächsten Zeile die Properties zum Build
+<3> kopiert Konfigurationsdatei für +gradle runMod+
+<4> kopiert die Module-Konfigurationsdatei
+<5> kopiert die Gradle Wrapper Skripte
+
+Iteration 2 - +gradle.properties+
+---------------------------------
+
+- anpassen der Gradle-Eigenschaften an unser Projekt
+
+[source, conf]
+----
+# E.g. your domain name
+modowner=net.nautsch
+
+# Your module name
+modname=issumy
+
+# Your module version
+version=0.1-SNAPSHOT
+
+. . .
+----
+
+
+Iteration 2 - +build.gradle+
+----------------------------
+
+- anpassen der Artefakt-Eigenschaften an unser Projekt
+
+[source, txt]
+----
+. . .
+def configurePom(def pom) {
+  pom.project {
+    name rootProject.name
+    description 'CH OPEN Workshoptage 2014 - Continuous Delivery - Beispiel Projekt - issumy'
+    inceptionYear '2014'
+    packaging 'jar'
+
+    url 'https://github.com/ollin/cd-ws-issumy'
+
+    developers {
+      developer {
+        id 'ollin'
+        name 'Oliver Nautsch'
+        email 'oliver.nautsch@gmail.com'
+      }
+    }
+
+    scm {
+      url 'https://github.com/ollin/cd-ws-issumy.git'
+    }
+
+    licenses {
+      license {
+        name 'The MIT License (MIT)'
+        url 'http://opensource.org/licenses/MIT'
+        distribution 'repo'
+      }
+    }
+
+    properties {
+      setProperty('project.build.sourceEncoding', 'UTF8')
+    }
+  }
+}
+----
+
+Iteration 2 - running
+---------------------
+
+[source, bash]
+----
+~/projects/issumy$./gradlew tasks
+
+~/projects/issumy$./gradlew fatJar
+
+~/projects/issumy$java -jar build/libs/issumy-0.1-SNAPSHOT-fat.jar #<1>
+
+~/projects/issumy$vertx runzip build/libs/issumy-0.1-SNAPSHOT.zip #<1>
+
+~/projects/issumy$VERTX_MODS=./build/mods bash -c 'vertx runmod net.nautsch~issumy~0.1-SNAPSHOT' #<1>
+
+~/projects/issumy$./gradlew runMod #<1>
+----
+<1> öffne Browser http://localhost:8080/ , beenden mit CTRL-C
 
 
 Zusammenfassung
 ---------------
 
+* git angefasst
+* vert.x ausprobiert
+* mit gradle gearbeitet
 * eine Deployment Pipeline gebaut
