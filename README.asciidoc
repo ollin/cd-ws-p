@@ -1,11 +1,11 @@
 Dieses Repository beinhaltet die Unterlagen zum Workshop 04
 
-"Continous Delivery - Hands on"
+"Continuous Delivery - Hands on"
 
 an den CH OPEN Workshoptagen. Dieser Workshop findet am 09.09.2014 statt.
 
 Alle Informationen über den Workshop und den Workshoptagen sind auf der Webseite der
-http://www.ch-open.ch/wstage/workshop-tage/2014/programm-2014/ws-4-continous-delivery-hands-on/[ch open] zu finden
+http://www.ch-open.ch/wstage/workshop-tage/programm-2014/ws-4-continuous-delivery-hands-on/[ch open] zu finden
 
 
 == VirtualBox Image
