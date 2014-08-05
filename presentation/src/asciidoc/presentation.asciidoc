@@ -353,6 +353,8 @@ Iteration 2 - running
 ----
 <1> öffne Browser http://localhost:8080/ , beenden mit CTRL-C
 
+IMPORTANT: +git commit+
+
 Einführung - Gradle
 -------------------
 image::gradle-logo.png["Gradle Logo",float="right", link="http://www.gradle.org/"]
@@ -369,6 +371,37 @@ image::gradle-logo.png["Gradle Logo",float="right", link="http://www.gradle.org/
 * der Gradle-Wrapper
   ** downloaded Gradle und benutzt diese Version
   ** ideal für Continuous Integration, da keine Installation notwendig ist
+
+issumy - Iteration 3
+--------------------
+
+- liefere eine Liste von Issues
+
+Iteration 2 - Gradle-Wrapper und Idea
+-------------------------------------
+
+image::setting-gradle-wrapper-in-idea.png["Configure Gradle Wrapper in IDEA",float="right"]
+- in IDEA -> +File+ -> +Settings+ -> +_gradle_+ (links oben eingeben) -> +Use customizable gradle wrapper+ -> +Apply/Ok+
+- IDEA läd nun ein paar Libraries
+- erweitere +.gitignore+ wenn notwendig
+----
+...
+
+.idea/
+*.iml
+----
+- Run/Debug aus IDEA
+  ** +File+ -> +Project Structure+ -> +Modules+ -> +Dependencies+ -> ändere "provided" in "compile" -> +Ok+
+  ** +Run+ -> +Run. . .+ -> +Edit Configurations+ -> + -> +Application+
+     *** Name: +vertx runMod issumy+
+     *** Main class: +org.vertx.java.platform.impl.cli.Starter+
+     *** Program arguments: +runmod net.nautsch~issumy~0.1-SNAPSHOT -cp ./build/mods/net.nautsch~issumy~0.1-SNAPSHOT/+
+     *** Working directory: +/home/dev/projects/issumy+
+     *** Use classpath of module: +issumy+
+     *** +Run+
+     *** In der Console muss nun _INFO: Succeeded in deploying module_ erscheinen.
+     *** Browser öffnen und +localhost:8080+ liefert wieder _Hello World_
+
 
 
 
