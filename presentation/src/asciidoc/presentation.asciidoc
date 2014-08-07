@@ -376,14 +376,16 @@ issumy - Iteration 3
 --------------------
 
 - liefere eine Liste von Issues
+  ** Annahme: eine Single-Page-Web-App soll geschrieben werden, welche über den EventBus mit dem Server kommuniziert
 
-Iteration 2 - Gradle-Wrapper und Idea
+Iteration 3 - Gradle-Wrapper und Idea
 -------------------------------------
 
 image::setting-gradle-wrapper-in-idea.png["Configure Gradle Wrapper in IDEA",float="right"]
 - in IDEA -> +File+ -> +Settings+ -> +_gradle_+ (links oben eingeben) -> +Use customizable gradle wrapper+ -> +Apply/Ok+
 - IDEA läd nun ein paar Libraries
 - erweitere +.gitignore+ wenn notwendig
+- ändere Source und Target Version des JDK auf 1.8 in +issumy/gradle/vertx.gradle+
 ----
 ...
 
@@ -395,7 +397,7 @@ image::setting-gradle-wrapper-in-idea.png["Configure Gradle Wrapper in IDEA",flo
   ** +Run+ -> +Run. . .+ -> +Edit Configurations+ -> + -> +Application+
      *** Name: +vertx runMod issumy+
      *** Main class: +org.vertx.java.platform.impl.cli.Starter+
-     *** Program arguments: +runmod net.nautsch~issumy~0.1-SNAPSHOT -cp ./build/mods/net.nautsch~issumy~0.1-SNAPSHOT/+
+     *** Program arguments: +runmod net.nautsch\~issumy\~0.1-SNAPSHOT -cp ./build/mods/net.nautsch\~issumy~0.1-SNAPSHOT/+
      *** Working directory: +/home/dev/projects/issumy+
      *** Use classpath of module: +issumy+
      *** +Run+
@@ -403,7 +405,84 @@ image::setting-gradle-wrapper-in-idea.png["Configure Gradle Wrapper in IDEA",flo
      *** Browser öffnen und +localhost:8080+ liefert wieder _Hello World_
 
 
+Iteration 3 - Beispiel Programmieren
+------------------------------------
 
+* Test
+  ** +com.inventage.issumy.issues.test.integration.IssuesViaEventBusTest+
+  ** leitet von der abstrakten Klasse +TestVerticle+ ab
+  ** überschreibt +start+ um via +container.deployVerticle()+ das Verticle +com.inventage.issumy.issues.IssuesVerticle+ zu deployen
+  ** implementiert eine Methode +shouldReturnEmptyListOfIssues+ welche via dem vertx eventBus eine Nachricht an die Adresse +_com.inventage.issumy.issues_+ schickt
+     und via einem _replyHandler_ prüft ob ein JsonArray (ist eine vertx-Klasse) mit der Grösse "0" ankommt.
+
+* Implementierung
+  ** +com.inventage.issumy.issues.IssuesVerticle+
+  ** leitet von der abstrakten Klasse +Verticle+ ab
+  ** registriert einen Handler auf dem vertx EventBus mit der Adresse +_com.inventage.issumy.issues_+ welcher einen leeren JsonArray zurückschickt.
+
+Iteration 3 - Test
+------------------
+
+[source, java]
+----
+package com.inventage.issumy.issues.test.integration;
+
+import com.inventage.issumy.issues.IssuesVerticle;
+. . .
+
+/**
+ * integration test.
+ */
+public class IssuesViaEventBusTest extends TestVerticle {
+
+    @Test
+    public void shouldReturnEmptyListOfIssues() throws Exception {
+        // when
+        vertx.eventBus().send("com.inventage.issumy.issues", "", (Message<JsonArray> msg) -> {
+            // then
+            assertThat(msg.body().size(), is(0));
+            testComplete();
+        });
+    }
+
+    @Override
+    public void start() {
+        initialize();
+
+        container.deployVerticle(IssuesVerticle.class.getName(), event -> {
+            if (event.failed()) {
+                throw new IllegalStateException("deployment of module failed", event.cause());
+            }
+            startTests();
+        });
+    }
+}
+----
+
+Iteration 3 - Implementierung
+-----------------------------
+[source, java]
+----
+package com.inventage.issumy.issues;
+
+import org.vertx.java.core.json.JsonArray;
+import org.vertx.java.platform.Verticle;
+
+/**
+ * verticle handles issues.
+ */
+public class IssuesVerticle extends Verticle {
+
+    @Override
+    public void start() {
+        vertx.eventBus().registerHandler("com.inventage.issumy.issues", event -> {
+            event.reply(new JsonArray());
+        });
+
+        container.logger().info("IssuesVerticle started");
+    }
+}
+----
 
 
 
