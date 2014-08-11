@@ -80,18 +80,70 @@ Git Essentials - Local - Hands on
 - 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
 - zum Abschluss noch die History mit allen Änderungen anschauen (+git log+)
 
+Git Essentials - Branching
+--------------------------
+
+- +git branch+
+  ** erzeugen, auflisten, löschen von Branches
+- +git checkout <branch-name>+
+  ** wechselt in den branch
+  ** setzt _HEAD_ auf den branch
+- +git merge+
+  ** zusammenführen von Histories
+- +git rebase+
+  ** erzeugt lineare History in dem Änderungen eines Branches auf einem anderen Branch angewendet werden
+
+Ausflug ins Git-Buch::
+- http://git-scm.com/book/de/Git-Branching-Was-ist-ein-Branch%3F[Git Branching - Was ist ein Branch?]
+
+Git Essentials - Branching - Hands on
+-------------------------------------
+
+- erzeuge einen neuen Branch "development"
+- wechsle auf diesen Branch
+- fuege eine neue Zeile mit Text "Branch Development" hinzu
+- Änderung commiten
+- wechsle in Branch "master"
+- kurz anschauen, dass nun in der Datei die gerade gemachte Änderung nicht enhalten ist (z.B. +less README.asciidoc+)
+- merge die Änderungen von Branch "development" nun in den Branch "master"
+- nun enthält auch der Branch "master" diese Änderung
+
 Git Essentials - Remote
 -----------------------
 
 - +git clone+
+  ** erzeugt einen Clone eines Repositories in einem neuen Verzeichnis
+- +git fetch+
+  ** download von
+- +git pull+
+- +git push+
 
 
 Git Essentials - Remote - hands-on
 ----------------------------------
 
-- erzeuge ein Verzeichnis +~/gitrepos+
-- clone +\~/projects/git-ho+ nach +~/gitrepos/git-ho.git+ (+git clone \--bare+)
-
+- erzeuge ein Verzeichnis +~/git-repos+
+- clone +\~/projects/git-ho+ nach +~/git-repos/git-ho.git+ (+git clone \--bare+)
+  ** macht ein +git init+ und +git fetch+ ohne eine Arbeitskopie anzulegen
+- füge das "Remote-Repository" deinem Lokalen Repository hinzu (+git remote add upstream file://home/dev/git-repos/git-ho.git/+)
+- +git remote -v+
+- in die Rolle eines 2. Entwickler schlüpfen:
+  ** +git clone file:///home/ollin/projects/cd-ws/git-repos/git-ho.git /home/dev/projects/git-ho-dev2+
+  ** editiere +README.asciidoc+ in +/home/dev/projects/git-ho-dev2+ (z.B. zusätzliche Zeile "Hallo von Dev2")
+  ** commit in History von dev 2
+  ** push zum Remote
+- wieder in die eigene Rolle schlüpfen
+  ** +cd /home/dev/projects/git-ho+
+  ** git fetch upstream
+  ** git merge upstream/master
+  ** fuege eine Zeile "Huhu von Dev1" hinzu und commit, push zu Remote ( -u )
+- 2. Entwickler:
+  ** +cd /home/dev/projects/git-ho-dev2+
+  ** +git pull+
+     ** fasst ein _fetch_ und _merge_ zusammen
+Optional::
+- erzeuge einen Tag "v1" und pushe den Tag ins Remote Repo
+- hole den Tag ins lokale Repo des anderen Entwicklers
 
 issumy - Iteration 1
 --------------------
