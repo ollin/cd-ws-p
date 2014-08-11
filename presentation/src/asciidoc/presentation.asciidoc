@@ -114,9 +114,11 @@ Git Essentials - Remote
 - +git clone+
   ** erzeugt einen Clone eines Repositories in einem neuen Verzeichnis
 - +git fetch+
-  ** download von
+  ** download von Objekten und refs
 - +git pull+
+  ** fetch und integration in ein anderes Repo oder lokalen Branch
 - +git push+
+  ** updated remote refs mit lokalen refs indem die notwendigen Objekte geschickt werden
 
 
 Git Essentials - Remote - hands-on
