@@ -538,8 +538,12 @@ public class IssuesVerticle extends Verticle {
 }
 ----
 
-Continous Integration
----------------------
+* +./gradlew test+
+* commit
+* push
+
+Einführung - Continous Integration
+----------------------------------
 
 http://www.martinfowler.com/articles/continuousIntegration.html[nach Martin Fowler]
 
@@ -556,6 +560,19 @@ http://www.martinfowler.com/articles/continuousIntegration.html[nach Martin Fowl
 * Automatisierte Verteilung
 
 http://de.wikipedia.org/wiki/Kontinuierliche_Integration[Siehe auch Wikipedia - Kontinuierliche Integration]
+
+Einführung - Jenkins
+--------------------
+image::jenkins_logo.png["Jenkins Logo",float="right", link="http://jenkins-ci.org/"]
+Jenkins ist ein erweiterbares, webbasiertes System zur kontinuierlichen Integration. (Siehe http://de.wikipedia.org/wiki/Jenkins_(Software)[Wikipedia])
+
+Begriffe::
+* Job (Project)
+* Step
+* View
+* Environment Variable
+
+
 
 Zusammenfassung
 ---------------
