@@ -32,6 +32,7 @@ Das Image enthaelt:
 - Intellij Idea Community Edition 13.1
 - Jenkins ver. 1.565.1 ( http://localhost:8180 )
 - Nexus-2.8.1-01 OS ( http://localhost:8181/nexus )
+- ssh server (für vagrant)
 
 == Links
 
