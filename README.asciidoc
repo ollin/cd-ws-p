@@ -24,10 +24,10 @@ Dazu geht man wie folgt vor:
 * installiere Vagrant http://www.vagrantup.com/downloads.html
 * copiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
   ** via +git clone https://github.com/ollin/cd-ws-p.git+
-  ** via +wget+
-  ** via link (todo)
-     *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p"
-* wechsle ins Verzeichnis "cd-ws-p"
+  ** via +wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant+
+  ** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
+     *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
+* wechsle ins Verzeichnis "cd-ws-p/vagrant"
 * starte mit +vagrant up+
   ** es erfolgt nun der Download der Box (~3.5GB)
   ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
