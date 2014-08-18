@@ -15,3 +15,6 @@ hs_err_pid*
 
 #ide / editor
 atlassian-ide-plugin.xml
+
+# ignore vagrant storage
+.vagrant

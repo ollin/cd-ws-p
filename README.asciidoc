@@ -5,8 +5,32 @@ Dieses Repository beinhaltet die Unterlagen zum Workshop 04
 an den CH OPEN Workshoptagen. Dieser Workshop findet am 09.09.2014 statt.
 
 Alle Informationen über den Workshop und den Workshoptagen sind auf der Webseite der
-http://www.ch-open.ch/wstage/workshop-tage/programm-2014/ws-4-continuous-delivery-hands-on/[ch open] zu finden
+http://www.ch-open.ch/wstage/workshop-tage/programm-2014/ws-4-continuous-delivery-hands-on/[ch open] zu finden.
 
+Im Workshop arbeiten wir mit http://xubuntu.org/[Xubuntu] innerhalb von https://www.virtualbox.org/[VirtualBox].
+
+== Vorbereitung auf den Workshop
+=== Installation des Images
+
+Voraussetzung zum Benutzen des Image ist eine https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem
+eigenen Laptop.
+
+==== Installation via Vagrant
+
+Die einfachste Art das Image zu installieren ist via http://www.vagrantup.com/downloads.html[Vagrant].
+
+Dazu geht man wie folgt vor:
+
+* installiere Vagrant http://www.vagrantup.com/downloads.html
+* copiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
+  ** via +git clone https://github.com/ollin/cd-ws-p.git+
+  ** via +wget+
+  ** via link (todo)
+     *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p"
+* wechsle ins Verzeichnis "cd-ws-p"
+* starte mit +vagrant up+
+  ** es erfolgt nun der Download der Box (~3.5GB)
+  ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
 
 == VirtualBox Image
 
@@ -37,10 +61,6 @@ Das Image enthaelt:
 == Links
 
 http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
-
-
-
-
 
 ___
 Oliver Nautsch.
