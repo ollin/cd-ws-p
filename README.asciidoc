@@ -22,7 +22,7 @@ Die einfachste Art das Image zu installieren ist via http://www.vagrantup.com/do
 Dazu geht man wie folgt vor:
 
 * installiere Vagrant http://www.vagrantup.com/downloads.html
-* copiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
+* kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
   ** via +git clone https://github.com/ollin/cd-ws-p.git+
   ** via +wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant+
   ** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
