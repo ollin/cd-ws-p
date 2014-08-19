@@ -7,7 +7,12 @@ an den CH OPEN Workshoptagen. Dieser Workshop findet am 09.09.2014 statt.
 Alle Informationen über den Workshop und den Workshoptagen sind auf der Webseite der
 http://www.ch-open.ch/wstage/workshop-tage/programm-2014/ws-4-continuous-delivery-hands-on/[ch open] zu finden.
 
-Im Workshop arbeiten wir mit http://xubuntu.org/[Xubuntu] innerhalb von https://www.virtualbox.org/[VirtualBox].
+Im Workshop arbeiten wir mit http://xubuntu.org/[Xubuntu] innerhalb von https://www.virtualbox.org/[VirtualBox]. In dem
+VirtualBox-Image ist viel Software installiert und dementsprechend gross ist das Image auch.
+
+[IMPORTANT]
+Bitte genug Zeit (ca. 30min - 1h) für die Download und die Installation des Image einplanen!
+Die Zeit ist stark von der Bandbreite der Internetverbindung abhängig.
 
 == Vorbereitung auf den Workshop
 === Installation des Images
@@ -15,7 +20,7 @@ Im Workshop arbeiten wir mit http://xubuntu.org/[Xubuntu] innerhalb von https://
 Voraussetzung zum Benutzen des Image ist eine https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem
 eigenen Laptop.
 
-==== Installation via Vagrant
+==== Installation via Vagrant (empfohlene Variante)
 
 Die einfachste Art das Image zu installieren ist via http://www.vagrantup.com/downloads.html[Vagrant].
 
@@ -32,7 +37,13 @@ Dazu geht man wie folgt vor:
   ** es erfolgt nun der Download der Box (~3.5GB)
   ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
 
-== VirtualBox Image
+==== Installation via ZIP File
+
+* kopiere die Datei http://images.workshoptage.ch/images/ws4/cd-ws-v1.zip auf den Rechner (~3.5GB)
+* entpacke das Archiv
+* Virtualbox Menu 'Maschine - Hinzufügen' auswählen und die .vbox Datei im entpackten Folder öffnen, Start drücken
+
+== Inhalt des VirtualBox Image
 
 VirtualBox 4.3.10
 
@@ -57,11 +68,6 @@ Das Image enthaelt:
 - Jenkins ver. 1.565.1 ( http://localhost:8180 )
 - Nexus-2.8.1-01 OS ( http://localhost:8181/nexus )
 - ssh server (für vagrant)
-
-== Links
-
-http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
-
 ___
 Oliver Nautsch.
 
