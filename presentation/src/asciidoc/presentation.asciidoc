@@ -600,6 +600,7 @@ issumy - Iteration 4
 Iteration 4 - Anlegen eines Jobs
 --------------------------------
 
+* Jenkins Admin Konsole im Browser öffnen: http://localhost:8180 (im Firefox ist auch ein Bookmark)
 * installiere Jenkins-Plugins:
   ** "SafeRestart Plugin"
   ** "Git Plugin"
@@ -610,7 +611,7 @@ Iteration 4 - Anlegen eines Jobs
      *** baue von refs/heads/master
   ** Rufe das Gradle Script auf
      *** benutze den Gradle Wrapper
-     *** Task: test
+     *** Task: _test_
 * Job laufen lassen
   ** via Button im GUI
   ** via URL im Browser ( http://localhost:8180/job/issumy-stage-commit/build )
