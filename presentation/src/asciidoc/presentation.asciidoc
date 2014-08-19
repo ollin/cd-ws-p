@@ -403,7 +403,7 @@ starten via:
 ----
 ~/projects/issumy$java -jar build/libs/issumy-0.1-SNAPSHOT-fat.jar #<1>
 ----
-starten via:
+oder
 
 [source, bash]
 ----
@@ -446,7 +446,7 @@ image::gradle-logo.png["Gradle Logo",float="right", link="http://www.gradle.org/
 issumy - Iteration 3
 --------------------
 
-- liefere eine Liste von Issues
+* liefere eine Liste von Issues
   ** Annahme: eine Single-Page-Web-App soll geschrieben werden, welche über den EventBus mit dem Server kommuniziert
 
 Iteration 3 - Gradle-Wrapper und Idea
@@ -557,7 +557,8 @@ public class IssuesVerticle extends Verticle {
 
 * +./gradlew test+
 * commit
-* push
+* erzeuge remote repository mit +file://+ Protokoll unter ~/repos/
+  * da
 
 Einführung - Continous Integration
 ----------------------------------
@@ -589,7 +590,35 @@ Begriffe::
 * View
 * Environment Variable
 
+issumy - Iteration 4
+--------------------
 
+* automatisiere das Testen mit Jenkins
+  ** Plugins installieren
+  ** Job/Projekt erzeugen
+
+Iteration 4 - Anlegen eines Jobs
+--------------------------------
+
+* installiere Jenkins-Plugins:
+  ** "SafeRestart Plugin"
+  ** "Git Plugin"
+  ** "Gradle plugin"
+* erzeuge ein free-style software project "issumy-stage-commit"
+  ** Source Code Mangement - Git
+     *** checkout von +file:///home/dev/repos/issumy.git+
+     *** baue von refs/heads/master
+  ** Rufe das Gradle Script auf
+     *** benutze den Gradle Wrapper
+     *** Task: test
+* Job laufen lassen
+  ** via Button im GUI
+  ** via URL im Browser ( http://localhost:8180/job/issumy-stage-commit/build )
+  ** via URL auf Command Line ( +curl http://localhost:8180/job/issumy-stage-commit/build+ )
+
+
+TODO - wenn hooks eingefuehrt sind, dann musss kurz eine Diskussion stattfinden, warum der Name des builds in
+der url keine Gute Idee ist.
 
 Zusammenfassung
 ---------------
