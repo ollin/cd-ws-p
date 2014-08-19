@@ -1,8 +1,6 @@
 Continuous Delivery - Hands on
 ==============================
 :author:    Oliver Nautsch
-:imagesdir: presentation/src/asciidoc/images
-:icons:
 
 Dieses Repository beinhaltet die Unterlagen zum Workshop 04
 
