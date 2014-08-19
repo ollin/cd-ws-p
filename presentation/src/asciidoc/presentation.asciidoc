@@ -396,15 +396,32 @@ Iteration 2 - running
 ~/projects/issumy$./gradlew tasks
 
 ~/projects/issumy$./gradlew fatJar
+----
+starten via:
 
+[source, bash]
+----
 ~/projects/issumy$java -jar build/libs/issumy-0.1-SNAPSHOT-fat.jar #<1>
+----
+starten via:
 
+[source, bash]
+----
 ~/projects/issumy$vertx runzip build/libs/issumy-0.1-SNAPSHOT.zip #<1>
+----
+oder
 
+[source, bash]
+----
 ~/projects/issumy$VERTX_MODS=./build/mods bash -c 'vertx runmod net.nautsch~issumy~0.1-SNAPSHOT' #<1>
+----
+oder
 
+[source, bash]
+----
 ~/projects/issumy$./gradlew runMod #<1>
 ----
+
 <1> öffne Browser http://localhost:8080/ , beenden mit CTRL-C
 
 IMPORTANT: +git commit+
