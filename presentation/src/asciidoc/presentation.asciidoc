@@ -14,7 +14,15 @@ Einführung - Begriffe
 ---------------------
 
 === Continuous Delivery ===
-bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. (Wikipedia)
+bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen,
+die den Softwarelieferprozess verbessern. ... Continuous Delivery
+wird primär in der Agilen Softwareentwicklung eingesetzt.
+(http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia])
+
+Continuous Delivery is a software development discipline
+where you build software in such a way that the software
+can be released to production at any time.
+( http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
 
 === Deployment Pipeline ===
 ist eine Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
@@ -35,8 +43,9 @@ Einführung - Softwareentwicklungsansätze
 
 === Principles and Practices / Prinzipien und Praktiken
 
-- Prinzipien: sind dem Anderen übergeordnet
-- Praktiken: Handlungen die bei der Umsetzung der Prinzipien helfen
+* Prinzipien: sind dem Anderen übergeordnet
+* Praktiken: Techniken, Werkzeuge und Handlungen die bei der Umsetzung der Prinzipien helfen
+  ** Beispiel: Scrum vs. Kanban.
 
 Aufgabenstellung
 ----------------
