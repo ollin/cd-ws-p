@@ -618,6 +618,72 @@ Iteration 4 - Anlegen eines Jobs
   ** via URL im Browser ( http://localhost:8180/job/issumy-stage-commit/build )
   ** via URL auf Command Line ( +curl http://localhost:8180/job/issumy-stage-commit/build+ )
 
+Einführung - Nexus
+------------------
+
+Nexus ist ein Software Repository Manager. Ein Softwarerepository ist ein Speicherort von welchen man Softwarepakete beziehen kann. Es enthält neben den Programmpaketen auch Metadaten über diese.
+
+Begriffe::
+* Repository
+  ** Hosted
+  ** Proxy
+  ** Group
+* User
+* Rollen
+
+
+issumy - Iteration 5
+--------------------
+
+* liefere die Artefakte von _issumy_ ins Repository "Snapshots"
+notwendige Schritte:
+* anmelden in Nexus ( http://localhost:8181/nexus user: +admin+ password: +admin123+ )
+* finde die URL's fuer die Repositories
+  ** Release
+  ** Snapshot
+* setze Passwort fuer User "deployment" auf "deployment9"
+* erzeuge einen Task "uploadArchives" in gradle am Ende von +build.gradle+
+* commit / push
+* erzeuge in Jenkins einen neuen "build step" innerhalb von "issumy-stage-commit"
+  ** mit gradle wrapper
+  ** und task "uploadArchives"
+* Job starten
+* Nexus - Inhalt von Repository "Snapshots" prüfen
+
+Iteration 5 - uploadArchives
+----------------------------
+
+[source, txt]
+----
+...
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "<url von "Releases">") {
+                authentication(
+                        userName: "deployment",
+                        password: "deployment9"
+                )
+            }
+            snapshotRepository(url: "<url von "Snapshots">") {
+                authentication(
+                        userName: "deployment",
+                        password: "deployment9"
+                )
+            }
+        }
+    }
+}
+----
+
+Iteration 5 - Diskussion
+------------------------
+
+* Auslagern Passwörter aus +build.gradle+
+* Wie finde komme ich selber auf die Lösung von "uploadArchives"?
+  ** Dokumentation Maven Plugin ( http://www.gradle.org/docs/current/userguide/maven_plugin.html#uploading_to_maven_repositories )
+  ** DSL Reference ( http://www.gradle.org/docs/current/dsl/ )
+
 
 TODO - wenn hooks eingefuehrt sind, dann musss kurz eine Diskussion stattfinden, warum der Name des builds in
 der url keine Gute Idee ist.
@@ -628,4 +694,5 @@ Zusammenfassung
 * git angefasst
 * vert.x ausprobiert
 * mit gradle gearbeitet
+* Jeninks Projekte konfiguriert
 * eine Deployment Pipeline gebaut
