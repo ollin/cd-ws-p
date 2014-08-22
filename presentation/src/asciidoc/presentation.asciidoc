@@ -594,11 +594,15 @@ image::jenkins_logo.png["Jenkins Logo",float="right", link="http://jenkins-ci.or
 Jenkins ist ein erweiterbares, webbasiertes System zur kontinuierlichen Integration. (Siehe http://de.wikipedia.org/wiki/Jenkins_(Software)[Wikipedia])
 
 Begriffe::
-* Job (Project)
-* Step
-* View
-* Environment Variable
-* Plugin
+* Jobs (Projects)
+* Steps
+* Post-build Actions
+* Views
+* https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables[Environment Variable]
+* https://wiki.jenkins-ci.org/display/JENKINS/Plugins[Plugin]
+  ** Beispiele:
+     *** https://wiki.jenkins-ci.org/display/JENKINS/Conditional+BuildStep+Plugin[Conditional BuildStep Plugin]
+     *** https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin[Git Plugin]
 
 issumy - Iteration 4 - automatisiertes Testen
 ---------------------------------------------
@@ -734,6 +738,8 @@ Iteration 6 - Diskussion
 ------------------------
 
 * Warum ist der Hook via Repository besser als via Projektnamen?
+
+
 
 Zusammenfassung
 ---------------
