@@ -73,6 +73,14 @@ Das Image enthaelt:
 - Nexus-2.8.1-01 OS ( http://localhost:8181/nexus )
 - ssh server (für vagrant)
 
+Docker Images:
+* ubuntu:14.04.1
+* registry
+* atcol/docker-registry-ui
+* ollin/ubuntu-14.04-oracle-jdk8
+  ** ubuntu 14.04.1
+  ** oracle jdk8 (1.8.0_20)
+
 ----
 Oliver Nautsch.
 

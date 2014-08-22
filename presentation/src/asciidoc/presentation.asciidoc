@@ -634,7 +634,8 @@ Iteration 4 - Anlegen eines Jobs
 Einführung - Nexus
 ------------------
 
-Nexus ist ein Software Repository Manager. Ein Softwarerepository ist ein Speicherort von welchen man Softwarepakete beziehen kann. Es enthält neben den Programmpaketen auch Metadaten über diese.
+Nexus ist ein Software Repository Manager. Ein Softwarerepository ist ein Speicherort von
+welchen man Softwarepakete beziehen kann. Es enthält neben den Programmpaketen auch Metadaten über diese.
 
 Begriffe::
 * Repository
@@ -702,8 +703,7 @@ Iteration 5 - Diskussion
 * "... can be released to production at any time." -> also jeder Commit.
 * Automate everything!
 
-issumy - Iteration 6 - Hooks
-----------------------------
+== issumy - Iteration 6 - Hooks
 
 * automatisiere das Starten des Jenkins Jobs bei jedem Commit
 * benutze dazu "Hooks" von git
@@ -718,8 +718,7 @@ empfohlenes Vorgehen::
   ** finde den Hook der ausgeführt wird, wenn der _push_ auf dem Server erfolgreich war
   ** erzeuge die entsprechende Datei und mache sie mit chmod +x ausführbar
 
-Iteration 6 - Lösungsbeispiel
------------------------------
+== Iteration 6 - Lösungsbeispiel
 
 image::jenkins-git-poll.png["Poll markieren",float="right"]
 
@@ -734,10 +733,99 @@ curl http://localhost:8180/git/notifyCommit?url=file:///home/dev/repos/issumy.gi
 
 IMPORTANT: +chmod +x /home/dev/repos/issumy.git/hooks/post-receive+
 
-Iteration 6 - Diskussion
-------------------------
+== Iteration 6 - Diskussion
 
 * Warum ist der Hook via Repository besser als via Projektnamen?
+
+nächster Schritt::
+
+* Gespiegelte Produktionsumgebung
+
+== Einführung - Docker
+
+image::docker_logo.png["Docker Logo",float="right", link="https://www.docker.com/"]
+
+Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+
+Bestandteile::
+
+* https://docs.docker.com/installation/ubuntulinux/[Docker Engine]
+* https://hub.docker.com/[Docker Hub]
+
+Begriffe::
+
+* Image
+* Container
+* Registry
+  * Hub
+  * local eigene
+
+== Docker Kommandos
+
+image::dockerstory.png["Docker Story",float="right"]
+
+* +man docker+
+
+* +docker images+    listed die Images auf
+* +docker run+       führt ein Kommando in einem neuen Container aus
+* +docker stop+      stopt einen Container
+* +docker start+     startet einen Container
+* +docker ps+        listed die Container auf
+* +docker rm+        löscht Container
+
+* +docker build+     erzeugt ein neues Image aus einem _Dockerfile_
+* +docker pull+      zieht ein Image oder Repository von Registry
+* +docker push+      schiebt ein Image oder Repository zur Registry
+* +docker rmi+       löscht Image
+
+* +docker inspect+   Infos über Container oder Images
+
+== Iteration 7 - Erzeugen eines Containers
+
+== Iteration 8 - Erzeugen eines Image
+
+erzeuge +~/projects/docker-test/Dockerfile+
+
+[source, txt]
+----
+FROM ubuntu:14.04.1
+MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>
+
+RUN touch huschihops.txt
+----
+
++docker build -t inventage/huschi_hops:1.0 .+
+
+== Einführung - Eigene Docker Registry
+
+[source, bash]
+----
+docker run -p 5000:5000 -dt --name registry registry
+docker run -d -p 8080:8080 --name registry-ui atcol/docker-registry-ui
+docker ps
+----
+
+* nun kann man den Browser mit +http://localhost:8080/+ öffnen
+  und die Applikation _Docker Registry Web_ sehen
+
+== Iteration 9 - Veröffentlichen eines Images
+
+* Konfiguriere das Repository, welches auf Port 5000 im docker-host läuft
+  im _Docker Registry Web_
+  * benutze +ifconfig+ im docker host um die richtige IP-Adresse zu finden
+* tagge die das Image für das lokale Repository mit +1.0+ und +latest+
+* und schiebe die Images ins lokale Repo
+* prüfe das Ergebnis im _Docker Registry Web_
+
+[source, bash]
+----
+docker tag inventage/huschi_hops:1.0 localhost:5000/inventage/huschi_hops:1.0
+docker tag inventage/huschi_hops:1.0 localhost:5000/inventage/huschi_hops:latest
+docker images #zeigt nun schön, dass alle tags auf die gleiche image id zeigen
+
+docker push localhost:5000/inventage/huschi_hops:1.0
+docker push localhost:5000/inventage/huschi_hops:latest
+----
 
 
 
