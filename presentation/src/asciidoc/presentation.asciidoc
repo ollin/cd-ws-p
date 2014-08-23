@@ -752,6 +752,21 @@ Bestandteile::
 * https://docs.docker.com/installation/ubuntulinux/[Docker Engine]
 * https://hub.docker.com/[Docker Hub]
 
+Techniken::
+
+* cgroups - control groups - Linux Kernel Funktion zum begrenzen, messen und isolieren von
+  Ressourcen (CPU, Speicher, disc I/O etc.)
+* kernel namespaces - trennen der Sichtbarkeit von Ressourcen
+  in anderen Gruppen (Prozesse, Netzwerk, user IDs, Dateisysteme, etc.)
+* Overlay-Dateisystem (AuFS oder Btrfs)
+
+Wer steht hinter Docker::
+
+* die Firma Docker (Anfangs Jahr 15 Millionen US-Doller erhalten)
+* Red Hat integriert Docker in Red Hat Enterprise Linux 7 und will Container zertifizieren
+* Google, Microsoft, Red Hat, IBM, Docker, Mesosphere, CoreOS und SaltStack
+  arbeiten am https://github.com/GoogleCloudPlatform/kubernetes[Kubernetes Projekt] mit.
+
 Begriffe::
 
 * Image
