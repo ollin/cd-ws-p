@@ -842,13 +842,19 @@ docker push localhost:5000/inventage/huschi_hops:1.0
 docker push localhost:5000/inventage/huschi_hops:latest
 ----
 
+== Abschliessende Gedanken
 
+* Wähle den Zeitpunkt richtig - der Zeitpunkt mit dem wenigsten Stress!
+* Was ist zuerst zu machen:
+  ** Test: Stufe _produktion_ -> _commit_
+  ** Implementation: Stufe _commit_ -> _produktion_
 
-Zusammenfassung
----------------
+== Zusammenfassung
 
 * git angefasst
 * vert.x ausprobiert
 * mit gradle gearbeitet
 * Jeninks Projekte konfiguriert
+* Artefakte in Nexus gespeichert
+* Docker Container gebaut
 * eine Deployment Pipeline gebaut
