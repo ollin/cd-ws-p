@@ -902,10 +902,9 @@ docker ps
 
 [source, bash]
 ----
-docker tag inventage/huschihops:1.0 localhost:5000/inventage/huschihops:1.0
 docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:2.0
 docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:latest
-docker images #zeigt nun schön, dass die Tags latest und 2.0 auf die gleiche image id zeigen
+docker images #zeigt nun schön, dass die Tags *latest* und *2.0* auf die gleiche image id zeigen
 
 docker push localhost:5000/inventage/huschihops:2.0
 docker push localhost:5000/inventage/huschihops:latest
@@ -919,6 +918,8 @@ docker push localhost:5000/inventage/huschihops:latest
 * . . .
 
 == Abschliessende Gedanken
+
+image::are-you-too-busy-to-improve.png["Too Busy",float="right"]
 
 * Fange einfach an und erweitere wenn nötig!
 * Wähle den Zeitpunkt richtig - der Zeitpunkt mit dem wenigsten Stress!
