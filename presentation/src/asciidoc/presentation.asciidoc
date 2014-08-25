@@ -844,8 +844,9 @@ docker push localhost:5000/inventage/huschi_hops:latest
 
 == Abschliessende Gedanken
 
+* Fange einfach an und erweitere wenn nötig!
 * Wähle den Zeitpunkt richtig - der Zeitpunkt mit dem wenigsten Stress!
-* Was ist zuerst zu machen:
+* Entwickle aus Sicht des Kunden!
   ** Test: Stufe _produktion_ -> _commit_
   ** Implementation: Stufe _commit_ -> _produktion_
 
