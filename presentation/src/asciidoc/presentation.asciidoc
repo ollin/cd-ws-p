@@ -795,9 +795,45 @@ image::dockerstory.png["Docker Story",float="right"]
 
 * +docker inspect+   Infos über Container oder Images
 
-== Iteration 7 - Erzeugen eines Containers
+== Docker -  Erzeugen eines Containers
 
-== Iteration 8 - Erzeugen eines Image
+[source, bash]
+----
+docker run -i -t ubuntu:14.04.1 bash
+root@1081f6156ecc:/#exit
+docker ps -a
+docker ps -a
+CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS                      PORTS               NAMES
+4133bbfc2eaa        ubuntu:14.04.1      "bash"                 12 seconds ago      Exited (0) 10 seconds ago                       trusting_davinci
+. . .
+----
+
+[source, bash]
+----
+docker run --rm -i -t ubuntu:14.04.1 bash
+root@35d2e9236656:/# exit
+docker ps -a
+----
+
+[source, bash]
+----
+docker run --rm -i -t ubuntu:14.04.1 ls -al
+----
+
+== Docker - Erzeugen eines Image
+
+=== via commit
+
+[source, bash]
+----
+docker run -t -i  ubuntu:14.04.1 bash
+root@dcde95ca3e5c:/# touch huschihops.txt
+root@dcde95ca3e5c:/# exit
+docker ps -a
+docker commit -m="added huschihops.txt" -a="Oliver Nautsch" dcde95ca3e5c inventage/huschihops:1.0
+----
+
+=== via Dockerfile
 
 erzeuge +~/projects/docker-test/Dockerfile+
 
@@ -809,7 +845,39 @@ MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>
 RUN touch huschihops.txt
 ----
 
-+docker build -t inventage/huschi_hops:1.0 .+
+[source, bash]
+----
+docker build -t ollin/huschihops:v2 .
+Sending build context to Docker daemon  2.56 kB
+Sending build context to Docker daemon
+Step 0 : FROM ubuntu:14.04.1
+ ---> c4ff7513909d
+Step 1 : MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>
+ ---> Using cache
+ ---> 98658a58fa03
+Step 2 : RUN touch huschihops.txt
+ ---> Running in 2d4d554cbf2a
+ ---> 01ee073272ec
+Removing intermediate container 2d4d554cbf2a
+Successfully built 01ee073272ec
+
+docker images
+REPOSITORY                       TAG                   IMAGE ID            CREATED             VIRTUAL SIZE
+ollin/huschihops                 v2                    01ee073272ec        31 seconds ago      225.4 MB
+. . .
+----
+
+
+
+== Iteration 7 - Erzeugen eines Images - hands on
+
+via docker commit::
+
+* erzeuge ein Image "inventage/huschihops:1.0" welches eine leere Datei +huschihops.txt+ enthält
+
+via Dockerfile::
+
+* erzeuge ein Image "inventage/huschihops:2.0" mittels einer Datei +~/projects/docker-test/Dockerfile+
 
 == Einführung - Eigene Docker Registry
 
@@ -823,7 +891,7 @@ docker ps
 * nun kann man den Browser mit +http://localhost:8080/+ öffnen
   und die Applikation _Docker Registry Web_ sehen
 
-== Iteration 9 - Veröffentlichen eines Images
+== Iteration 8 - Veröffentlichen eines Images
 
 * Konfiguriere das Repository, welches auf Port 5000 im docker-host läuft
   im _Docker Registry Web_
@@ -834,13 +902,21 @@ docker ps
 
 [source, bash]
 ----
-docker tag inventage/huschi_hops:1.0 localhost:5000/inventage/huschi_hops:1.0
-docker tag inventage/huschi_hops:1.0 localhost:5000/inventage/huschi_hops:latest
-docker images #zeigt nun schön, dass alle tags auf die gleiche image id zeigen
+docker tag inventage/huschihops:1.0 localhost:5000/inventage/huschihops:1.0
+docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:2.0
+docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:latest
+docker images #zeigt nun schön, dass die Tags latest und 2.0 auf die gleiche image id zeigen
 
-docker push localhost:5000/inventage/huschi_hops:1.0
-docker push localhost:5000/inventage/huschi_hops:latest
+docker push localhost:5000/inventage/huschihops:2.0
+docker push localhost:5000/inventage/huschihops:latest
 ----
+
+== Weiterführende Themen
+
+* Microservices
+* Provisioning (Saltstack, Puppet, Chef)
+* The ELK Stack (Elasticsearch, Logstash and Kibana)
+* . . .
 
 == Abschliessende Gedanken
 
@@ -857,5 +933,5 @@ docker push localhost:5000/inventage/huschi_hops:latest
 * mit gradle gearbeitet
 * Jeninks Projekte konfiguriert
 * Artefakte in Nexus gespeichert
-* Docker Container gebaut
+* Docker Container gebaut und veröffentlicht.
 * eine Deployment Pipeline gebaut
