@@ -8,8 +8,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "ollin/cd-ws"
 
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
   config.vm.provider "virtualbox" do |vb|
     
     vb.gui = true

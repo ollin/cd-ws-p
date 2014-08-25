@@ -26,10 +26,6 @@ eigenen Laptop.
 
 ==== Installation via Vagrant (empfohlene Variante)
 
-Die einfachste Art das Image zu installieren ist via http://www.vagrantup.com/downloads.html[Vagrant].
-
-Dazu geht man wie folgt vor:
-
 * installiere Vagrant http://www.vagrantup.com/downloads.html
 * kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
   ** via +git clone https://github.com/ollin/cd-ws-p.git+
@@ -38,14 +34,14 @@ Dazu geht man wie folgt vor:
      *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
 * wechsle ins Verzeichnis "cd-ws-p/vagrant"
 * starte mit +vagrant up+
-  ** es erfolgt nun der Download der Box (~3.5GB)
+  ** es erfolgt nun der Download der Box (~4.7GB)
   ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
 
-==== Installation via ZIP File
+==== Installation via Import
 
-* kopiere die Datei http://images.workshoptage.ch/images/ws4/cd-ws-v1.zip auf den Rechner (~3.5GB)
-* entpacke das Archiv
-* Virtualbox Menu 'Maschine - Hinzufügen' auswählen und die .vbox Datei im entpackten Folder öffnen, Start drücken
+* kopiere die Datei http://images.workshoptage.ch/images/ws4/cd-ws.ova auf den Rechner (~4.7GB)
+* Importiere die Datei via 'VirtualBox Manager -> File -> Import Appliance'
+* Einstellungen entsprechend der eigenen Hardware vornehmen
 
 == Inhalt des VirtualBox Image
 
@@ -56,7 +52,7 @@ Das Image ist wie folgt konfiguriert:
 - CPU's:    2
 - RAM:      3072 MB
 - HD:       20GB , dynamisch, LVM
-- Network:  Bridged Adapter
+- Network:  NAT
 
 Das Image enthaelt:
 
@@ -73,16 +69,13 @@ Das Image enthaelt:
 - Nexus-2.8.1-01 OS ( http://localhost:8181/nexus )
 - ssh server (für vagrant)
 
-Docker Images:
+Docker Images::
 * ubuntu:14.04.1
 * registry
 * atcol/docker-registry-ui
 * ollin/ubuntu-14.04-oracle-jdk8
   ** ubuntu 14.04.1
   ** oracle jdk8 (1.8.0_20)
-
-----
-Oliver Nautsch.
 
 
 
