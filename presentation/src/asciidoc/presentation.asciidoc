@@ -952,6 +952,7 @@ CMD ["runzip", "$modZip.archiveName"]
 ----
 
     *** dieses Dockerfile zusammen mit der mod-zip datei ins Image stellen
+    *** dann Docker-Image erstellen
 
 [source, java]
 ----
@@ -966,8 +967,20 @@ createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
    *** docker push mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
    *** _uploadArchives_ abhängig machen von den push tasks
 
+== Interation x - Performance Testing - hands on
+
+* Erzeuge einen http://jmeter.apache.org/usermanual/get-started.html[JMeter] Test der tested ob die Liste der issues innerhalb von 0.3 Sekunden geliefert werden kann
+  ** Installiere dazu JMeter
+  ** Speichere die jmx Datei
+* Fuege einen _stage.performance_ dem Projekt hinzu
+  ** erstelle eine +build.gradle+ Datei welche
+    *** benutze das https://github.com/kulya/jmeter-gradle-plugin[jmeter-gradle-plugin]
+    *** einen Container starten und die Tests gegen diesen Container ausführen
+* Baue Job in Jenkins und verhänge ihn richtig
+
 == Weiterführende Themen
 
+* OpenStack
 * Microservices
 * Provisioning (Saltstack, Puppet, Chef)
 * The ELK Stack (Elasticsearch, Logstash and Kibana)
