@@ -967,6 +967,27 @@ createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
    *** docker push mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
    *** _uploadArchives_ abhängig machen von den push tasks
 
+== Continuous Delivery - Prinzipien
+
+image::book-continuous-delivery.jpg["Buch - Continuous Delivery",float="right"]
+
+Prinzipien::
+
+* zuverlässnger und wiederholbarer Prozess zum Releasen von Software
+* Automatisiere alles!
+* Wenn etwas mühsam oder schwierig ist, dann mache es noch öfter!
+* Alles in Versionskontrolle.
+* Done meint _Released_
+* Baue Qualität ein!
+* Jeder ist für dem Release Prozess verantwortlich.
+
+== Continuous Delivery - Praktiken
+
+* Baue Binaries nur ein Mal.
+* Benutze den genau den gleichen Mechanismus für die Auslieferung in jede Umgebung.
+* _Smoke test_ die Auslieferung.
+* Wenn etwas schiefgeht, stoppe die Pipeline.
+
 == Interation x - Performance Testing - hands on
 
 * Erzeuge einen http://jmeter.apache.org/usermanual/get-started.html[JMeter] Test der tested ob die Liste der issues innerhalb von 0.3 Sekunden geliefert werden kann
