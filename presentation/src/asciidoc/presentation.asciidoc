@@ -892,8 +892,7 @@ ollin/huschihops                 v2                    01ee073272ec        31 se
 ----
 
 
-
-== Iteration 7 - Erzeugen eines Images - hands on
+== Erzeugen eines Images - hands on
 
 via docker commit::
 
@@ -912,10 +911,10 @@ docker run -d -p 8080:8080 --name registry-ui atcol/docker-registry-ui
 docker ps
 ----
 
-* nun kann man den Browser mit +http://localhost:8080/+ öffnen
+* nun kann man den Browser mit http://localhost:8080/ öffnen
   und die Applikation _Docker Registry Web_ sehen
 
-== Iteration 8 - Veröffentlichen eines Images
+== Iteration 8 - Veröffentlichen eines Images - Teil 1
 
 * Konfiguriere das Repository, welches auf Port 5000 im docker-host läuft
   im _Docker Registry Web_
@@ -933,6 +932,39 @@ docker images #zeigt nun schön, dass die Tags *latest* und *2.0* auf die gleich
 docker push localhost:5000/inventage/huschihops:2.0
 docker push localhost:5000/inventage/huschihops:latest
 ----
+
+== Iteration 8 - Veröffentlichen eines Images via gradle - Teil 2
+
+* integriere dieses Taggen und Pushen in gradle build von issumy
+  ** Beispiel fuer erzeugen Image:
+     *** es muss ein _Dockerfile_ erzeugt werden mit der Form:
+[source, txt]
+----
+FROM ollin/vertx")
+MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>")
+
+VOLUME /home/issumy
+ADD $modZip.archiveName /home/issumy/$modZip.archiveName
+EXPOSE 8080
+
+WORKDIR /home/issumy")
+CMD ["runzip", "$modZip.archiveName"]
+----
+
+    *** dieses Dockerfile zusammen mit der mod-zip datei ins Image stellen
+
+[source, java]
+----
+task createDockerImage (type: Exec) {
+    workingDir 'build/docker'
+    commandLine 'docker', 'build', '-t', "inventage/issumy:$version", '.'
+}
+createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
+----
+
+   *** docker tag mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
+   *** docker push mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
+   *** _uploadArchives_ abhängig machen von den push tasks
 
 == Weiterführende Themen
 
