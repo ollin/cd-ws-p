@@ -175,7 +175,7 @@ issumy - Iteration 1 - hands-on - install gvm
 - installiere Gradle http://www.gradle.org/
 
 ----
-~/$gvm install gradle 2.0
+~/$gvm install gradle 1.10
 ----
 
 - installiere Vert.x http://vertx.io/
@@ -452,14 +452,17 @@ image::gradle-logo.png["Gradle Logo",float="right", link="http://www.gradle.org/
   ** downloaded Gradle und benutzt diese Version
   ** ideal für Continuous Integration, da keine Installation notwendig ist
 
-issumy - Iteration 3 - Implementiere "liefere Liste"
-----------------------------------------------------
+== issumy - Iteration 3 - Implementiere "liefere Liste"
+
 
 * liefere eine Liste von Issues
-  ** Annahme: eine Single-Page-Web-App soll geschrieben werden, welche über den EventBus mit dem Server kommuniziert
+  ** Annahme:
+     *** eine Single-Page-Web-App wird von einem anderen Team geschrieben,
+     *** wir implementieren den REST-Endpunkt auf der Serverseite
+     *** Intern soll der REST Endpunkt über den Event Bus kommunizieren
 
-Iteration 3 - Gradle-Wrapper und Idea
--------------------------------------
+== Iteration 3 - Gradle-Wrapper und Idea
+
 
 image::setting-gradle-wrapper-in-idea.png["Configure Gradle Wrapper in IDEA",float="right"]
 - in IDEA -> +File+ -> +Settings+ -> +_gradle_+ (links oben eingeben) -> +Use customizable gradle wrapper+ -> +Apply/Ok+
@@ -485,10 +488,33 @@ image::setting-gradle-wrapper-in-idea.png["Configure Gradle Wrapper in IDEA",flo
      *** Browser öffnen und +localhost:8080+ liefert wieder _Hello World_
 
 
-Iteration 3 - Beispiel Programmieren
-------------------------------------
+== Iteration 3 - Beispiel Programmieren
+
+image::i3-issumy-issues.png["Übersicht Implementierung Iteration 3", float="right"]
+
+via Rest::
 
 * Test
+  ** +com.inventage.issumy.issues.test.integration.IssuesViaRestTest+
+    *** leitet von der abstrakten Klasse +TestVerticle+ ab
+    *** implementiert eine Methode +shouldReturnEmptyListOfIssues+ welche via +vertx.createHttpClient+ ein GET an die Adresse +_/issues_+ schickt
+        und via einem _responseHandler_ prüft ob ein leerer JSON String geliefert wird.
+    *** überschreibt +start+ um via +container.deployVerticle()+ das Verticle +com.inventage.issumy.issues.IssuesStarterVerticle+ zu deployen
+
+
+* Implementierung
+  ** +com.inventage.issumy.issues.IssuesRestVerticle+
+    *** konfiguriert einen +RouteMatcher+ der auf ein GET reagiert mit dem Pattern +_/issues_+
+    *** der RouteMatcher hört via +vertx.createHttpServer().requestHandler( . . . + an Port +8080+ und delegiert den Aufruf via EventBus
+        an "com.inventage.issumy.issues"
+  ** +com.inventage.issumy.issues.IssuesStarterVerticle+
+    *** deployed die Verticles +IssuesRestVerticle+ und +IssuesVerticle+
+  ** +mod.json+
+    *** definiert +IssuesStarterVerticle+ als +main+
+
+via EventBus::
+
+* Test (Optional)
   ** +com.inventage.issumy.issues.test.integration.IssuesViaEventBusTest+
   ** leitet von der abstrakten Klasse +TestVerticle+ ab
   ** überschreibt +start+ um via +container.deployVerticle()+ das Verticle +com.inventage.issumy.issues.IssuesVerticle+ zu deployen
@@ -500,8 +526,7 @@ Iteration 3 - Beispiel Programmieren
   ** leitet von der abstrakten Klasse +Verticle+ ab
   ** registriert einen Handler auf dem vertx EventBus mit der Adresse +_com.inventage.issumy.issues_+ welcher einen leeren JsonArray zurückschickt.
 
-Iteration 3 - Beispiel für Test
--------------------------------
+== Iteration 3 - Beispiel für Test  via EventBus
 
 [source, java]
 ----
@@ -539,8 +564,8 @@ public class IssuesViaEventBusTest extends TestVerticle {
 }
 ----
 
-Iteration 3 - Beispiel für Implementierung
-------------------------------------------
+== Iteration 3 - Beispiel für Implementierung via EventBus
+
 [source, java]
 ----
 package com.inventage.issumy.issues;
@@ -567,7 +592,6 @@ public class IssuesVerticle extends Verticle {
 * +./gradlew test+
 * commit
 * erzeuge remote repository mit +file://+ Protokoll unter ~/repos/
-  * da
 
 Einführung - Continous Integration
 ----------------------------------
