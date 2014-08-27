@@ -169,28 +169,27 @@ Git Essentials - Remote
 
 == Git Essentials - Remote - hands-on
 
-- erzeuge ein Verzeichnis +~/git-repos+
-- clone +\~/projects/git-ho+ nach +~/git-repos/git-ho.git+ (+git clone \--bare+)
+* erzeuge ein Verzeichnis +~/git-repos+
+* clone +\~/projects/git-ho+ nach +~/git-repos/git-ho.git+ (+git clone \--bare+)
   ** macht ein +git init+ und +git fetch+ ohne eine Arbeitskopie anzulegen
-- füge das "Remote-Repository" deinem Lokalen Repository hinzu (+git remote add upstream file://home/dev/git-repos/git-ho.git/+)
-- +git remote -v+
-- in die Rolle eines 2. Entwickler schlüpfen:
+* füge das "Remote-Repository" deinem Lokalen Repository hinzu (+git remote add upstream file:///home/dev/git-repos/git-ho.git+)
+* +git remote -v+
+* in die Rolle eines 2. Entwickler schlüpfen:
   ** +git clone file:///home/ollin/projects/cd-ws/git-repos/git-ho.git /home/dev/projects/git-ho-dev2+
   ** editiere +README.asciidoc+ in +/home/dev/projects/git-ho-dev2+ (z.B. zusätzliche Zeile "Hallo von Dev2")
   ** commit in History von dev 2
   ** push zum Remote
-- wieder in die eigene Rolle schlüpfen
+* wieder in die eigene Rolle schlüpfen
   ** +cd /home/dev/projects/git-ho+
   ** git fetch upstream
   ** git merge upstream/master
   ** fuege eine Zeile "Huhu von Dev1" hinzu und commit, push zu Remote ( -u )
-- 2. Entwickler:
+* 2. Entwickler:
   ** +cd /home/dev/projects/git-ho-dev2+
   ** +git pull+
      ** fasst ein _fetch_ und _merge_ zusammen
-Optional::
-- erzeuge einen Tag "v1" und pushe den Tag ins Remote Repo
-- hole den Tag ins lokale Repo des anderen Entwicklers
+* erzeuge einen Tag "v1" und pushe den Tag ins Remote Repo
+* hole den Tag ins lokale Repo des anderen Entwicklers
 
 == issumy - Iteration 1
 
@@ -269,12 +268,14 @@ public class HelloWorldServer extends Verticle {
 ----
 from https://raw.githubusercontent.com/vert-x/vertx-examples/master/src/raw/java/httphelloworld/HelloWorldServer.java
 
+- zur Zeit noch keine Abhängigkeiten definiert (Fehler in IDE)
+- wir können es auch noch nicht mit gradle bauen
+- aber . . .
+
 issumy - Iteration 1 - hands-on - running the example for vert.x
 ----------------------------------------------------------------
 
-- zur Zeit noch keine Abhängigkeiten definiert (Fehler in IDE)
-- wir können es auch noch nicht mit gradle bauen
-- ... aber vert.x kann schon damit laufen
+- . . . vert.x kann schon damit laufen
 
 ----
 ~/projects/issumy$vertx run src/main/java/httphelloworld/HelloWorldServer.java
@@ -286,7 +287,19 @@ Succeeded in deploying verticle
 .Run Verticle in Browser
 image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
-IMPORTANT: +git commit+
+Anlegen locales und remote Repostory::
+
+[source, bash]
+----
+cd  ~/projects/issumy
+git init
+git commit -a -m "initial"
+git clone --bare . ~/git-repos/issumy.git
+git remote add upstream file://home/dev/git-repos/issumy.git/
+git fetch
+git branch -u upstream/master master
+----
+
 
 Einführung - vert.x
 -------------------
@@ -671,9 +684,10 @@ Iteration 4 - Anlegen eines Jobs
   ** "Authorize Project plugin"
 * erzeuge ein free-style software project "issumy-stage-commit"
   ** Source Code Mangement - Git
-     *** checkout von +file:///home/dev/repos/issumy.git+
-     *** baue von refs/heads/master
-  ** Rufe das Gradle Script auf
+     *** checkout von +file:///home/dev/git-repos/issumy.git+
+     *** baue von +*/master+
+  ** "Add Build Step"
+     ** Rufe das Gradle Script auf
      *** benutze den Gradle Wrapper
      *** Task: _test_
 * Job laufen lassen
@@ -992,6 +1006,13 @@ createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
    *** docker tag mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
    *** docker push mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
    *** _uploadArchives_ abhängig machen von den push tasks
+   *** damit _jenkins_ den _docker_ daemon benutzen darf, auf der Kommandozeile:
+
+[source, bash]
+----
+sudo useradd -G docker jenkins
+sudo service jenkins restart
+----
 
 == Continuous Delivery - Prinzipien
 
@@ -1020,8 +1041,34 @@ Prinzipien::
   ** MAJOR
   ** MINOR
   ** PATCH
-* Jeder Commit ist ein potentieller Release! Kein SNAPSHOT in der Pipeline!
+* Jeder Commit ist ein potentieller Release!
+  ** Kein SNAPSHOT in der Pipeline!
+  ** Entwickler arbeiten aber auf einem Snapshot.
 * ein Kompromiss wie es z.B. http://freecode.com/projects/h2/releases[H2] macht  (1.3.176, 1.4.177)
+
+== Iteration 9 - Integriere Versionsnummer in gradle
+
+* erzeuge eine Datei +~/dev/issumy/version.properties+ mit folgendem Inhalt
+[source, txt]
+----
+APP_VERSION_PREFIX=1.0
+----
+* entferne die folgenden Zeilen aus +gradle.properties+
+[source, txt]
+----
+# Your module version
+version=0.1-SNAPSHOT
+----
+* Weise in Jenkins im Job "issumy-stage-commit" der Variablen +PIPE_FLOW_NUMBER+ die Nummer des Builds zu
+  (ist eine Jenkins https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables[Umgebungsvariable])
+* implementiere eine Methode +readVersion+ in gradle.build welche eine Versionsnummer liefert
+  ** liesst +version.properties+
+  ** extrahiert den Prefix daraus
+  ** liesst +PIPE_FLOW_NUMBER+ aus Umgebung aus
+  ** das Ergebnis ist:
+    *** "1.0-SNAPSHOT" wenn keine +PIPE_FLOW_NUMBER+ gefunden wird
+    *** sonst "1.0.56"
+* weise das Erbniss dieser Methode der Variablen +version+ zu
 
 == Interation x - Performance Testing - hands on
 
@@ -1032,7 +1079,7 @@ Prinzipien::
   ** erstelle eine +build.gradle+ Datei welche
     *** benutze das https://github.com/kulya/jmeter-gradle-plugin[jmeter-gradle-plugin]
     *** einen Container starten und die Tests gegen diesen Container ausführen
-* Baue Job in Jenkins und verhänge ihn richtig
+* Baue Job in Jenkins und ordne ihn in der richtigen Reihenfolge ein
 
 == Weiterführende Themen
 
@@ -1046,6 +1093,8 @@ Prinzipien::
 
 image::are-you-too-busy-to-improve.png["Too Busy",float="right"]
 
+* Are you too busy?
+* Die ist mehr als die Summe aller! Oder: Einer kann nicht *alles* wissen.
 * Fange einfach an und erweitere wenn nötig!
 * Wähle den Zeitpunkt richtig - der Zeitpunkt mit dem wenigsten Stress!
 * Entwickle aus Sicht des Kunden!
@@ -1054,6 +1103,7 @@ image::are-you-too-busy-to-improve.png["Too Busy",float="right"]
 
 == Zusammenfassung
 
+* viele Beriffe besprochen
 * git angefasst
 * vert.x ausprobiert
 * mit gradle gearbeitet
