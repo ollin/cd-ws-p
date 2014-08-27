@@ -4,20 +4,19 @@ Continuous Delivery - Hands on
 :backend:   slidy
 :imagesdir: images
 :icons:
+:toc:
 
 == Zur Person
 
 image::inventage_logo_with_border.gif["Inventage Logo",float="right", link="http://www.inventage.com/"]
 
-Oliver Nautsch <oliver.nautsch@inventage.com>
+Oliver Nautsch
 
 _Subject Matter Expert - Microservices_
 
-Inventage AG
+Inventage AG, Technoparkstrasse 1, 8005 Zürich
 
 '''
-
-Erreichbar via::
 
 email:      oliver.nautsch@inventage.com +
 twitter:    https://twitter.com/ollispieps[@ollispieps] +
@@ -26,7 +25,6 @@ google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
 
 
 '''
-Sonstiges::
 
 Jugs Board Member seit 2014 +
 #. . . running . . .#
@@ -786,16 +784,16 @@ empfohlenes Vorgehen::
 
 image::jenkins-git-poll.png["Poll markieren",float="right"]
 
-Datei: +/home/dev/repos/issumy.git/hooks/post-receive+
+Datei: +/home/dev/git-repos/issumy.git/hooks/post-receive+
 
 [source, bash]
 ----
 #!/bin/bash
-curl http://localhost:8180/git/notifyCommit?url=file:///home/dev/repos/issumy.git
+curl http://localhost:8180/git/notifyCommit?url=file:///home/dev/git-repos/issumy.git
 
 ----
 
-IMPORTANT: +chmod +x /home/dev/repos/issumy.git/hooks/post-receive+
+IMPORTANT: +chmod +x /home/dev/git-repos/issumy.git/hooks/post-receive+
 
 == Iteration 6 - Diskussion
 
@@ -947,7 +945,7 @@ via Dockerfile::
 [source, bash]
 ----
 docker run -p 5000:5000 -dt --name registry registry
-docker run -d -p 8080:8080 --name registry-ui atcol/docker-registry-ui
+docker run -d -p 5001:8080 --name registry-ui atcol/docker-registry-ui
 docker ps
 ----
 
@@ -976,8 +974,7 @@ docker push localhost:5000/inventage/huschihops:latest
 == Iteration 8 - Veröffentlichen eines Images via gradle - Teil 2
 
 * integriere dieses Taggen und Pushen in gradle build von issumy
-  ** Beispiel fuer erzeugen Image:
-     *** es muss ein _Dockerfile_ erzeugt werden mit der Form:
+* es muss ein _Dockerfile_ mit einem Task _createDockerfile_ erzeugt werden:
 [source, txt]
 ----
 FROM ollin/vertx")
@@ -987,7 +984,7 @@ VOLUME /home/issumy
 ADD $modZip.archiveName /home/issumy/$modZip.archiveName
 EXPOSE 8080
 
-WORKDIR /home/issumy")
+WORKDIR /home/issumy
 CMD ["runzip", "$modZip.archiveName"]
 ----
 
@@ -1018,8 +1015,6 @@ sudo service jenkins restart
 
 image::book-continuous-delivery.jpg["Buch - Continuous Delivery",float="right"]
 
-Prinzipien::
-
 * zuverlässnger und wiederholbarer Prozess zum Releasen von Software
 * Automatisiere alles!
 * Wenn etwas mühsam oder schwierig ist, dann mache es noch öfter!
@@ -1032,7 +1027,7 @@ Prinzipien::
 
 * Baue Binaries nur ein Mal.
 * Benutze den genau den gleichen Mechanismus für die Auslieferung in jede Umgebung.
-* _Smoke test_ die Auslieferung.
+* _Smoke test_ nach der Auslieferung.
 * Wenn etwas schiefgeht, stoppe die Pipeline.
 
 == Die Versionsnummer
@@ -1063,19 +1058,82 @@ version=0.1-SNAPSHOT
   (ist eine Jenkins https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables[Umgebungsvariable])
 * implementiere eine Methode +readVersion+ in gradle.build welche eine Versionsnummer liefert
   ** liesst +version.properties+
-  ** extrahiert den Prefix daraus
+  ** extrahiert den Prefix (+APP_VERSION_PREFIX+) daraus
   ** liesst +PIPE_FLOW_NUMBER+ aus Umgebung aus
   ** das Ergebnis ist:
     *** "1.0-SNAPSHOT" wenn keine +PIPE_FLOW_NUMBER+ gefunden wird
     *** sonst "1.0.56"
-* weise das Erbniss dieser Methode der Variablen +version+ zu
+* weise das Erbnis dieser Methode der Variablen +version+ in der ersten Zeile von +build.gradle+ zu
 
-== Interation x - Performance Testing - hands on
+== Iteration 10 - stage-production
+
+* erzeuge eine Datei +~/projects/issumy/stage.production/build.gradle mit Wrapper und folgenden Tasks:
+  ** +stopProductionContainer+
+  ** +removeProductionContainer+ abhängig von +stopProductionContainer+
+  ** +deployProduction+ abhängig von +removeProductionContainer+
+    *** soll +docker run+ benutzen um mit der Umgebungsvariablen +APP_VERSION+ das Image mit der aktuellen Version laufen zu lassen
+    *** Name des Containers: "issumy-production"
+* teste auf der Command Line
+* erzeuge einen Jenkins Job _issumy-stage-production_ welcher *manuell* nach _issumy-stage-commit_ gestartet werden soll
+  ** folgende Variablen von _issumy-stage-commit_ nach _issumy-stage-production_ übergeben
+    *** übergebe die Git-Commit Nummer als +GIT_STAGE_COMMIT+
+    *** übergebe die Variable +APP_VERSION+ (bestehend aus +<APP_VERSION_PREFIX>.<PIPE_FLOW_NUMBER>+)
+  ** +git checkout+ mit plugin von master
+  ** +git +
+* erzeuge einen Pipeline-View mit dem Namen _pipe-issumy_ und dem Startpunkt _issumy-stage-commit_
+
+== Iteration 10 - stage-production - Diskussion
+
+* Taggen wann?
+* Smoke test?
+* Commit id in MANFIEST.MF?
+  ** +docker run --rm -ti --name prod-inspect --volumes-from issumy-production:ro ubuntu:14.04.1 bash+
+* Commit Stage < 5 min
+
+== Iteration 11 - stage-integration
+
+Annahme::
+
+* Integrationstest benutzt Docker Image (bisher extra Verticle gestartet)
+* die Integrationsumgebung wird unter Port 8071 erreichbar sein
+
+Schritte::
+
+* kopiere die +stage-production/build.gradle+ nach +stage-integration/build.gradle+
+* kopiere die +stage-production/gradle.properties+ nach +stage-integration/gradle.properties+
+* ersetze den String "production" mit "integration" und "Production" mit "Integration"
+* benutze für den Container den port 8071 (parent -> child, 8071:8080)
+* benutze das _java_ Plugin in gradle
+* füge als Repository +mavenCentral()+ ein
+* füge folgende Abhängigkeiten ein
+----
+  testCompile "io.vertx:vertx-core:$vertxVersion"
+  testCompile "io.vertx:vertx-platform:$vertxVersion"
+  testCompile "junit:junit:$junitVersion"
+  testCompile "io.vertx:testtools:$toolsVersion"
+----
+* mache den Task _test_ abhängig von _deployIntegration_ (+./gradle --dry-run test+ zeigt die Abarbeitungsfolge)
+* verschiebe den Test +IssuesViaRestTest+ in dieses Projekt
+* Entferne die Initialisierung von +IssuesStarterVerticle+ aus dem Test
+* füge einen Jenkins Job _issumy-stage-integration_ zwischen _stage-commit_ und _stage-production_ ein
+  ** Umgebungsvariablen nicht vergessen!
+  ** automatisch starten nach commit
+
+== Iteration 11 - stage-integration - Diskussion
+
+* Warum kein Unterprojekt im Sinne von gradle?
+* Haben wir bisher einen Abbruch in der Pipeline, wenn etwas nicht funktioniert?
+* Haben wir bisher Unit Tests?
+
+
+
+== Iteration x - Performance Testing - hands on
 
 * Erzeuge einen http://jmeter.apache.org/usermanual/get-started.html[JMeter] Test der tested ob die Liste der issues innerhalb von 0.3 Sekunden geliefert werden kann
   ** Installiere dazu JMeter
+  ** Konfiguriere den Test
   ** Speichere die jmx Datei
-* Fuege einen _stage.performance_ dem Projekt hinzu
+* Fuege einen _stage-performance_ dem Projekt hinzu
   ** erstelle eine +build.gradle+ Datei welche
     *** benutze das https://github.com/kulya/jmeter-gradle-plugin[jmeter-gradle-plugin]
     *** einen Container starten und die Tests gegen diesen Container ausführen
