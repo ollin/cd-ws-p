@@ -1125,7 +1125,11 @@ Schritte::
 * Haben wir bisher einen Abbruch in der Pipeline, wenn etwas nicht funktioniert?
 * Haben wir bisher Unit Tests?
 
+== Iteration 12 - Unit Test Gate einführen
 
+* benutze das _jacoco_ Plugin in gradle
+* schreibe für jede Klasse einen Unit-Test, welcher das erzeugen via Default-Konstruktor testet.
+* lasse den _issumy-stage-commit_ stoppen, wenn nicht alle Klassen einen Test haben
 
 == Iteration x - Performance Testing - hands on
 
