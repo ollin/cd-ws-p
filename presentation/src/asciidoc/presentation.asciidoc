@@ -5,13 +5,50 @@ Continuous Delivery - Hands on
 :imagesdir: images
 :icons:
 
-Ziel
-----
+== Zur Person
 
-* eine Deployment Pipeline bauen
+image::inventage_logo_with_border.gif["Inventage Logo",float="right", link="http://www.inventage.com/"]
 
-Einführung - Begriffe
----------------------
+Oliver Nautsch <oliver.nautsch@inventage.com>
+
+_Subject Matter Expert - Microservices_
+
+Inventage AG
+
+'''
+
+Erreichbar via::
+
+email:      oliver.nautsch@inventage.com +
+twitter:    https://twitter.com/ollispieps[@ollispieps] +
+github:     https://github.com/ollin[@ollin] +
+google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
+
+
+'''
+Sonstiges::
+
+Jugs Board Member seit 2014 +
+#. . . running . . .#
+
+
+== Ziel
+
+
+* Einführung in Continuous Delivery
+* Bauen einer Deployment Pipeline
+
+== Vorgehen
+
+* Interativ
+  ** Einführung in Tool oder Konzept
+  ** Hands On
+  ** Diskussion
+* Folien erstellt mit http://www.methods.co.nz/asciidoc/[Asciidoc] und einsehbar unter +
+  https://github.com/ollin/cd-ws-p/blob/master/presentation/src/asciidoc/presentation.asciidoc
+
+== Einführung - Begriffe
+
 
 === Continuous Delivery ===
 bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen,
