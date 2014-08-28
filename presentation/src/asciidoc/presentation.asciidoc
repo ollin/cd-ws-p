@@ -879,7 +879,6 @@ image::dockerstory.png["Docker Story",float="right"]
 docker run -i -t ubuntu:14.04.1 bash
 root@1081f6156ecc:/#exit
 docker ps -a
-docker ps -a
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS                      PORTS               NAMES
 4133bbfc2eaa        ubuntu:14.04.1      "bash"                 12 seconds ago      Exited (0) 10 seconds ago                       trusting_davinci
 . . .
