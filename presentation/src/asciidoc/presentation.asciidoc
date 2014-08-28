@@ -1021,7 +1021,7 @@ createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
 
 [source, bash]
 ----
-sudo useradd -G docker jenkins
+sudo usermod -G docker jenkins
 sudo service jenkins restart
 ----
 
