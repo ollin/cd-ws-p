@@ -443,6 +443,8 @@ def configurePom(def pom) {
 Iteration 2 - running
 ---------------------
 
+Definiere in +mod.json+ die Klasse +httphelloworld.HelloWorldServer+ als _main_
+
 [source, bash]
 ----
 ~/projects/issumy$./gradlew tasks
