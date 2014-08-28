@@ -303,7 +303,7 @@ git init
 git add .
 git commit -m "initial"
 git clone --bare . ~/git-repos/issumy.git
-git remote add upstream file://home/dev/git-repos/issumy.git/
+git remote add upstream file:///home/dev/git-repos/issumy.git/
 git fetch upstream
 git branch -u upstream/master master
 ----
