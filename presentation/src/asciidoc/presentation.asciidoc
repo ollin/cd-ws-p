@@ -748,13 +748,13 @@ Iteration 5 - uploadArchives
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "<url von "Releases">") {
+            repository(url: "http://localhost:8181/nexus/content/repositories/releases/") {
                 authentication(
                         userName: "deployment",
                         password: "deployment9"
                 )
             }
-            snapshotRepository(url: "<url von "Snapshots">") {
+            snapshotRepository(url: "http://localhost:8181/nexus/content/repositories/snapshots/") {
                 authentication(
                         userName: "deployment",
                         password: "deployment9"
