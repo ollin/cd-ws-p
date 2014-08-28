@@ -38,7 +38,7 @@ Jugs Board Member seit 2014 +
 
 == Vorgehen
 
-* Interativ
+* Iterativ
   ** Einführung in Tool oder Konzept
   ** Hands On
   ** Diskussion
