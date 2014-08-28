@@ -359,15 +359,15 @@ Iteration 2 - Template kopieren
 
 [source, bash]
 ----
-~/$cd && cd projects
-~/projects$git clone https://github.com/ollin/vertx-gradle-template.git template
-~/projects$cp -rf template/gradle issumy/                                     # <1>
-~/projects$cp template/build.gradle issumy/                                   # <2>
-~/projects$cp template/gradle.properties issumy/
-~/projects$cp template/conf.json issumy/                                      # <3>
-~/projects$mkdir issumy/src/main/resources/
-~/projects$cp template/src/main/resources/mod.json issumy/src/main/resources/ # <4>
-~/projects$cp template/gradlew* issumy/                                       # <5>
+cd && cd projects
+git clone https://github.com/ollin/vertx-gradle-template.git template
+cp -rf template/gradle issumy/                                     # <1>
+cp template/build.gradle issumy/                                   # <2>
+cp template/gradle.properties issumy/
+cp template/conf.json issumy/                                      # <3>
+mkdir issumy/src/main/resources/
+cp template/src/main/resources/mod.json issumy/src/main/resources/ # <4>
+cp template/gradlew* issumy/                                       # <5>
 ----
 <1> kopiert Gradle Wrapper Libs und Vertx spezifische Build Skripte
 <2> kopiert das eigentliche Build Skript und in der nächsten Zeile die Properties zum Build
