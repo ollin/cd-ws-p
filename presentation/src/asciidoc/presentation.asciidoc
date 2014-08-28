@@ -770,9 +770,6 @@ uploadArchives {
 Iteration 5 - Diskussion
 ------------------------
 
-* URLs
-  ** +http://localhost:8181/nexus/content/repositories/releases/+
-  ** +http://localhost:8181/nexus/content/repositories/snapshots/+
 * Warum sollte man die Passwörter aus +build.gradle+ auslagern?
 * Wie finde komme ich selber auf die Lösung von "uploadArchives"?
   ** Dokumentation Maven Plugin ( http://www.gradle.org/docs/current/userguide/maven_plugin.html#uploading_to_maven_repositories )
@@ -787,17 +784,20 @@ Iteration 5 - Diskussion
 
 empfohlenes Vorgehen::
 * das Git-Plugin von Jenkins unterstützt spezielle URL's um Jobs zu starten welche das Repository benutzen
-  ** finde heraus, wie diese aussehen
-  ** benutze die Url via CLI (wenn +Scheduled polling of issumy-stage-commit+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
+  ** +http://localhost:8180/git/notifyCommit?url=<eingetragene repository>+
+  ** benutze die Url via CLI
+     *** +curl http://localhost:8180/git/notifyCommit?url=file:///home/dev/git-repos/issumy.git+
+     *** wenn +Scheduled polling of issumy-stage-commit+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
      *** Polling in Jenkins ohne Schedule muss aktiviert sein
      *** Der Job startet nur, wenn wirklich eine Änderung im Repository gemacht wurde
 * Git stellt clientseitige und serverseitige Hooks zur Verfügung
-  ** finde den Hook der ausgeführt wird, wenn der _push_ auf dem Server erfolgreich war
-  ** erzeuge die entsprechende Datei und mache sie mit chmod +x ausführbar
 
 == Iteration 6 - Lösungsbeispiel
 
 image::jenkins-git-poll.png["Poll markieren",float="right"]
+
+* _post-receive_ ist der Hook der ausgeführt wird, wenn der _push_ auf dem Server erfolgreich war
+* erzeuge die entsprechende Datei und mache sie mit chmod +x ausführbar
 
 Datei: +/home/dev/git-repos/issumy.git/hooks/post-receive+
 
