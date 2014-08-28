@@ -400,6 +400,7 @@ Iteration 2 - +build.gradle+
 ----------------------------
 
 - anpassen der Artefakt-Eigenschaften an unser Projekt
+- wird nur für die generierung der +pom.xml+ Datei benutzt
 
 [source, txt]
 ----
