@@ -69,7 +69,7 @@ Einführung - Softwareentwicklungsansätze
 
 [width="100%",cols="^4,^1,^4,^1,^4", options="header"]
 |===============================================================================================
-|Software Craftsmanship      |    |Agile                       |    |Traditionell
+|Software Craftsmanship      |    |Agile                       |    |Traditional
 |a community of professionals|over|individuals and interactions|over|processes and tools
 |well-crafted software       |over|working software            |over|comprehensive documentation
 |productive partnerships     |over|customer collaboration      |over|contract negotiation
@@ -78,7 +78,7 @@ Einführung - Softwareentwicklungsansätze
 
 === Principles and Practices / Prinzipien und Praktiken
 
-* Prinzipien: sind dem Anderen übergeordnet
+* Prinzipien: sind den Praktiken übergeordnet
 * Praktiken: Techniken, Werkzeuge und Handlungen die bei der Umsetzung der Prinzipien helfen
   ** Beispiel: Scrum vs. Kanban.
 
@@ -384,7 +384,7 @@ Iteration 2 - +gradle.properties+
 [source, conf]
 ----
 # E.g. your domain name
-modowner=net.nautsch
+modowner=com.inventage
 
 # Your module name
 modname=issumy
@@ -923,7 +923,7 @@ RUN touch huschihops.txt
 
 [source, bash]
 ----
-docker build -t ollin/huschihops:v2 .
+docker build -t ollin/huschihops:2.0 .
 Sending build context to Docker daemon  2.56 kB
 Sending build context to Docker daemon
 Step 0 : FROM ubuntu:14.04.1
@@ -939,7 +939,7 @@ Successfully built 01ee073272ec
 
 docker images
 REPOSITORY                       TAG                   IMAGE ID            CREATED             VIRTUAL SIZE
-ollin/huschihops                 v2                    01ee073272ec        31 seconds ago      225.4 MB
+ollin/huschihops                 2.0                   01ee073272ec        31 seconds ago      225.4 MB
 . . .
 ----
 
