@@ -289,7 +289,7 @@ Anlegen locales und remote Repostory::
 
 Datei +~/projects/issumy/.gitignore+ anlegen und folgendes einfügen
 
-[source, text]
+[source, txt]
 ----
 .gradle/
 .idea/
