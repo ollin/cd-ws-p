@@ -287,6 +287,15 @@ image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
 Anlegen locales und remote Repostory::
 
+Datei +~/projects/issumy/.gitignore+ anlegen und folgendes einfügen
+
+[source, text]
+----
+.gradle/
+.idea/
+*.impl
+----
+
 [source, bash]
 ----
 cd  ~/projects/issumy
