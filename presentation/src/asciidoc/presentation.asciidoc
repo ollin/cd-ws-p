@@ -115,9 +115,9 @@ Git Essentials - Local - Hands on
 - erzeuge ein git repository/git history (+git init+)
 - lese output von +git status+
 - fuege die Datei zum 'index' hinzu (+git add+)
-- +git status+ sagt auch hier was man tuen könnte
-- commit in die 'history' fuer diese Datei (+git commit+, erfragt wird +git config+)
-- ändere den Inhalt der Datei in dem Du eine Zeile "Version 2" hinzufügst (+vi+)
+- +git status+ sagt auch hier was man tun könnte
+- commit in die 'history' für diese Datei (+git commit+, erfragt wird +git config+)
+- ändere den Inhalt der Datei in dem du eine Zeile "Version 2" hinzufügst (+vi+)
 - mache die Änderung mit der letzten Version in 'history' rückgängig (+git checkout+)
 - nochmals die Datei editieren und "Version 3" Zeile hinzufügen
 - Datei den 'index' hinzufügen (+git add+)
@@ -173,7 +173,7 @@ Git Essentials - Remote
 * füge das "Remote-Repository" deinem Lokalen Repository hinzu (+git remote add upstream file:///home/dev/git-repos/git-ho.git+)
 * +git remote -v+
 * in die Rolle eines 2. Entwickler schlüpfen:
-  ** +git clone file:///home/ollin/projects/cd-ws/git-repos/git-ho.git /home/dev/projects/git-ho-dev2+
+  ** +git clone file:///home/dev/git-repos/git-ho.git /home/dev/projects/git-ho-dev2+
   ** editiere +README.asciidoc+ in +/home/dev/projects/git-ho-dev2+ (z.B. zusätzliche Zeile "Hallo von Dev2")
   ** commit in History von dev 2
   ** push zum Remote
@@ -181,7 +181,7 @@ Git Essentials - Remote
   ** +cd /home/dev/projects/git-ho+
   ** git fetch upstream
   ** git merge upstream/master
-  ** fuege eine Zeile "Huhu von Dev1" hinzu und commit, push zu Remote ( -u )
+  ** füge eine Zeile "Huhu von Dev1" hinzu und commit, push zu Remote ( -u )
 * 2. Entwickler:
   ** +cd /home/dev/projects/git-ho-dev2+
   ** +git pull+
@@ -285,7 +285,7 @@ Succeeded in deploying verticle
 .Run Verticle in Browser
 image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
-Anlegen locales und remote Repostory::
+Anlegen von locale und remote Repostory::
 
 Datei +~/projects/issumy/.gitignore+ anlegen und folgendes einfügen
 
@@ -963,7 +963,7 @@ docker run -d -p 5001:8080 --name registry-ui atcol/docker-registry-ui
 docker ps
 ----
 
-* nun kann man den Browser mit http://localhost:8080/ öffnen
+* nun kann man den Browser mit http://localhost:5001/ öffnen
   und die Applikation _Docker Registry Web_ sehen
 
 == Iteration 8 - Veröffentlichen eines Images - Teil 1
@@ -971,7 +971,7 @@ docker ps
 * Konfiguriere das Repository, welches auf Port 5000 im docker-host läuft
   im _Docker Registry Web_
   * benutze +ifconfig+ im docker host um die richtige IP-Adresse zu finden
-* tagge die das Image für das lokale Repository mit +1.0+ und +latest+
+* tagge das Image für das lokale Repository mit +2.0+ und +latest+
 * und schiebe die Images ins lokale Repo
 * prüfe das Ergebnis im _Docker Registry Web_
 
@@ -1035,12 +1035,12 @@ image::book-continuous-delivery.jpg["Buch - Continuous Delivery",float="right"]
 * Alles in Versionskontrolle.
 * Done meint _Released_
 * Baue Qualität ein!
-* Jeder ist für dem Release Prozess verantwortlich.
+* Jeder ist für den Release Prozess verantwortlich.
 
 == Continuous Delivery - Praktiken
 
 * Baue Binaries nur ein Mal.
-* Benutze den genau den gleichen Mechanismus für die Auslieferung in jede Umgebung.
+* Benutze den genau den gleichen Mechanismus für die Auslieferung in jeder Umgebung.
 * _Smoke test_ nach der Auslieferung.
 * Wenn etwas schiefgeht, stoppe die Pipeline.
 
@@ -1077,7 +1077,7 @@ version=0.1-SNAPSHOT
   ** das Ergebnis ist:
     *** "1.0-SNAPSHOT" wenn keine +PIPE_FLOW_NUMBER+ gefunden wird
     *** sonst "1.0.56"
-* weise das Erbnis dieser Methode der Variablen +version+ in der ersten Zeile von +build.gradle+ zu
+* weise das Ergebnis dieser Methode der Variablen +version+ in der ersten Zeile von +build.gradle+ zu
 
 == Iteration 10 - stage-production
 
@@ -1153,7 +1153,7 @@ Schritte::
   ** Speichere die jmx Datei
 * Fuege einen _stage-performance_ dem Projekt hinzu
   ** erstelle eine +build.gradle+ Datei welche
-    *** benutze das https://github.com/kulya/jmeter-gradle-plugin[jmeter-gradle-plugin]
+    *** das https://github.com/kulya/jmeter-gradle-plugin[jmeter-gradle-plugin] benutzt
     *** einen Container starten und die Tests gegen diesen Container ausführen
 * Baue Job in Jenkins und ordne ihn in der richtigen Reihenfolge ein
 
@@ -1179,7 +1179,7 @@ image::are-you-too-busy-to-improve.png["Too Busy",float="right"]
 
 == Zusammenfassung
 
-* viele Beriffe besprochen
+* viele Begriffe besprochen
 * git angefasst
 * vert.x ausprobiert
 * mit gradle gearbeitet
