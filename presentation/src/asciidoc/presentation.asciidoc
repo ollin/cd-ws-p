@@ -293,7 +293,7 @@ Datei +~/projects/issumy/.gitignore+ anlegen und folgendes einfügen
 ----
 .gradle/
 .idea/
-*.impl
+*.iml
 ----
 
 [source, bash]
