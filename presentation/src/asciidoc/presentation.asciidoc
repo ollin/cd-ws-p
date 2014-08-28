@@ -1057,7 +1057,7 @@ image::book-continuous-delivery.jpg["Buch - Continuous Delivery",float="right"]
 
 == Iteration 9 - Integriere Versionsnummer in gradle
 
-* erzeuge eine Datei +~/dev/issumy/version.properties+ mit folgendem Inhalt
+* erzeuge eine Datei +~/projects/issumy/version.properties+ mit folgendem Inhalt
 [source, txt]
 ----
 APP_VERSION_PREFIX=1.0
