@@ -45,6 +45,17 @@ Jugs Board Member seit 2014 +
 * Folien erstellt mit http://www.methods.co.nz/asciidoc/[Asciidoc] und einsehbar unter +
   https://github.com/ollin/cd-ws-p/blob/master/presentation/src/asciidoc/presentation.asciidoc
 
+Vorbereitungen::
+
+* Läuft bei jedem das vorbereitete VirtualBox Image?
+* Vorbereitetes Projekt aktualisieren:
+
+[source, bash]
+----
+cd ~/projects/issumy
+git pull origin master
+----
+
 == Einführung - Begriffe
 
 
@@ -198,6 +209,7 @@ Git Essentials - Remote
 
 * installiere http://gvmtool.net/[GVM] the Groovy enVironment Manager.
 
+[source, bash]
 ----
 ~/$curl -s get.gvmtool.net | bash
 ~/$source "/home/dev/.gvm/bin/gvm-init.sh"
@@ -686,14 +698,8 @@ Iteration 4 - Anlegen eines Jobs
 
 * Jenkins Admin Konsole im Browser öffnen: http://localhost:8180 (im Firefox ist auch ein Bookmark)
 * installiere Jenkins-Plugins:
-  ** "SafeRestart Plugin"
-  ** "Git Plugin"
-  ** "Gradle plugin"
   ** "JaCoCo Plugin"
-  ** "EnvInject Plugin (Environment Injector Plugin)"
-  ** "Build Environment Plugin"
   ** "Build Pipeline Plugin"
-  ** "Authorize Project plugin"
 * erzeuge ein free-style software project "issumy-stage-commit"
   ** Source Code Mangement - Git
      *** checkout von +file:///home/dev/git-repos/issumy.git+
