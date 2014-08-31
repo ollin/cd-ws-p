@@ -48,6 +48,7 @@ Jugs Board Member seit 2014 +
 Vorbereitungen::
 
 * Läuft bei jedem das vorbereitete VirtualBox Image?
+* bei nur 4GB RAM den Gast auf 2GB RAM setzen
 * Vorbereitetes Projekt aktualisieren:
 
 [source, bash]
