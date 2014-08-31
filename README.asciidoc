@@ -6,7 +6,7 @@ Dieses Repository beinhaltet die Unterlagen zum Workshop 04
 
 "Continuous Delivery - Hands on"
 
-an den CH OPEN Workshoptagen. Dieser Workshop findet am 09.09.2014 statt.
+an den CH OPEN Workshoptagen. Dieser Workshop findet am 09.09.2014 und 11.09.2014 statt.
 
 Alle Informationen über den Workshop und den Workshoptagen sind auf der Webseite der
 http://www.ch-open.ch/wstage/workshop-tage/programm-2014/ws-4-continuous-delivery-hands-on/[ch open] zu finden.
@@ -34,12 +34,12 @@ eigenen Laptop.
      *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
 * wechsle ins Verzeichnis "cd-ws-p/vagrant"
 * starte mit +vagrant up+
-  ** es erfolgt nun der Download der Box (~4.7GB)
+  ** es erfolgt nun der Download der Box (~5 GB)
   ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
 
 ==== Installation via Import
 
-* kopiere die Datei http://images.workshoptage.ch/images/ws4/cd-ws.ova auf den Rechner (~4.7GB)
+* kopiere die Datei http://images.workshoptage.ch/images/ws4/cd-ws-v3.1.ova auf den Rechner (~5 GB)
 * Importiere die Datei via 'VirtualBox Manager -> File -> Import Appliance'
 * Einstellungen entsprechend der eigenen Hardware vornehmen
 
@@ -57,7 +57,7 @@ Das Image ist wie folgt konfiguriert:
 Das Image enthaelt:
 
 - Xubuntu 14.04 Desktop 64bit
-- VirtualBox Guest Additions
+- VirtualBox Guest Additions 4.3.10
 
 - Docker 1.1.1
 - Oracle JDK 8 "1.8.0_05"
