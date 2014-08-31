@@ -6,11 +6,13 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "ollin/cd-ws"
+  config.vm.box = "ollin/cd-ws-v3.1"
+  config.vm.box_url = "http://images.workshoptage.ch/images/ws4/cd-ws-v3.1.box"
 
   config.vm.provider "virtualbox" do |vb|
     
     vb.gui = true
+    vb.name = "cd-ws-v3.1"
     
   end
 end
