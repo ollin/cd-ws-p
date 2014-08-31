@@ -21,8 +21,8 @@ Die Zeit ist stark von der Bandbreite der Internetverbindung abhängig.
 == Vorbereitung auf den Workshop
 === Installation des Images
 
-Voraussetzung zum Benutzen des Image ist eine https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem
-eigenen Laptop.
+Voraussetzung um das Image benutzen zu können, ist eine
+https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem eigenen Laptop.
 
 ==== Installation via Vagrant (empfohlene Variante)
 
