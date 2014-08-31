@@ -1023,13 +1023,6 @@ createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
    *** docker tag mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
    *** docker push mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
    *** _uploadArchives_ abhängig machen von den push tasks
-   *** damit _jenkins_ den _docker_ daemon benutzen darf, auf der Kommandozeile:
-
-[source, bash]
-----
-sudo usermod -G docker jenkins
-sudo service jenkins restart
-----
 
 == Continuous Delivery - Prinzipien
 
