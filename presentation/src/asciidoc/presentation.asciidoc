@@ -728,9 +728,14 @@ nächster Schritt::
 
 == Einführung - Docker
 
-image::docker_logo.png["Docker Logo",float="right", link="https://www.docker.com/"]
-
+[quote, , Docker Dokumentation]
 Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+
+[quote, , OpenStack Dokumentation]
+Docker ist eine open-source Engine zur automatisierten Bereitstellung von Software als sehr portable und eigenständige Container.
+Diese Container sind unabhängig von Hardware, Frameworks, Paketverwaltung und Hosting Provider.
+
+image::docker_logo.png["Docker Logo",float="right", link="https://www.docker.com/"]
 
 Bestandteile::
 
