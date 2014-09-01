@@ -1,0 +1,99 @@
+Git Essentials - Local
+----------------------
+image::git-logo.png["Git Logo",float="right", link="http://git-scm.com/"]
+
+* +git init+
+* +git add <files>+
+* +git commit+
+* +git reset \-- <files>+
+* +git checkout \-- <files>+
+* +git status+
+* +git log+
+Manual::
+* +man git-init+
+Links::
+* Git Buch: http://git-scm.com/book/de
+* Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
+* Git CheatSheet: http://ndpsoftware.com/git-cheatsheet.html
+
+Git Essentials - Local - Hands on
+---------------------------------
+
+- lege ein Verzeichnis +~/projects/git-ho+ an (+mkdir+, +cd+)
+- erzeuge eine Datei +README.asciidoc+ in diesem Verzeichnis und füge den Text "Version 1" und einen Zeilenumbruch ein (+vi+)
+- erzeuge ein git repository/git history (+git init+)
+- lese output von +git status+
+- fuege die Datei zum 'index' hinzu (+git add+)
+- +git status+ sagt auch hier was man tun könnte
+- commit in die 'history' für diese Datei (+git commit+, erfragt wird +git config+)
+- ändere den Inhalt der Datei in dem du eine Zeile "Version 2" hinzufügst (+vi+)
+- mache die Änderung mit der letzten Version in 'history' rückgängig (+git checkout+)
+- nochmals die Datei editieren und "Version 3" Zeile hinzufügen
+- Datei den 'index' hinzufügen (+git add+)
+- 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
+- zum Abschluss noch die History mit allen Änderungen anschauen (+git log+)
+
+Git Essentials - Branching
+--------------------------
+
+- +git branch+
+  ** erzeugen, auflisten, löschen von Branches
+- +git checkout <branch-name>+
+  ** wechselt in den branch
+  ** setzt _HEAD_ auf den branch
+- +git merge+
+  ** zusammenführen von Histories
+- +git rebase+
+  ** erzeugt lineare History in dem Änderungen eines Branches auf einem anderen Branch angewendet werden
+
+Ausflug ins Git-Buch::
+- http://git-scm.com/book/de/Git-Branching-Was-ist-ein-Branch%3F[Git Branching - Was ist ein Branch?]
+
+Git Essentials - Branching - Hands on
+-------------------------------------
+
+- erzeuge einen neuen Branch "development"
+- wechsle auf diesen Branch
+- fuege eine neue Zeile mit Text "Branch Development" hinzu
+- Änderung commiten
+- wechsle in Branch "master"
+- kurz anschauen, dass nun in der Datei die gerade gemachte Änderung nicht enhalten ist (z.B. +less README.asciidoc+)
+- merge die Änderungen von Branch "development" nun in den Branch "master"
+- nun enthält auch der Branch "master" diese Änderung
+
+Git Essentials - Remote
+-----------------------
+
+- +git clone+
+  ** erzeugt einen Clone eines Repositories in einem neuen Verzeichnis
+- +git fetch+
+  ** download von Objekten und refs
+- +git pull+
+  ** fetch und integration in ein anderes Repo oder lokalen Branch
+- +git push+
+  ** updated remote refs mit lokalen refs indem die notwendigen Objekte geschickt werden
+
+
+== Git Essentials - Remote - hands-on
+
+* erzeuge ein Verzeichnis +~/git-repos+
+* clone +\~/projects/git-ho+ nach +~/git-repos/git-ho.git+ (+git clone \--bare+)
+  ** macht ein +git init+ und +git fetch+ ohne eine Arbeitskopie anzulegen
+* füge das "Remote-Repository" deinem Lokalen Repository hinzu (+git remote add upstream file:///home/dev/git-repos/git-ho.git+)
+* +git remote -v+
+* in die Rolle eines 2. Entwickler schlüpfen:
+  ** +git clone file:///home/dev/git-repos/git-ho.git /home/dev/projects/git-ho-dev2+
+  ** editiere +README.asciidoc+ in +/home/dev/projects/git-ho-dev2+ (z.B. zusätzliche Zeile "Hallo von Dev2")
+  ** commit in History von dev 2
+  ** push zum Remote
+* wieder in die eigene Rolle schlüpfen
+  ** +cd /home/dev/projects/git-ho+
+  ** git fetch upstream
+  ** git merge upstream/master
+  ** füge eine Zeile "Huhu von Dev1" hinzu und commit, push zu Remote ( -u )
+* 2. Entwickler:
+  ** +cd /home/dev/projects/git-ho-dev2+
+  ** +git pull+
+     ** fasst ein _fetch_ und _merge_ zusammen
+* erzeuge einen Tag "v1" und pushe den Tag ins Remote Repo
+* hole den Tag ins lokale Repo des anderen Entwicklers
