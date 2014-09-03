@@ -879,7 +879,7 @@ docker ps
 * nun kann man den Browser mit http://localhost:5001/ öffnen
   und die Applikation _Docker Registry Web_ sehen
 
-== Iteration 8 - Veröffentlichen eines Images - Teil 1
+== Veröffentlichen eines Images - hands on
 
 * Konfiguriere das Repository, welches auf Port 5000 im docker-host läuft
   im _Docker Registry Web_
@@ -898,7 +898,7 @@ docker push localhost:5000/inventage/huschihops:2.0
 docker push localhost:5000/inventage/huschihops:latest
 ----
 
-== Iteration 8 - Veröffentlichen eines Images via gradle - Teil 2
+== Iteration 7 - Veröffentlichen des Images via gradle
 
 * integriere dieses Taggen und Pushen in gradle build von issumy
 * es muss ein _Dockerfile_ mit einem Task _createDockerfile_ erzeugt werden:
@@ -961,7 +961,7 @@ image::book-continuous-delivery.jpg["Buch - Continuous Delivery",float="right"]
   ** Entwickler arbeiten aber auf einem Snapshot.
 * ein Kompromiss wie es z.B. http://freecode.com/projects/h2/releases[H2] macht  (1.3.176, 1.4.177)
 
-== Iteration 9 - Integriere Versionsnummer in gradle
+== Iteration 8 - Integriere Versionsnummer in gradle
 
 * erzeuge eine Datei +~/projects/issumy/version.properties+ mit folgendem Inhalt
 [source, txt]
@@ -985,7 +985,7 @@ version=0.1-SNAPSHOT
     *** sonst "1.0.56"
 * weise das Ergebnis dieser Methode der Variablen +version+ in der ersten Zeile von +build.gradle+ zu
 
-== Iteration 10 - stage-production
+== Iteration 9 - stage-production
 
 * erzeuge eine Datei +~/projects/issumy/stage.production/build.gradle mit Wrapper und folgenden Tasks:
   ** +stopProductionContainer+
@@ -1002,7 +1002,7 @@ version=0.1-SNAPSHOT
   ** +git +
 * erzeuge einen Pipeline-View mit dem Namen _pipe-issumy_ und dem Startpunkt _issumy-stage-commit_
 
-== Iteration 10 - stage-production - Diskussion
+== Iteration 9 - stage-production - Diskussion
 
 * Taggen wann?
 * Smoke test?
@@ -1010,7 +1010,7 @@ version=0.1-SNAPSHOT
   ** +docker run --rm -ti --name prod-inspect --volumes-from issumy-production:ro ubuntu:14.04.1 bash+
 * Commit Stage < 5 min
 
-== Iteration 11 - stage-integration
+== Iteration 10 - stage-integration
 
 Annahme::
 
@@ -1039,13 +1039,13 @@ Schritte::
   ** Umgebungsvariablen nicht vergessen!
   ** automatisch starten nach commit
 
-== Iteration 11 - stage-integration - Diskussion
+== Iteration 10 - stage-integration - Diskussion
 
 * Warum kein Unterprojekt im Sinne von gradle?
 * Haben wir bisher einen Abbruch in der Pipeline, wenn etwas nicht funktioniert?
 * Haben wir bisher Unit Tests?
 
-== Iteration 12 - Unit Test Gate einführen
+== Iteration 11 - Unit Test Gate einführen
 
 * benutze das _jacoco_ Plugin in gradle
 * schreibe für jede Klasse einen Unit-Test, welcher das erzeugen via Default-Konstruktor testet.
