@@ -5,9 +5,9 @@ Continuous Delivery - Hands on
 :imagesdir: images
 :icons:
 
-include::zur-person.asciidoc[]
+include::slides/zur-person.asciidoc["Zur Person"]
 
-include::ziel-vorgehen.asciidoc[]
+include::ziel-vorgehen.asciidoc["Ziel und Vorgehen"]
 
 include::was-ist-cd-dp.asciidoc[]
 
