@@ -1,4 +1,4 @@
-Folien/Dokumente - Continuous Delivery - Hands on
+Folien/Dokumente - CD
 =================================================
 :author:    Oliver Nautsch
 
