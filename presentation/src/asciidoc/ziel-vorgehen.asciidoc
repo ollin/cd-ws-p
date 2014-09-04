@@ -5,7 +5,7 @@
 * Einführung in Continuous Delivery
 * Bauen einer Deployment Pipeline
 
-image::overview.svg["Overview"]
+image::overview.png["Overview"]
 
 == Vorgehen
 

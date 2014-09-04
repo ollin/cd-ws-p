@@ -21,7 +21,7 @@ Links::
 Git Essentials - Local - Hands on
 ---------------------------------
 
-image::overview-git.svg["Overview - Git", float="right", width=301]
+image::overview-git.png["Overview - Git", float="right", width=301]
 - lege ein Verzeichnis +~/projects/git-ho+ an (+mkdir+, +cd+)
 - erzeuge eine Datei +README.asciidoc+ in diesem Verzeichnis und füge den Text "Version 1" und einen Zeilenumbruch ein (+vi+)
 - erzeuge ein git repository/git history (+git init+)
