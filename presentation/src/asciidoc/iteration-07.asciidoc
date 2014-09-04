@@ -1,0 +1,32 @@
+== Iteration 7 - Veröffentlichen des Images via gradle
+
+* integriere dieses Taggen und Pushen in gradle build von issumy
+* es muss ein _Dockerfile_ mit einem Task _createDockerfile_ erzeugt werden:
+[source, txt]
+----
+FROM ollin/vertx")
+MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>")
+
+VOLUME /home/issumy
+ADD $modZip.archiveName /home/issumy/$modZip.archiveName
+EXPOSE 8080
+
+WORKDIR /home/issumy
+CMD ["runzip", "$modZip.archiveName"]
+----
+
+    *** dieses Dockerfile zusammen mit der mod-zip datei ins Image stellen
+    *** dann Docker-Image erstellen
+
+[source, java]
+----
+task createDockerImage (type: Exec) {
+    workingDir 'build/docker'
+    commandLine 'docker', 'build', '-t', "inventage/issumy:$version", '.'
+}
+createDockerImage.dependsOn createDockerfile, prepareModZipForDocker
+----
+
+   *** docker tag mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
+   *** docker push mit +localhost:5000/inventage/issumy:latest+ und +localhost:5000/inventage/issumy:$version+
+   *** _uploadArchives_ abhängig machen von den push tasks

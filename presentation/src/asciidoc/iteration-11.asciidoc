@@ -1,0 +1,5 @@
+== Iteration 11 - Unit Test Gate einführen
+
+* benutze das _jacoco_ Plugin in gradle
+* schreibe für jede Klasse einen Unit-Test, welcher das erzeugen via Default-Konstruktor testet.
+* lasse den _issumy-stage-commit_ stoppen, wenn nicht alle Klassen einen Test haben

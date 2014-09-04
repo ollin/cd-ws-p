@@ -1,0 +1,4 @@
+== Aufgabenstellung
+
+* _issumy_ - ein Bug Tracking Tool
+* iterativ entwickeln

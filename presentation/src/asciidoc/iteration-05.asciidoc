@@ -1,0 +1,53 @@
+== issumy - Iteration 5 - Artefakte speichern
+
+
+* liefere die Artefakte von _issumy_ ins Repository "Snapshots"
+notwendige Schritte:
+* anmelden in Nexus ( http://nexus:8181/nexus user: +admin+ password: +admin123+ )
+* finde die URL's fuer die Repositories
+  ** Release
+  ** Snapshot
+* setze Passwort fuer User "deployment" auf "deployment9"
+* erzeuge einen Task "uploadArchives" in gradle am Ende von +build.gradle+
+* commit / push
+* erzeuge in Jenkins einen neuen "build step" innerhalb von "issumy-stage-commit"
+  ** mit gradle wrapper
+  ** und task "uploadArchives"
+* Job starten
+* Nexus - Inhalt von Repository "Snapshots" prüfen
+
+== Iteration 5 - uploadArchives
+
+
++build.gradle+
+[source, txt]
+----
+...
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://nexus:8181/nexus/content/repositories/releases/") {
+                authentication(
+                        userName: "deployment",
+                        password: "deployment9"
+                )
+            }
+            snapshotRepository(url: "http://nexus:8181/nexus/content/repositories/snapshots/") {
+                authentication(
+                        userName: "deployment",
+                        password: "deployment9"
+                )
+            }
+        }
+    }
+}
+----
+
+== Iteration 5 - Diskussion
+
+* Warum sollte man die Passwörter aus +build.gradle+ auslagern?
+* Wie finde komme ich selber auf die Lösung von "uploadArchives"?
+  ** Dokumentation Maven Plugin ( http://www.gradle.org/docs/current/userguide/maven_plugin.html#uploading_to_maven_repositories )
+  ** DSL Reference ( http://www.gradle.org/docs/current/dsl/ )
+* "... can be released to production at any time." -> also jeder Commit.
+* Automate everything!

@@ -1,0 +1,28 @@
+== Ziel
+
+* Einführung in Continuous Delivery
+* Bauen einer Deployment Pipeline
+
+image::overview.svg["Overview"]
+
+== Vorgehen
+
+* Iterativ
+  ** Einführung in Tool oder Konzept
+  ** Hands On
+  ** Diskussion
+* Folien erstellt mit http://www.methods.co.nz/asciidoc/[Asciidoc] und einsehbar unter +
+  https://github.com/ollin/cd-ws-p/blob/master/presentation/src/asciidoc/presentation.asciidoc
+
+== Vorbereitungen
+
+* Läuft bei jedem das vorbereitete VirtualBox Image?
+* Tastaturlayout ändern via Button in Statusleiste (rechts oben die Flagge)
+* bei nur 4GB RAM den Gast auf 2GB RAM setzen
+* Vorbereitetes Projekt aktualisieren:
+
+[source, bash]
+----
+cd ~/projects/issumy
+git pull origin master
+----

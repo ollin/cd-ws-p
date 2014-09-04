@@ -1,0 +1,11 @@
+== Gedanken
+
+image::are-you-too-busy-to-improve.png["Too Busy",float="right"]
+
+* Are you too busy?
+* Einer kann nicht *Alles* wissen.
+* Fange einfach an und erweitere wenn nötig!
+* Wähle den Zeitpunkt richtig - der Zeitpunkt mit dem wenigsten Stress!
+* Entwickle aus Sicht des Kunden!
+  ** Test: Stufe _produktion_ -> _commit_
+  ** Implementation: Stufe _commit_ -> _produktion_

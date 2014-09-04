@@ -1,0 +1,18 @@
+== Continuous Delivery - Prinzipien
+
+image::book-continuous-delivery.jpg["Buch - Continuous Delivery",float="right"]
+
+* zuverlässnger und wiederholbarer Prozess zum Releasen von Software
+* Automatisiere alles!
+* Wenn etwas mühsam oder schwierig ist, dann mache es noch öfter!
+* Alles in Versionskontrolle.
+* Done meint _Released_
+* Baue Qualität ein!
+* Jeder ist für den Release Prozess verantwortlich.
+
+== Continuous Delivery - Praktiken
+
+* Baue Binaries nur ein Mal.
+* Benutze den genau den gleichen Mechanismus für die Auslieferung in jeder Umgebung.
+* _Smoke test_ nach der Auslieferung.
+* Wenn etwas schiefgeht, stoppe die Pipeline.

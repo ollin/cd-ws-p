@@ -1,0 +1,40 @@
+== Erzeugen eines Images - hands on
+
+via docker commit::
+
+* erzeuge ein Image "inventage/huschihops:1.0" welches eine leere Datei +huschihops.txt+ enthält
+
+via Dockerfile::
+
+* erzeuge ein Image "inventage/huschihops:2.0" mittels einer Datei +~/projects/docker-test/Dockerfile+
+
+== Einführung - Eigene Docker Registry
+
+[source, bash]
+----
+docker run -p 5000:5000 -dt --name registry registry
+docker run -d -p 5001:8080 --name registry-ui atcol/docker-registry-ui
+docker ps
+----
+
+* nun kann man den Browser mit http://localhost:5001/ öffnen
+  und die Applikation _Docker Registry Web_ sehen
+
+== Veröffentlichen eines Images - hands on
+
+* Konfiguriere das Repository, welches auf Port 5000 im docker-host läuft
+  im _Docker Registry Web_
+  * benutze +ifconfig+ im docker host um die richtige IP-Adresse zu finden
+* tagge das Image für das lokale Repository mit +2.0+ und +latest+
+* und schiebe die Images ins lokale Repo
+* prüfe das Ergebnis im _Docker Registry Web_
+
+[source, bash]
+----
+docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:2.0
+docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:latest
+docker images #zeigt nun schön, dass die Tags *latest* und *2.0* auf die gleiche image id zeigen
+
+docker push localhost:5000/inventage/huschihops:2.0
+docker push localhost:5000/inventage/huschihops:latest
+----

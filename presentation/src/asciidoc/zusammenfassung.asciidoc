@@ -1,0 +1,10 @@
+== Zusammenfassung
+
+* viele Begriffe besprochen
+* git angefasst
+* vert.x ausprobiert
+* mit gradle gearbeitet
+* Jeninks Projekte konfiguriert
+* Artefakte in Nexus gespeichert
+* Docker Container gebaut und veröffentlicht
+* eine Deployment Pipeline gebaut

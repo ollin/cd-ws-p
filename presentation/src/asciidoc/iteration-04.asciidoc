@@ -1,0 +1,25 @@
+== issumy - Iteration 4 - automatisiertes Testen
+
+
+* automatisiere das Testen mit Jenkins
+  ** Plugins installieren
+  ** Job/Projekt erzeugen
+
+== Iteration 4 - Anlegen eines Jobs
+
+* Jenkins Admin Konsole im Browser öffnen: http://localhost:8180 (im Firefox ist auch ein Bookmark)
+* installiere Jenkins-Plugins:
+  ** "JaCoCo Plugin"
+  ** "Build Pipeline Plugin"
+* erzeuge ein free-style software project "issumy-stage-commit"
+  ** Source Code Mangement - Git
+     *** checkout von +file:///home/dev/git-repos/issumy.git+
+     *** baue von +*/master+
+  ** "Add Build Step"
+     ** Rufe das Gradle Script auf
+     *** benutze den Gradle Wrapper
+     *** Task: _test_
+* Job laufen lassen
+  ** via Button im GUI
+  ** via URL im Browser ( http://localhost:8180/job/issumy-stage-commit/build )
+  ** via URL auf Command Line ( +curl http://localhost:8180/job/issumy-stage-commit/build+ )

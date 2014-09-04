@@ -1,0 +1,24 @@
+== Zur Person
+
+image::inventage_logo_with_border.gif["Inventage Logo",float="right", link="http://www.inventage.com/"]
+
+Oliver Nautsch
+
+_Software Craftsman_
+
+ * Microservices, TDD, DDD, CD, Virtualisierung, ...
+
+Inventage AG, Technoparkstrasse 1, 8005 Zürich
+
+'''
+
+email:      oliver.nautsch@inventage.com +
+twitter:    https://twitter.com/ollispieps[@ollispieps] +
+github:     https://github.com/ollin[@ollin] +
+google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
+
+
+'''
+
+Jugs Board Member seit 2014 +
+#. . . running . . .#

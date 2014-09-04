@@ -1,0 +1,23 @@
+== Iteration 9 - stage-production
+
+* erzeuge eine Datei +~/projects/issumy/stage.production/build.gradle mit Wrapper und folgenden Tasks:
+  ** +stopProductionContainer+
+  ** +removeProductionContainer+ abhängig von +stopProductionContainer+
+  ** +deployProduction+ abhängig von +removeProductionContainer+
+    *** soll +docker run+ benutzen um mit der Umgebungsvariablen +APP_VERSION+ das Image mit der aktuellen Version laufen zu lassen
+    *** Name des Containers: "issumy-production"
+* teste auf der Command Line
+* erzeuge einen Jenkins Job _issumy-stage-production_ welcher *manuell* nach _issumy-stage-commit_ gestartet werden soll
+  ** folgende Variablen von _issumy-stage-commit_ nach _issumy-stage-production_ übergeben
+    *** übergebe die Git-Commit Nummer als +GIT_STAGE_COMMIT+
+    *** übergebe die Variable +APP_VERSION+ (bestehend aus +<APP_VERSION_PREFIX>.<PIPE_FLOW_NUMBER>+)
+  ** +git checkout+ mit plugin von master
+* erzeuge einen Pipeline-View mit dem Namen _pipe-issumy_ und dem Startpunkt _issumy-stage-commit_
+
+== Iteration 9 - stage-production - Diskussion
+
+* Taggen wann?
+* Smoke test?
+* Commit id in MANFIEST.MF?
+  ** +docker run --rm -ti --name prod-inspect --volumes-from issumy-production:ro ubuntu:14.04.1 bash+
+* Commit Stage < 5 min

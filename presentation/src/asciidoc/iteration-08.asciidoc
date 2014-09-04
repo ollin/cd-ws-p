@@ -1,0 +1,23 @@
+== Iteration 8 - Integriere Versionsnummer in das Projekt
+
+* erzeuge eine Datei +~/projects/issumy/version.properties+ mit folgendem Inhalt
+[source, txt]
+----
+APP_VERSION_PREFIX=1.0
+----
+* entferne die folgenden Zeilen aus +gradle.properties+
+[source, txt]
+----
+# Your module version
+version=0.1-SNAPSHOT
+----
+* Weise in Jenkins im Job "issumy-stage-commit" der Variablen +PIPE_FLOW_NUMBER+ die Nummer des Builds zu
+  (ist eine Jenkins https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables[Umgebungsvariable])
+* implementiere eine Methode +readVersion+ in gradle.build welche eine Versionsnummer liefert
+  ** liesst +version.properties+
+  ** extrahiert den Prefix (+APP_VERSION_PREFIX+) daraus
+  ** liesst +PIPE_FLOW_NUMBER+ aus Umgebung aus
+  ** das Ergebnis ist:
+    *** "1.0-SNAPSHOT" wenn keine +PIPE_FLOW_NUMBER+ gefunden wird
+    *** sonst "1.0.56"
+* weise das Ergebnis dieser Methode der Variablen +version+ in der ersten Zeile von +build.gradle+ zu
