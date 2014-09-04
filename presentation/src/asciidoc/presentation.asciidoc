@@ -5,7 +5,7 @@ Continuous Delivery - Hands on
 :imagesdir: images
 :icons:
 
-include::slides/zur-person.asciidoc["Zur Person"]
+include::zur-person.asciidoc["Zur Person"]
 
 include::ziel-vorgehen.asciidoc["Ziel und Vorgehen"]
 
