@@ -73,18 +73,6 @@ Git Essentials - Branching
 Ausflug ins Git-Buch::
 - http://git-scm.com/book/de/Git-Branching-Was-ist-ein-Branch%3F[Git Branching - Was ist ein Branch?]
 
-Git Essentials - Branching - Hands on
--------------------------------------
-
-- erzeuge einen neuen Branch "development"
-- wechsle auf diesen Branch
-- fuege eine neue Zeile mit Text "Branch Development" hinzu
-- Änderung commiten
-- wechsle in Branch "master"
-- kurz anschauen, dass nun in der Datei die gerade gemachte Änderung nicht enhalten ist (z.B. +less README.asciidoc+)
-- merge die Änderungen von Branch "development" nun in den Branch "master"
-- nun enthält auch der Branch "master" diese Änderung
-
 Git Essentials - Remote
 -----------------------
 
