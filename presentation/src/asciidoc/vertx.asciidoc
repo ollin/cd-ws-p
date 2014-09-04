@@ -1,5 +1,7 @@
-Einführung - vert.x
--------------------
+:imagesdir: images
+
+== vert.x
+
 image::vertx-logo.png["Vert.x Logo",float="right", link="http://vertx.io/"]
 
 Vert.x ist ein polyglotes, ereignisorientiertes Anwendungsframework,
@@ -18,8 +20,7 @@ Features::
 - Module System via Maven Central, Maven Repository oder Bintray
 - Apache Software License 2.0
 
-Einführung - vert.x - Begriffe
-------------------------------
+== vert.x - Begriffe
 
 - Verticle -- Code welcher von vert.x ausgeführt wird (Vert.x Particle).
 - Module   -- eine Vert.x Applikation besteht aus einem oder

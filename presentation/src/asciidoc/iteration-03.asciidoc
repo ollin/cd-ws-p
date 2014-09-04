@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == issumy - Iteration 3 - Implementiere "liefere Liste"
 
 

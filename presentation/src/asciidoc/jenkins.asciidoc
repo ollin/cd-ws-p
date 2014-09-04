@@ -1,6 +1,9 @@
-Einführung - Jenkins
---------------------
+:imagesdir: images
+
+== Jenkins
+
 image::jenkins_logo.png["Jenkins Logo",float="right", link="http://jenkins-ci.org/"]
+
 Jenkins ist ein erweiterbares, webbasiertes System zur kontinuierlichen Integration. (Siehe http://de.wikipedia.org/wiki/Jenkins_(Software)[Wikipedia])
 
 Begriffe::

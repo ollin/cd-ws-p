@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Weiterführende Themen
 
 * fig

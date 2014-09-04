@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Iteration 12 - Performance Testing - hands on
 
 * Erzeuge einen http://jmeter.apache.org/usermanual/get-started.html[JMeter] Test der tested ob die Liste der issues innerhalb von 0.3 Sekunden geliefert werden kann

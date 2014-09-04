@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Iteration 8 - Integriere Versionsnummer in das Projekt
 
 * erzeuge eine Datei +~/projects/issumy/version.properties+ mit folgendem Inhalt

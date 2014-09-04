@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Iteration 11 - Unit Test Gate einführen
 
 * benutze das _jacoco_ Plugin in gradle

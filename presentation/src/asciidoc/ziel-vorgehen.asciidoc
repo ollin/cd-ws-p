@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Ziel
 
 * Einführung in Continuous Delivery

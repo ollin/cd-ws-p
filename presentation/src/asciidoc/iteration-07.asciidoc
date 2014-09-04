@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Iteration 7 - Veröffentlichen des Images via gradle
 
 * integriere dieses Taggen und Pushen in gradle build von issumy

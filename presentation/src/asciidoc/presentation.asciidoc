@@ -29,42 +29,33 @@ include::ci.asciidoc[]
 
 include::jenkins.asciidoc[]
 
-// automatisiertes testen
-include::iteration-04.asciidoc[]
+include::iteration-04.asciidoc["automatisiertes Testen"]
 
 include::nexus.asciidoc[]
 
-// artefacte speichern
-include::iteration-05.asciidoc[]
+include::iteration-05.asciidoc["Artefacte speichern"]
 
-// hooks
-include::iteration-06.asciidoc[]
+include::iteration-06.asciidoc["Hooks"]
 
 include::docker.asciidoc[]
 
 include::docker-hands-on.asciidoc[]
 
-// push docker image via gradle
-include::iteration-07.asciidoc[]
+include::iteration-07.asciidoc["push docker image via gradle"]
 
 include::cd.asciidoc[]
 
 include::versionsnummer.asciidoc[]
 
-// versionsnummer im projekt
-include::iteration-08.asciidoc[]
+include::iteration-08.asciidoc["Versionsnummer im Projekt"]
 
-// stage-production
-include::iteration-09.asciidoc[]
+include::iteration-09.asciidoc["stage-production"]
 
-// stage-integration
-include::iteration-10.asciidoc[]
+include::iteration-10.asciidoc["stage-integration"]
 
-// test gate
-include::iteration-11.asciidoc[]
+include::iteration-11.asciidoc["test gate"]
 
-// performance gate
-include::iteration-12.asciidoc[]
+include::iteration-12.asciidoc["performance gate"]
 
 include::gedanken.asciidoc[]
 

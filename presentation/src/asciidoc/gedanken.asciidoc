@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Gedanken
 
 image::are-you-too-busy-to-improve.png["Too Busy",float="right"]

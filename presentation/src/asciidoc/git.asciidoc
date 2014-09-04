@@ -1,3 +1,5 @@
+:imagesdir: images
+
 Git Essentials - Local
 ----------------------
 image::git-logo.png["Git Logo",float="right", link="http://git-scm.com/"]

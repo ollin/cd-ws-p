@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == issumy - Iteration 6 - Hooks
 
 * automatisiere das Starten des Jenkins Jobs bei jedem Commit

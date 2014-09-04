@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Erzeugen eines Images - hands on
 
 via docker commit::

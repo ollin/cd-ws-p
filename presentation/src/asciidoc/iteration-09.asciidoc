@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Iteration 9 - stage-production
 
 * erzeuge eine Datei +~/projects/issumy/stage.production/build.gradle mit Wrapper und folgenden Tasks:

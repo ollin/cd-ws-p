@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Zusammenfassung
 
 * viele Begriffe besprochen
@@ -8,3 +10,9 @@
 * Artefakte in Nexus gespeichert
 * Docker Container gebaut und veröffentlicht
 * eine Deployment Pipeline gebaut
+
+'''
+
+Vielen Dank für die Teilnahme!
+
+oliver.nautsch@inventage.com

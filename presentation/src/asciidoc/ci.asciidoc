@@ -1,5 +1,6 @@
-Einführung - Continous Integration
-----------------------------------
+:imagesdir: images
+
+== Continous Integration
 
 http://www.martinfowler.com/articles/continuousIntegration.html[nach Martin Fowler]
 

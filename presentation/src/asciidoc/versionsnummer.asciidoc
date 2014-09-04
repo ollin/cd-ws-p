@@ -1,3 +1,5 @@
+:imagesdir: images
+
 == Die Versionsnummer
 
 * http://semver.org/[Semantic Versioning]

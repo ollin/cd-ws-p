@@ -1,3 +1,5 @@
+:imagesdir: images
+
 issumy - Iteration 2
 --------------------
 
@@ -26,8 +28,6 @@ cp template/gradlew* issumy/                                       # <5>
 <3> kopiert Konfigurationsdatei für +gradle runMod+
 <4> kopiert die Module-Konfigurationsdatei
 <5> kopiert die Gradle Wrapper Skripte
-
-
 
 Iteration 2 - +gradle.properties+
 ---------------------------------
