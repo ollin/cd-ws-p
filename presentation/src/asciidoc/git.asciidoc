@@ -22,19 +22,40 @@ Git Essentials - Local - Hands on
 ---------------------------------
 
 image::overview-git.png["Overview - Git", float="right", width=301, link="./images/overview-git.png"]
-- lege ein Verzeichnis +~/projects/git-ho+ an (+mkdir+, +cd+)
-- erzeuge eine Datei +README.asciidoc+ in diesem Verzeichnis und füge den Text "Version 1" und einen Zeilenumbruch ein (+vi+)
-- erzeuge ein git repository/git history (+git init+)
-- lese output von +git status+
-- fuege die Datei zum 'index' hinzu (+git add+)
-- +git status+ sagt auch hier was man tun könnte
-- commit in die 'history' für diese Datei (+git commit+, erfragt wird +git config+)
-- ändere den Inhalt der Datei in dem du eine Zeile "Version 2" hinzufügst (+vi+)
-- mache die Änderung mit der letzten Version in 'history' rückgängig (+git checkout+)
-- nochmals die Datei editieren und "Version 3" Zeile hinzufügen
-- Datei den 'index' hinzufügen (+git add+)
-- 'index' wieder zurücksetzen mit letzter Version in 'history' (+git reset+)
-- zum Abschluss noch die History mit allen Änderungen anschauen (+git log+)
+
+[source, bash]
+----
+cd
+mkdir -p projects/hello-git                 # <1>
+cd projects/hello-git
+touch README.asciidoc                       # <2>
+echo "Version 1\n" >> README.asciidoc       # <3>
+git init                                    # <4>
+git status                                  # <5>
+git add .                                   # <6>
+git status                                  # <7>
+git commit -m "initial commit"              # <8>
+git config --global user.email "dev@devexampleserver.com"
+git config --global user.name "dev devi"    # <9>
+
+echo "Version 2\n" >> README.asciidoc       # <10>
+cat README.asciidoc                         # <11>
+git checkout README.asciidoc                # <12>
+cat README.asciidoc                         # <13>
+----
+<1> lege ein Verzeichnis +~/projects/hello-git+ an
+<2> erzeuge eine Datei +README.asciidoc+ in diesem Verzeichnis und
+<3> füge den Text "Version 1" und einen Zeilenumbruch ein
+<4> erzeuge ein git repository/git history
+<5> zeigt Status von deiner working copy im Vergleich mit History
+<6> fügt alle geänderten Dateien zum 'index'
+<7> zeigt Varianten was man tun könnte
+<8> commit in die 'history'
+<9> globale Einstellungen machen für Git
+<10> ändere Inhalt der Datei
+<11> zeigt zwei Zeilen an
+<12> macht die Änderung mit der letzten Version in 'history' rückgängig
+<13> zeigt zwei Zeilen an
 
 Git Essentials - Branching
 --------------------------
