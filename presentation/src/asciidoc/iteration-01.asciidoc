@@ -1,59 +1,63 @@
 :imagesdir: images
 
-== issumy - Iteration 1
+== Iteration 1
 
+- Tools installieren
+- mit Idea vertraut machen
 - vert.x mit einem "verticle" laufen lassen.
+- Wegwerfprojekt _hello-vertx_
 
-== issumy - Iteration 1 - hands-on - install gvm
-
+== Iteration 1 - install gvm
 
 * installiere http://gvmtool.net/[GVM] the Groovy enVironment Manager.
 
 [source, bash]
 ----
-~/$curl -s get.gvmtool.net | bash
-~/$source "/home/dev/.gvm/bin/gvm-init.sh"
-~/$gvm
+curl -s get.gvmtool.net | bash
+source "/home/dev/.gvm/bin/gvm-init.sh"
+gvm
 ----
 
 * installiere http://www.gradle.org/[Gradle]
 
 ----
-~/$gvm install gradle 1.10
+gvm install gradle 1.10
 ----
 
 * installiere http://vertx.io/[Vert.x]
 
 ----
-~/$gvm install vertx 2.1.2
+gvm install vertx 2.1.2
 ----
 
 * installiere https://github.com/pledbrook/lazybones[Lazybones Project Creation Tool]
 
 ----
-~/$gvm install lazybones
+gvm install lazybones 0.7.1
 ----
 
 * erzeuge Projekt mit Schablone aus lazybones
 
 ----
-~/$mkdir projects && cd projects
-~/projects$lazybones create java-basic issumy
-~/projects$cd issumy
-~/projects/issumy$gradle tasks
+cd
+cd projects
+lazybones create java-basic hello-vertx
+cd hello-vertx
+gradle tasks
 ----
 
-== issumy - Iteration 1 - hands-on - import in IDEA
+== Iteration 1 - import in IDEA
 
 .Importiere das Projekt in Intellij IDEA
 image::iteration1-import-project.png[Import Projekt in IDEA]
 
-== issumy - Iteration 1 - hands-on - an example for vert.x
+== Iteration 1 - vert.x Beispiel
 
 [CAUTION]
 Die https://github.com/vert-x/vertx-examples[Beispiele von vertx] sind Apache License, Version 2.0 lizenziert. Aus Gründen
 der Übersicht sind die entsprechenden Header entfernt.
 
++~/projects/hello-vertx/src/main/java/httphelloworld/HelloWorldServer.java+
 [source, Java]
 ----
 package httphelloworld;
@@ -82,41 +86,20 @@ from https://raw.githubusercontent.com/vert-x/vertx-examples/master/src/raw/java
 - wir können es auch noch nicht mit gradle bauen
 - aber . . .
 
-issumy - Iteration 1 - hands-on - running the example for vert.x
-----------------------------------------------------------------
+== Iteration 1 - running the example for vert.x
 
 - . . . vert.x kann schon damit laufen
 
+[source, bash]
 ----
-~/projects/issumy$vertx run src/main/java/httphelloworld/HelloWorldServer.java
-Succeeded in deploying verticle
+cd
+cd projects/hello-vertx/
+vertx run src/main/java/httphelloworld/HelloWorldServer.java
 ----
 
-- öffne den Browser mit +http://localhost:8080/+
+- öffne den Browser mit http://localhost:8080/
+- beenden in Kommandozeile mit +Ctrl-C+
 
 .Run Verticle in Browser
 image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
 
-Anlegen von locale und remote Repostory::
-
-Datei +~/projects/issumy/.gitignore+ anlegen und folgendes einfügen
-
-[source, txt]
-----
-.gradle/
-.idea/
-*.iml
-build
-----
-
-[source, bash]
-----
-cd  ~/projects/issumy
-git init
-git add .
-git commit -m "initial"
-git clone --bare . ~/git-repos/issumy.git
-git remote add upstream file:///home/dev/git-repos/issumy.git/
-git fetch upstream
-git branch -u upstream/master master
-----
