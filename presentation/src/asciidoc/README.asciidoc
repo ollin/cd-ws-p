@@ -1,0 +1,8 @@
+Folien/Dokumente - Continuous Delivery - Hands on
+=================================================
+:author:    Oliver Nautsch
+
+* https://github.com/ollin/cd-ws-p/blob/master/presentation/src/asciidoc/presentation.asciidoc["Präsentation"]
+
+
+
