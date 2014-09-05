@@ -4,7 +4,7 @@ Continuous Delivery - Hands on
 
 image::https://badges.gitter.im/ollin/cd-ws-p.png["Gitter chat", float="right", link="https://gitter.im/ollin/cd-ws-p"]
 
-Dieses Repository beinhaltet die Unterlagen zum Workshop 04
+Dieses Repository beinhaltet die Unterlagen zum Workshop 04 und Workshop 16.
 
 "Continuous Delivery - Hands on"
 
