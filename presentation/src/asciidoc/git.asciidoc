@@ -1,7 +1,7 @@
 :imagesdir: images
 
-Git Essentials - Local
-----------------------
+== Git Essentials - Local
+
 image::git-logo.png["Git Logo",float="right", link="http://git-scm.com/"]
 
 * +git init+
@@ -18,8 +18,7 @@ Links::
 * Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
 * Git CheatSheet: http://ndpsoftware.com/git-cheatsheet.html
 
-Git Essentials - Local - Hands on
----------------------------------
+== Git Essentials - Local - Hands on
 
 image::overview-git.png["Overview - Git", float="right", width=301, link="./images/overview-git.png"]
 
@@ -57,8 +56,8 @@ cat README.asciidoc                         # <13>
 <12> macht die Änderung mit der letzten Version in 'history' rückgängig
 <13> zeigt zwei Zeilen an
 
-Git Essentials - Branching
---------------------------
+== Git Essentials - Branching
+
 
 - +git branch+
   ** erzeugen, auflisten, löschen von Branches
@@ -73,8 +72,8 @@ Git Essentials - Branching
 Ausflug ins Git-Buch::
 - http://git-scm.com/book/de/Git-Branching-Was-ist-ein-Branch%3F[Git Branching - Was ist ein Branch?]
 
-Git Essentials - Remote
------------------------
+== Git Essentials - Remote
+
 
 - +git clone+
   ** erzeugt einen Clone eines Repositories in einem neuen Verzeichnis
