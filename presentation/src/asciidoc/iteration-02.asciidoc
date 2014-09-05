@@ -1,12 +1,10 @@
 :imagesdir: images
 
-issumy - Iteration 2
---------------------
+== Iteration 2
 
 - einfaches Verticle in Module verpacken
 
-Iteration 2 - Template kopieren
--------------------------------
+== Iteration 2 - Template kopieren
 
 - clone Template Projekt
 - kopiere Notwendiges
@@ -29,8 +27,7 @@ cp template/gradlew* issumy/                                       # <5>
 <4> kopiert die Module-Konfigurationsdatei
 <5> kopiert die Gradle Wrapper Skripte
 
-Iteration 2 - +gradle.properties+
----------------------------------
+== Iteration 2 - +gradle.properties+
 
 - anpassen der Gradle-Eigenschaften an unser Projekt
 
@@ -48,9 +45,7 @@ version=0.1-SNAPSHOT
 . . .
 ----
 
-
-Iteration 2 - +build.gradle+
-----------------------------
+== Iteration 2 - +build.gradle+
 
 - anpassen der Artefakt-Eigenschaften an unser Projekt
 - wird nur für die generierung der +pom.xml+ Datei benutzt
@@ -94,8 +89,7 @@ def configurePom(def pom) {
 }
 ----
 
-Iteration 2 - running
----------------------
+== Iteration 2 - running
 
 Definiere in +mod.json+ die Klasse +httphelloworld.HelloWorldServer+ als _main_
 
