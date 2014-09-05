@@ -28,7 +28,7 @@ cd
 mkdir -p projects/hello-git                 # <1>
 cd projects/hello-git
 touch README.asciidoc                       # <2>
-echo "Version 1\n" >> README.asciidoc       # <3>
+echo "Version 1" >> README.asciidoc         # <3>
 git init                                    # <4>
 git status                                  # <5>
 git add .                                   # <6>
@@ -37,7 +37,7 @@ git commit -m "initial commit"              # <8>
 git config --global user.email "dev@devexampleserver.com"
 git config --global user.name "dev devi"    # <9>
 
-echo "Version 2\n" >> README.asciidoc       # <10>
+echo "Version 2" >> README.asciidoc         # <10>
 cat README.asciidoc                         # <11>
 git checkout README.asciidoc                # <12>
 cat README.asciidoc                         # <13>
@@ -87,24 +87,36 @@ Ausflug ins Git-Buch::
 
 == Git Essentials - Remote - hands-on
 
-* erzeuge ein Verzeichnis +~/git-repos+
-* clone +\~/projects/git-ho+ nach +~/git-repos/git-ho.git+ (+git clone \--bare+)
-  ** macht ein +git init+ und +git fetch+ ohne eine Arbeitskopie anzulegen
-* füge das "Remote-Repository" deinem Lokalen Repository hinzu (+git remote add upstream file:///home/dev/git-repos/git-ho.git+)
-* +git remote -v+
-* in die Rolle eines 2. Entwickler schlüpfen:
-  ** +git clone file:///home/dev/git-repos/git-ho.git /home/dev/projects/git-ho-dev2+
-  ** editiere +README.asciidoc+ in +/home/dev/projects/git-ho-dev2+ (z.B. zusätzliche Zeile "Hallo von Dev2")
-  ** commit in History von dev 2
-  ** push zum Remote
-* wieder in die eigene Rolle schlüpfen
-  ** +cd /home/dev/projects/git-ho+
-  ** git fetch upstream
-  ** git merge upstream/master
-  ** füge eine Zeile "Huhu von Dev1" hinzu und commit, push zu Remote ( -u )
-* 2. Entwickler:
-  ** +cd /home/dev/projects/git-ho-dev2+
-  ** +git pull+
-     ** fasst ein _fetch_ und _merge_ zusammen
-* erzeuge einen Tag "v1" und pushe den Tag ins Remote Repo
-* hole den Tag ins lokale Repo des anderen Entwicklers
+[source, bash]
+----
+cd
+cd projects/
+git clone --bare hello-git/ /home/dev/git-repos/hello-git.git       # <1>
+cd hello-git/
+git remote add upstream file:///home/dev/git-repos/hello-git.git    # <2>
+git remote -v                                                       # <3>
+
+cd && cd projects/ && mkdir hello-git-dev2 && cd hello-git-dev2     # <4>
+git clone file:///home/dev/git-repos/hello-git.git/ .               # <5>
+echo "Hallo von Entickler 2" >> README.asciidoc
+git commit -a -m "Hallo von dev2"                                   # <6>
+git push                                                            # <7>
+git config --global push.default simple                             # <8>
+
+cd && cd projects/hello-git                                         # <9>
+git fetch upstream                                                  # <10>
+git merge upstream/master                                           # <11>
+cat README.asciidoc
+----
+
+<1> macht ein +git init+ und ein +git fetch+ ohne eine Arbeitskopie anzulegen
+<2> fügt das "Remote-Repository" deinem lokalen Repository unter dem Namen _upstream_ hinzu
+<3> zeigt alle Remote-Repositiories an
+<4> in die Rolle eines zweiten Entwicklers wechseln
+<5> erzeugt ein lokales Repository für den zweiten Entwickler
+<6> fügt alle Änderungen zum index hinzu und commited diese Änderungen in die History
+<7> Änderung wird ins remote Repository kopiert
+<8> konfiguriert konservatives push-Verhalten
+<9> in die Rolle des 1. Entwicklers wechseln
+<10> holen der Änderungen von _upstream_ in die lokale History
+<11> einfügen der Änderungen in die lokale Arbeitskopie
