@@ -8,7 +8,7 @@ Vert.x ist ein polyglotes, ereignisorientiertes Anwendungsframework,
 das in der Java Virtual Machine läuft.
 
 - Java, JavaScript, Ruby, Python, Groovy, Clojure, Scala
-- einfache, mächtige API's zum Schreiben von netzwerkfähigen Appliktationen
+- einfache, mächtige API's zum Schreiben von netzwerkfähigen Applikationen
 - non blocking I/O um viele Verbindungen mit wenigen Threads zu bedienen
 - einfaches "actor-like" Programmierungsmodell
 
@@ -22,15 +22,12 @@ Features::
 
 == vert.x - Begriffe
 
-- Verticle -- Code welcher von vert.x ausgeführt wird (Vert.x Particle).
-- Module   -- eine Vert.x Applikation besteht aus einem oder
-mehreren Modulen. Module können mehrere Verticles enthalten. Via modules
-kann Funktionalität gekapselt und wiederverwendet werden.
-- Concurrency - ein Verticle wird von einem Thread verwendet
-- Event Bus - Verticles kommunizieren via dem Event Bus miteinander
-- Asynchronous Programming Model - die meiste Zeit werden Event Handler benötigt
-- Event Loops - kleine Anzahl von Threads, welche Events an Handler weiterleiten
-- Worker Verticles - für blockierenden Code (z.B. JDBC), diese Verticles können
-durch unterschiedliche Threads benutzt werden
+- Verticle -- **Vert**.x Part**icle**
+- Module
+- Concurrency
+- Event Bus
+- Asynchronous Programming Model -- Event Handler
+- Event Loops
+- Worker Verticle -- worker thread pool
 
 IMPORTANT: Handler dürfen nicht blockieren
