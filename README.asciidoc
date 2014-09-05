@@ -26,7 +26,7 @@ https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem eigen
 
 ==== Installation via Vagrant (empfohlene Variante)
 
-**ACHTUNG - Die Box ist derzeit nicht verfügbar. Melde mich sofort wieder wenn sie wieder da ist.**
+IMPORTANT: Die vagrant box war bis 2014-09-05 17:00Uhr nicht in Ordnung. Wer es zuvor versucht hatte zu installieren - Bitte wiederholen. Sorry!
 
 * installiere Vagrant http://www.vagrantup.com/downloads.html
 * kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
