@@ -1,0 +1,15 @@
+:imagesdir: images
+
+== Warum Continuous Delivery
+
+* Fokus auf Feedback Zyklus
+* Effizienz in Softwareentwicklung bei hoher Qualität
+* Reaktionsfähigkeit auf Veränderungen
+* Flexibilität bei der Auslieferung
+
+aber::
+
+* nicht einfach umzusetzen
+* Veränderungen in der Organisation und Kultur notwendig
+* nicht nur eine Aufgabe für Softwareentwicklungsteam
+

@@ -1,0 +1,34 @@
+:imagesdir: images
+
+== Schranken
+
+[width="90%",cols="4,^1,^1,^1,^1,^1,^1", options="header"]
+|=========================================================
+|                                       |Commit | AAT | Expl.T | UAT | Pre-Prod | Prod
+| Syntax Check                          |  X    |     |        |     |          |
+| Unit Tests                            |  X    |     |        |     |          |
+| Compile                               |  X    |     |        |     |          |
+| Code Metrics                          |  X    |     |        |     |          |
+| Story Level Tests                     |       |  X  |        |     |          |
+| Integration Tests                     |       |  X  |        |     |          |
+| BDD Tests                             |       |  X  |        |     |          |
+| Component Tests                       |       |  X  |        |     |          |
+| Feature-Level Testing                 |       |  X  |        |     |          |
+| Visual Tests                          |       |     |  X     |     |          |
+| Usability Tests                       |       |     |  X     |     |          |
+| Showcases                             |       |     |        | X   |          |
+| Feature-Level Testing beim Kunden     |       |     |        | X   |          |
+| Performance Tests                     |       |     |        |     |  X       |
+| Network Tests                         |       |     |        |     |  X       |
+| Capacity Tests                        |       |     |        |     |  X       |
+| Smoke Tests                           |       |     |        |     |  X       |  X
+| Post-Deployment-Tests                 |       |     |        |     |  X       |  X
+| Rollback & Redeploy                   |       |     |        |     |  X       |  X
+| Ongoing Live Tests                    |       |     |        |     |          |  X
+|=========================================================
+
+* AAT -- Automated Acceptance Testing
+* Expl.T -- Exploratory Testing
+* UAT -- User Acceptance Testing
+* Pre-Prod -- Pre-Production
+* Prod -- Production

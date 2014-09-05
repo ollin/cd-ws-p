@@ -51,9 +51,13 @@ include::iteration-08.asciidoc["Versionsnummer im Projekt"]
 
 include::iteration-09.asciidoc["stage-production"]
 
+include::warum-cd.asciidoc[]
+
 include::iteration-10.asciidoc["stage-integration"]
 
 include::iteration-11.asciidoc["test gate"]
+
+include::schranken.asciidoc[]
 
 include::iteration-12.asciidoc["performance gate"]
 
