@@ -4,28 +4,15 @@
 
 - einfaches Verticle in Module verpacken
 
-== Iteration 2 - Template kopieren
+== Iteration 2 - issumy in Idea importieren
 
-- clone Template Projekt
-- kopiere Notwendiges
+image::iteration2-import-issumy.png[Import issumy in IDEA, float="right"]
 
-[source, bash]
-----
-cd && cd projects
-git clone https://github.com/ollin/vertx-gradle-template.git template
-cp -rf template/gradle issumy/                                     # <1>
-cp template/build.gradle issumy/                                   # <2>
-cp template/gradle.properties issumy/
-cp template/conf.json issumy/                                      # <3>
-mkdir issumy/src/main/resources/
-cp template/src/main/resources/mod.json issumy/src/main/resources/ # <4>
-cp template/gradlew* issumy/                                       # <5>
-----
-<1> kopiert Gradle Wrapper Libs und Vertx spezifische Build Skripte
-<2> kopiert das eigentliche Build Skript und in der nächsten Zeile die Properties zum Build
-<3> kopiert Konfigurationsdatei für +gradle runMod+
-<4> kopiert die Module-Konfigurationsdatei
-<5> kopiert die Gradle Wrapper Skripte
+* Import Project
+* +/home/dev/projects/issumy+
+* Import Project from external model
+  ** gradle
+* Use default gradle wrapper
 
 == Iteration 2 - +gradle.properties+
 
