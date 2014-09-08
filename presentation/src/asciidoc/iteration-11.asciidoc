@@ -2,6 +2,10 @@
 
 == Iteration 11 - Unit Test Gate einführen
 
-* benutze das _jacoco_ Plugin in gradle
-* schreibe für jede Klasse einen Unit-Test, welcher das erzeugen via Default-Konstruktor testet.
+* benutze das http://www.gradle.org/docs/current/userguide/jacoco_plugin.html[JaCoCo Plugin] in gradle
+  ** +apply plugin+ wird benötigt
+  ** +toolVersion = "0.7.1.201405082137"+ in der Konfiguration von JaCoCo
+* erzeuge in Jenkins einen _Post build action_
 * lasse den _issumy-stage-commit_ stoppen, wenn nicht alle Klassen einen Test haben
+  ** dazu in Jenkins 100%/100% für die Klassen angeben
+  ** _Change build status according the thresholds_ anwählen, damit das Gate aktiviert wird
