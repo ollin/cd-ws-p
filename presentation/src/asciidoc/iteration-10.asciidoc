@@ -2,12 +2,13 @@
 
 == Iteration 10 - stage-integration
 
-Annahme::
 
 * Integrationstest benutzt Docker Image (bisher extra Verticle gestartet)
 * die Integrationsumgebung wird unter Port 8071 erreichbar sein
 
-Schritte::
+image::overview-iter10.png["stage integration", float="right", width=301, link="./images/overview-iter10.png"]
+
+== Iteration 10 - stage-integration - Arbeitsschritte
 
 * kopiere die +stage-production/build.gradle+ nach +stage-integration/build.gradle+
 * kopiere die +stage-production/gradle.properties+ nach +stage-integration/gradle.properties+
