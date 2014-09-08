@@ -26,9 +26,12 @@
 | Rollback & Redeploy                   |       |     |        |     |  X       |  X
 | Ongoing Live Tests                    |       |     |        |     |          |  X
 |=========================================================
+http://java.dzone.com/articles/introducing-dzones-2014-guide[DZone's 2014 Guide to Continuous Delivery]
 
 * AAT -- Automated Acceptance Testing
 * Expl.T -- Exploratory Testing
 * UAT -- User Acceptance Testing
 * Pre-Prod -- Pre-Production
 * Prod -- Production
+
+
