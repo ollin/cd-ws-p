@@ -85,6 +85,8 @@ docker run --rm -i -t ubuntu:14.04.1 ls -al
 
 == Docker - Erzeugen eines Image
 
+image::docker-filesystems-multilayer.png["union file system",float="right", link="http://docs.docker.com/terms/layer/"]
+
 === via commit
 
 [source, bash]
