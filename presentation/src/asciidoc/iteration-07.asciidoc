@@ -2,9 +2,12 @@
 
 == Iteration 7 - Veröffentlichen des Images via gradle
 
+image::overview-iter07.png["Docker Image via gradle", float="right", width=301, link="./images/overview-iter07.png"]
+
 * erzeuge eine Docker-Datei
-* integriere dieses Docker Taggen
-* und Docker Pushen in gradle build von issumy
+* integriere Docker Taggen und
+* Docker Pushen in gradle build von issumy
+* Task _uploadArchives_ soll dies auch beinhalten
 
 == Iteration 7 - Veröffentlichen des Images via gradle - Arbeitsschritte
 

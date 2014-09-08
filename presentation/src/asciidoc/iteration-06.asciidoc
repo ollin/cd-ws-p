@@ -2,6 +2,8 @@
 
 == issumy - Iteration 6 - Hooks
 
+image::overview-iter06.png["hooks", float="right", width=301, link="./images/overview-iter06.png"]
+
 * automatisiere das Starten des Jenkins Jobs bei jedem Commit
 * benutze dazu "Hooks" von git
 

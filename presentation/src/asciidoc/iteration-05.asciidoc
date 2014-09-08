@@ -1,16 +1,21 @@
 :imagesdir: images
 
-== issumy - Iteration 5 - Artefakte speichern
+== Iteration 5 - Artefakte speichern
 
+image::overview-iter05.png["Artefakte speichern", float="right", width=301, link="./images/overview-iter05.png"]
 
+* Password für das Deployment setzen
 * liefere die Artefakte von _issumy_ ins Repository "Snapshots"
-notwendige Schritte:
+
+== Iteration 5 - Artefakte speichern - Arbeitsschritte
+
 * anmelden in Nexus ( http://nexus:8181/nexus user: +admin+ password: +admin123+ )
 * finde die URL's fuer die Repositories
   ** Release
   ** Snapshot
 * setze Passwort fuer User "deployment" auf "deployment9"
-* erzeuge einen Task "uploadArchives" in gradle am Ende von +build.gradle+
+* konfiguriere den Task "uploadArchives" am Ende von +build.gradle+ (gehört zu http://www.gradle.org/docs/current/userguide/maven_plugin.html[Maven Plugin])
+  ** der _mavenDeployer_ braucht Konfiguration für repository und snapshotRepository, jeweils mit +url+, +authentication(username, password)+
 * commit / push
 * erzeuge in Jenkins einen neuen "build step" innerhalb von "issumy-stage-commit"
   ** mit gradle wrapper
@@ -18,8 +23,7 @@ notwendige Schritte:
 * Job starten
 * Nexus - Inhalt von Repository "Snapshots" prüfen
 
-== Iteration 5 - uploadArchives
-
+== Iteration 5 - Artefakte speichern - Lösung
 
 +build.gradle+
 [source, txt]
