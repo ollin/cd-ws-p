@@ -2,6 +2,7 @@
 
 == issumy - Iteration 4 - automatisiertes Testen
 
+image::overview-iter04.png["Docker Image via gradle", float="right", width=301, link="./images/overview-iter04.png"]
 
 * automatisiere das Testen mit Jenkins
   ** Plugins installieren
