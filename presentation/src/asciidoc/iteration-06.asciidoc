@@ -1,6 +1,6 @@
 :imagesdir: images
 
-== issumy - Iteration 6 - Hooks
+== Iteration 6 - Hooks
 
 image::overview-iter06.png["hooks", float="right", width=301, link="./images/overview-iter06.png"]
 

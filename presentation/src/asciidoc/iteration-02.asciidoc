@@ -78,39 +78,42 @@ def configurePom(def pom) {
 
 == Iteration 2 - running
 
-Definiere in +mod.json+ die Klasse +httphelloworld.HelloWorldServer+ als _main_
+Definiere in +mod.json+ die Klasse +com.inventage.issumy.issues.IssuesStarterVerticle+ als _main_
 
 [source, bash]
 ----
-~/projects/issumy$./gradlew tasks
+./gradlew tasks
 
-~/projects/issumy$./gradlew fatJar
+./gradlew fatJar
 ----
 starten via:
 
 [source, bash]
 ----
-~/projects/issumy$java -jar build/libs/issumy-0.1-SNAPSHOT-fat.jar #<1>
+java -jar build/libs/issumy-0.1-SNAPSHOT-fat.jar
 ----
 oder
 
 [source, bash]
 ----
-~/projects/issumy$vertx runzip build/libs/issumy-0.1-SNAPSHOT.zip #<1>
+vertx runzip build/libs/issumy-0.1-SNAPSHOT.zip
 ----
 oder
 
 [source, bash]
 ----
-~/projects/issumy$VERTX_MODS=./build/mods bash -c 'vertx runmod net.nautsch~issumy~0.1-SNAPSHOT' #<1>
+VERTX_MODS=./build/mods bash -c 'vertx runmod com.inventage~issumy~0.1-SNAPSHOT'
 ----
 oder
 
 [source, bash]
 ----
-~/projects/issumy$./gradlew runMod #<1>
+./gradlew runMod
 ----
 
-<1> öffne Browser http://localhost:8080/ , beenden mit CTRL-C
+* öffne Browser http://localhost:8080/
+* beenden auf der Konsole mit +CTRL-C+
 
 IMPORTANT: +git commit+
+
+WARNING: Wenn nicht mit CTRL-C beendet wird bleibt der Port 8080 belegt und es gibt später Probleme.

@@ -21,8 +21,8 @@ image::overview-iter09.png["stage integration", float="right", width=301, link="
 * teste auf der Command Line
 * erzeuge einen Jenkins Job _issumy-stage-production_ welcher *manuell* nach _issumy-stage-commit_ gestartet werden soll
   ** folgende Variablen von _issumy-stage-commit_ nach _issumy-stage-production_ übergeben
-    *** übergebe die Git-Commit Nummer als +GIT_STAGE_COMMIT+
-    *** übergebe die Variable +APP_VERSION+ (bestehend aus +<APP_VERSION_PREFIX>.<PIPE_FLOW_NUMBER>+)
+    *** +GIT_STAGE_COMMIT=$GIT_COMMIT+
+    *** +APP_VERSION=$APP_VERSION_PREFIX.$PIPE_FLOW_NUMBER+
   ** +git checkout+ mit plugin von master
 * erzeuge einen Pipeline-View mit dem Namen _pipe-issumy_ und dem Startpunkt _issumy-stage-commit_
 
