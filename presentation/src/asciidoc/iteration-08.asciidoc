@@ -2,6 +2,13 @@
 
 == Iteration 8 - Integriere Versionsnummer in das Projekt
 
+* Datei mit prefix für Version erzeugen
+* fixe Versionsnummer entfernen
+* Zusammensetzen der Versionsnummer in Jenkins-Build - CI
+* Zusammensetzen der Versionsnummer in build.gradle - Entwickler/CI
+
+== Iteration 8 - Integriere Versionsnummer in das Projekt - Arbeitsschritte
+
 * erzeuge eine Datei +~/projects/issumy/version.properties+ mit folgendem Inhalt
 [source, txt]
 ----
@@ -13,8 +20,8 @@ APP_VERSION_PREFIX=1.0
 # Your module version
 version=0.1-SNAPSHOT
 ----
-* Weise in Jenkins im Job "issumy-stage-commit" der Variablen +PIPE_FLOW_NUMBER+ die Nummer des Builds zu
-  (ist eine Jenkins https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables[Umgebungsvariable])
+* Weise in Jenkins im Job "issumy-stage-commit" der Variablen die Nummer des Builds zu (ist eine Jenkins https://wiki.jenkins-ci.org/display/JENKINS/Building+a+software+project#Buildingasoftwareproject-JenkinsSetEnvironmentVariables[Umgebungsvariable])
+  ** +PIPE_FLOW_NUMBER=$BUILD_NUMBER+
 * implementiere eine Methode +readVersion+ in gradle.build welche eine Versionsnummer liefert
   ** liesst +version.properties+
   ** extrahiert den Prefix (+APP_VERSION_PREFIX+) daraus
@@ -23,3 +30,50 @@ version=0.1-SNAPSHOT
     *** "1.0-SNAPSHOT" wenn keine +PIPE_FLOW_NUMBER+ gefunden wird
     *** sonst "1.0.56"
 * weise das Ergebnis dieser Methode der Variablen +version+ in der ersten Zeile von +build.gradle+ zu
+
+== Iteration 8 - Integriere Versionsnummer - Lösung
+
+[source, java]
+----
+version = readVersion()
+. . .
+
+. . .
+test {
+}
+
+String readVersion() {
+    def versionFile = file('version.properties')
+
+    def env = System.getenv()
+    def versionSuffix = (env.PIPE_FLOW_NUMBER != null) ? ".$env.PIPE_FLOW_NUMBER" : '-SNAPSHOT'
+
+    Properties versionProps = new Properties()
+
+    versionFile.withInputStream { stream ->
+        versionProps.load(stream)
+    }
+
+    return versionProps.APP_VERSION_PREFIX + versionSuffix
+}
+
+task versionNumber << {
+    println "version: $version"
+}
+----
+
+Test im lokalen Arbeitsverzeichnis::
+
+[source, bash]
+----
+PIPE_FLOW_NUMBER=363 ./gradlew versionNumber
+----
+muss ausgeben: version: 1.0.363
+
+[source, bash]
+----
+./gradlew versionNumber
+----
+muss ausgeben: version: 1.0-SNAPSHOT
+
+
