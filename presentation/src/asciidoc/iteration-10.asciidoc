@@ -13,19 +13,28 @@ image::overview-iter10.png["stage integration", float="right", width=301, link="
 * kopiere die +stage-production/build.gradle+ nach +stage-integration/build.gradle+
 * kopiere die +stage-production/gradle.properties+ nach +stage-integration/gradle.properties+
 * ersetze den String "production" mit "integration" und "Production" mit "Integration"
-* benutze für den Container den port 8071 (parent -> child, 8071:8080)
-* benutze das _java_ Plugin in gradle
-* füge als Repository +mavenCentral()+ ein
-* füge folgende Abhängigkeiten ein
+* benutze für den Docker Container den port 8071 (parent -> child, 8071:8080)
+* benutze das _java_ Plugin, füge als Repository +mavenCentral()+ und die notwendigen Abhängigkeiten ein
 ----
-  testCompile "io.vertx:vertx-core:$vertxVersion"
-  testCompile "io.vertx:vertx-platform:$vertxVersion"
-  testCompile "junit:junit:$junitVersion"
-  testCompile "io.vertx:testtools:$toolsVersion"
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "io.vertx:vertx-core:$vertxVersion"
+    testCompile "io.vertx:vertx-platform:$vertxVersion"
+    testCompile "junit:junit:$junitVersion"
+    testCompile "io.vertx:testtools:$toolsVersion"
+}
+. . .
 ----
 * mache den Task _test_ abhängig von _deployIntegration_ (+./gradle --dry-run test+ zeigt die Abarbeitungsfolge)
 * verschiebe den Test +IssuesViaRestTest+ in dieses Projekt
-* Entferne die Initialisierung von +IssuesStarterVerticle+ aus dem Test
+* Entferne das +container.deployVerticle+ von +IssuesStarterVerticle+ aus dem Test (+initialize()+ und +startTests()+ müssen aber erhalten bleiben!)
+* passe den Port auf +8071+ an
+* starte +gradle wrapper+ im Verzeichnis +/home/dev/projects/issumy/stage-integration+ damit der Wrapper installiert wird
 * füge einen Jenkins Job _issumy-stage-integration_ zwischen _stage-commit_ und _stage-production_ ein
   ** Umgebungsvariablen nicht vergessen!
   ** automatisch starten nach commit
