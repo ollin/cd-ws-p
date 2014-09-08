@@ -2,7 +2,7 @@
 
 == Gedanken
 
-image::are-you-too-busy-to-improve.png["Too Busy",float="right"]
+image::are-you-too-busy-to-improve.png["Too Busy",float="right", link="https://gpsomas.wordpress.com/2013/10/09/reinventing-the-wheel-2/"]
 
 * Are you too busy?
 * Einer kann nicht *Alles* wissen.
