@@ -26,16 +26,16 @@ starten via:
 
 [source, bash]
 ----
-java -jar build/libs/issumy-0.1-SNAPSHOT-fat.jar
+java -jar build/libs/issumy-1.0-SNAPSHOT-fat.jar
 ----
 oder
 
 [source, bash]
 ----
-vertx runzip build/libs/issumy-0.1-SNAPSHOT.zip
+vertx runzip build/libs/issumy-1.0-SNAPSHOT.zip
 ----
 
-* öffne Browser http://localhost:8080/
+* öffne Browser http://localhost:8080/issues
 * beenden auf der Konsole mit +CTRL-C+
 
 WARNING: Wenn nicht mit CTRL-C beendet wird bleibt der Port 8080 belegt und es gibt später Probleme.
