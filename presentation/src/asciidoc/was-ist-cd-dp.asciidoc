@@ -3,15 +3,13 @@
 == Was ist  . . .
 
 === Continuous Delivery ===
-bezeichnet eine Sammlung von Techniken, Prozessen und Werkzeugen,
-die den Softwarelieferprozess verbessern. ... Continuous Delivery
-wird primär in der Agilen Softwareentwicklung eingesetzt.
-(http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia])
 
-Continuous Delivery is a software development discipline
-where you build software in such a way that the software
-can be released to production at any time.
-( http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
+* Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. ...
+* agile Softwareentwicklung
+* Release in Produktion zu jeder Zeit möglich
+
+( Siehe auch bei http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia] und bei http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
 
 === Deployment Pipeline ===
-ist eine Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
+
+* Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
