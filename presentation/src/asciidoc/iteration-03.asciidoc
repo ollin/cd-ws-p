@@ -12,35 +12,3 @@ Annahmen::
 == Iteration 3 - Implementiere "liefere Liste"
 
 image::i3-issumy-issues.png["Übersicht Implementierung Iteration 3"]
-
-* Was fehlt alles?
-
-== Iteration 3 - Implementiere "liefere Liste" - Lösung
-
-[source, java]
-----
-    @Override
-    public void start() {
-        RouteMatcher rm = new RouteMatcher();
-
-        rm.get("/issues", new Handler<HttpServerRequest>() {
-            @Override
-            public void handle(HttpServerRequest req) {
-                vertx.eventBus().send("com.inventage.issumy.issues", "", new Handler<Message<JsonArray>>() {
-                    @Override
-                    public void handle(Message<JsonArray> msg) {
-                        req.response().headers().set("Content-Type", "application/json");
-                        req.response().end(msg.body().encode());
-                    }
-                });
-            }
-        });
-
-        vertx.createHttpServer().requestHandler(rm).listen(8080);
-        container.logger().info("IssuesRestVerticle started");
-    }
-----
-
-* +./gradlew test+
-* +git commit+
-* +git push+
