@@ -14,16 +14,13 @@ image::overview-iter05.png["Artefakte speichern", float="right", width=301, link
   ** Release
   ** Snapshot
 * setze Passwort fuer User "deployment" auf "deployment9"
-* konfiguriere den Task "uploadArchives" am Ende von +build.gradle+ (gehört zu http://www.gradle.org/docs/current/userguide/maven_plugin.html[Maven Plugin])
-  ** der _mavenDeployer_ braucht Konfiguration für repository und snapshotRepository, jeweils mit +url+, +authentication(username, password)+
-* commit / push
 * erzeuge in Jenkins einen neuen "build step" innerhalb von "issumy-stage-commit"
   ** mit gradle wrapper
   ** und task "uploadArchives"
 * Job starten
 * Nexus - Inhalt von Repository "Snapshots" prüfen
 
-== Iteration 5 - Artefakte speichern - Lösung
+== Iteration 5 - Artefakte speichern - Wer macht das eigentlich?
 
 +build.gradle+
 [source, txt]
