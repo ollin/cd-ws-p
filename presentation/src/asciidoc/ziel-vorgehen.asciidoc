@@ -18,13 +18,18 @@ image::overview.png["Overview", width=900, link="./images/overview.png"]
 
 == Vorbereitungen
 
-* Läuft bei jedem das vorbereitete VirtualBox Image?
+* Läuft bei jedem das vorbereitete VirtualBox Image (wird die Version 4.3.10 von Virtualbox verwendet)?
+* Netzwerkverbindung
+  ** auf Host?
+  ** im Guest?
 * Tastaturlayout ändern via Button in Statusleiste (rechts oben die Flagge)
+* Konsole, Intellij Idea, Firefox sind links oben zu finden
 * bei nur 4GB RAM den Gast auf 2GB RAM setzen
-* Vorbereitetes Projekt aktualisieren:
+* Vorbereitetes Projekt in Konsole aktualisieren:
 
 [source, bash]
 ----
-cd ~/projects/issumy
+cd
+cd projects/issumy
 git pull origin master
 ----
