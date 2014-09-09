@@ -16,8 +16,6 @@ image::iteration2-import-issumy.png[Import issumy in IDEA, float="right"]
 
 == Iteration 2 - running
 
-Definiere in +mod.json+ die Klasse +com.inventage.issumy.issues.IssuesStarterVerticle+ als _main_
-
 [source, bash]
 ----
 ./gradlew tasks

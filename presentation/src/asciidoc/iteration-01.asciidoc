@@ -2,12 +2,11 @@
 
 == Iteration 1
 
-- Tools installieren
-- mit Idea vertraut machen
-- vert.x mit einem "verticle" laufen lassen.
-- Wegwerfprojekt _hello-vertx_
+* Tools installieren
+  ** gradle
+  ** vert.x
 
-== Iteration 1 - install gvm
+== Iteration 1 - Tools installieren
 
 * installiere http://gvmtool.net/[GVM] the Groovy enVironment Manager.
 
@@ -20,86 +19,23 @@ gvm
 
 * installiere http://www.gradle.org/[Gradle]
 
+[source, bash]
 ----
 gvm install gradle 1.10
 ----
 
 * installiere http://vertx.io/[Vert.x]
 
+[source, bash]
 ----
 gvm install vertx 2.1.2
 ----
 
-* installiere https://github.com/pledbrook/lazybones[Lazybones Project Creation Tool]
-
-----
-gvm install lazybones 0.7.1
-----
-
-* erzeuge Projekt mit Schablone aus lazybones
-
-----
-cd
-cd projects
-lazybones create java-basic hello-vertx
-cd hello-vertx
-gradle tasks
-----
-
-== Iteration 1 - import in IDEA
-
-.Importiere das Projekt in Intellij IDEA
-image::iteration1-import-project.png[Import Projekt in IDEA]
-
-== Iteration 1 - vert.x Beispiel
-
-[CAUTION]
-Die https://github.com/vert-x/vertx-examples[Beispiele von vertx] sind Apache License, Version 2.0 lizenziert. Aus Gründen
-der Übersicht sind die entsprechenden Header entfernt.
-
-+~/projects/hello-vertx/src/main/java/httphelloworld/HelloWorldServer.java+
-[source, Java]
-----
-package httphelloworld;
-
-import org.vertx.java.core.Handler;
-import org.vertx.java.core.http.HttpServerRequest;
-import org.vertx.java.platform.Verticle;
-
-import java.util.Map;
-
-public class HelloWorldServer extends Verticle {
-
-  public void start() {
-    vertx.createHttpServer().requestHandler(new Handler<HttpServerRequest>() {
-      public void handle(HttpServerRequest req) {
-        req.response().headers().set("Content-Type", "text/plain");
-        req.response().end("Hello World");
-      }
-    }).listen(8080);
-  }
-}
-----
-from https://raw.githubusercontent.com/vert-x/vertx-examples/master/src/raw/java/httphelloworld/HelloWorldServer.java
-
-- zur Zeit noch keine Abhängigkeiten definiert (Fehler in IDE)
-- wir können es auch noch nicht mit gradle bauen
-- aber . . .
-
-== Iteration 1 - running the example for vert.x
-
-- . . . vert.x kann schon damit laufen
+Test ob Tools funktionieren:
 
 [source, bash]
 ----
 cd
-cd projects/hello-vertx/
-vertx run src/main/java/httphelloworld/HelloWorldServer.java
+gradle tasks
+vertx version
 ----
-
-- öffne den Browser mit http://localhost:8080/
-- beenden in Kommandozeile mit +Ctrl-C+
-
-.Run Verticle in Browser
-image::iteration1-run-helloworld-browser-.png[Run Verticle in Browser]
-
