@@ -52,5 +52,3 @@ uploadArchives {
 * Wie finde komme ich selber auf die Lösung von "uploadArchives"?
   ** Dokumentation Maven Plugin ( http://www.gradle.org/docs/current/userguide/maven_plugin.html#uploading_to_maven_repositories )
   ** DSL Reference ( http://www.gradle.org/docs/current/dsl/ )
-* "... can be released to production at any time." -> also jeder Commit.
-* Automate everything!
