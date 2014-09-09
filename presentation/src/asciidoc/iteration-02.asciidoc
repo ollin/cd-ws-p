@@ -14,68 +14,6 @@ image::iteration2-import-issumy.png[Import issumy in IDEA, float="right"]
   ** gradle
 * Use default gradle wrapper
 
-== Iteration 2 - +gradle.properties+
-
-- anpassen der Gradle-Eigenschaften an unser Projekt
-
-[source, conf]
-----
-# E.g. your domain name
-modowner=com.inventage
-
-# Your module name
-modname=issumy
-
-# Your module version
-version=0.1-SNAPSHOT
-
-. . .
-----
-
-== Iteration 2 - +build.gradle+
-
-- anpassen der Artefakt-Eigenschaften an unser Projekt
-- wird nur für die generierung der +pom.xml+ Datei benutzt
-
-[source, txt]
-----
-. . .
-def configurePom(def pom) {
-  pom.project {
-    name rootProject.name
-    description 'CH OPEN Workshoptage 2014 - Continuous Delivery - Beispiel Projekt - issumy'
-    inceptionYear '2014'
-    packaging 'jar'
-
-    url 'https://github.com/ollin/cd-ws-issumy'
-
-    developers {
-      developer {
-        id 'ollin'
-        name 'Oliver Nautsch'
-        email 'oliver.nautsch@gmail.com'
-      }
-    }
-
-    scm {
-      url 'https://github.com/ollin/cd-ws-issumy.git'
-    }
-
-    licenses {
-      license {
-        name 'The MIT License (MIT)'
-        url 'http://opensource.org/licenses/MIT'
-        distribution 'repo'
-      }
-    }
-
-    properties {
-      setProperty('project.build.sourceEncoding', 'UTF8')
-    }
-  }
-}
-----
-
 == Iteration 2 - running
 
 Definiere in +mod.json+ die Klasse +com.inventage.issumy.issues.IssuesStarterVerticle+ als _main_
@@ -98,22 +36,8 @@ oder
 ----
 vertx runzip build/libs/issumy-0.1-SNAPSHOT.zip
 ----
-oder
-
-[source, bash]
-----
-VERTX_MODS=./build/mods bash -c 'vertx runmod com.inventage~issumy~0.1-SNAPSHOT'
-----
-oder
-
-[source, bash]
-----
-./gradlew runMod
-----
 
 * öffne Browser http://localhost:8080/
 * beenden auf der Konsole mit +CTRL-C+
-
-IMPORTANT: +git commit+
 
 WARNING: Wenn nicht mit CTRL-C beendet wird bleibt der Port 8080 belegt und es gibt später Probleme.
