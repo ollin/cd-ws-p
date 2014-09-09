@@ -7,27 +7,25 @@ image::vertx-logo.png["Vert.x Logo",float="right", link="http://vertx.io/"]
 Vert.x ist ein polyglotes, ereignisorientiertes Anwendungsframework,
 das in der Java Virtual Machine läuft.
 
-- Java, JavaScript, Ruby, Python, Groovy, Clojure, Scala
-- einfache, mächtige API's zum Schreiben von netzwerkfähigen Applikationen
-- non blocking I/O um viele Verbindungen mit wenigen Threads zu bedienen
-- einfaches "actor-like" Programmierungsmodell
+* Java, JavaScript, Ruby, Python, Groovy, Clojure, Scala
+* leicht
+* Apache Software License 2.0
 
-Features::
+Was ist es nicht::
 
-- distributed event bus server to server
-- Support für Websockets/SockJS
-- einbetten in existierende Java-Applikationen möglich
-- Module System via Maven Central, Maven Repository oder Bintray
-- Apache Software License 2.0
+* eine JEE Implementierung
+* kein Servletcontainer
 
 == vert.x - Begriffe
 
-- Verticle -- **Vert**.x Part**icle**
-- Module
-- Concurrency
-- Event Bus
-- Asynchronous Programming Model -- Event Handler
-- Event Loops
-- Worker Verticle -- worker thread pool
+* Verticle -- **Vert**.x Part**icle**
+* Module
+* Concurrency
+
+
+* Event Bus
+* Asynchronous Programming Model -- Event Handler
+* Event Loops
+* Worker Verticle -- worker thread pool
 
 IMPORTANT: Handler dürfen nicht blockieren
