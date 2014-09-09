@@ -11,11 +11,14 @@ empfohlenes Vorgehen::
 * das Git-Plugin von Jenkins unterstützt spezielle URL's um Jobs zu starten welche das Repository benutzen
   ** +http://localhost:8180/git/notifyCommit?url=<eingetragenes repository>+
   ** benutze die Url via CLI
-     *** +curl http://localhost:8180/git/notifyCommit?url=file:///home/dev/git-repos/issumy.git+
-     *** wenn +Scheduled polling of issumy-stage-commit+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
-     *** Polling in Jenkins ohne Schedule muss aktiviert sein
-     *** Der Job startet nur, wenn wirklich eine Änderung im Repository gemacht wurde
-* Git stellt clientseitige und serverseitige Hooks zur Verfügung
+[source, bash]
+----
+curl http://localhost:8180/git/notifyCommit?url=file:///home/dev/git-repos/issumy.git
+----
+* wenn +Scheduled polling of issumy-stage-commit+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
+
+IMPORTANT: Job läuft aber nicht an (kein Änderung in git)
+
 
 == Iteration 6 - Lösungsbeispiel
 

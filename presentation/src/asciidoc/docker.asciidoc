@@ -37,27 +37,7 @@ Begriffe::
 * Container
 * Registry
   * Hub
-  * local eigene
-
-== Docker Kommandos
-
-image::dockerstory.png["Docker Story",float="right"]
-
-* +man docker+
-
-* +docker images+    listed die Images auf
-* +docker run+       führt ein Kommando in einem neuen Container aus
-* +docker stop+      stopt einen Container
-* +docker start+     startet einen Container
-* +docker ps+        listed die Container auf
-* +docker rm+        löscht Container
-
-* +docker build+     erzeugt ein neues Image aus einem _Dockerfile_
-* +docker pull+      zieht ein Image oder Repository von Registry
-* +docker push+      schiebt ein Image oder Repository zur Registry
-* +docker rmi+       löscht Image
-
-* +docker inspect+   Infos über Container oder Images
+  * local/eigene
 
 == Docker -  Erzeugen eines Containers
 
