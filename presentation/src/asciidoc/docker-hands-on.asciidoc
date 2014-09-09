@@ -1,22 +1,12 @@
 :imagesdir: images
 
-== Erzeugen eines Images - hands on
-
-via docker commit::
-
-* erzeuge ein Image "inventage/huschihops:1.0" welches eine leere Datei +huschihops.txt+ enthält
-
-via Dockerfile::
-
-* erzeuge ein Image "inventage/huschihops:2.0" mittels einer Datei +~/projects/docker-test/Dockerfile+
-
 == Einführung - Eigene Docker Registry
 
 [source, bash]
 ----
-docker run -p 5000:5000 -dt --name registry registry
-docker run -d -p 5001:8080 --name registry-ui atcol/docker-registry-ui
-docker ps
+sudo docker run -p 5000:5000 -dt --name registry registry
+sudo docker run -d -p 5001:8080 --name registry-ui atcol/docker-registry-ui
+sudo docker ps
 ----
 
 * nun kann man den Browser mit http://localhost:5001/ öffnen
@@ -33,10 +23,7 @@ docker ps
 
 [source, bash]
 ----
-docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:2.0
-docker tag inventage/huschihops:2.0 localhost:5000/inventage/huschihops:latest
-docker images #zeigt nun schön, dass die Tags *latest* und *2.0* auf die gleiche image id zeigen
+sudo docker tag inventage/huschihops:1.0 localhost:5000/inventage/huschihops:latest
 
-docker push localhost:5000/inventage/huschihops:2.0
-docker push localhost:5000/inventage/huschihops:latest
+sudo docker push localhost:5000/inventage/huschihops:latest
 ----

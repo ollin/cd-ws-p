@@ -31,7 +31,9 @@ Wer steht hinter Docker::
 * Google, Microsoft, Red Hat, IBM, Docker, Mesosphere, CoreOS und SaltStack
   arbeiten am https://github.com/GoogleCloudPlatform/kubernetes[Kubernetes Projekt] mit.
 
-Begriffe::
+== Docker - Begriffe
+
+image::docker-filesystems-multilayer.png["union file system",float="right", link="http://docs.docker.com/terms/layer/"]
 
 * Image
 * Container
@@ -43,7 +45,7 @@ Begriffe::
 
 [source, bash]
 ----
-docker run -i -t ubuntu:14.04.1 bash
+sudo docker run -i -t ubuntu:14.04.1 bash
 root@1081f6156ecc:/#exit
 docker ps -a
 CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS                      PORTS               NAMES
@@ -53,29 +55,27 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 [source, bash]
 ----
-docker run --rm -i -t ubuntu:14.04.1 bash
+sudo docker run --rm -i -t ubuntu:14.04.1 bash
 root@35d2e9236656:/# exit
-docker ps -a
+sudo docker ps -a
 ----
 
 [source, bash]
 ----
-docker run --rm -i -t ubuntu:14.04.1 ls -al
+sudo docker run --rm -i -t ubuntu:14.04.1 ls -al
 ----
 
 == Docker - Erzeugen eines Image
-
-image::docker-filesystems-multilayer.png["union file system",float="right", link="http://docs.docker.com/terms/layer/"]
 
 === via commit
 
 [source, bash]
 ----
-docker run -t -i  ubuntu:14.04.1 bash
+sudo docker run -t -i  ubuntu:14.04.1 bash
 root@dcde95ca3e5c:/# touch huschihops.txt
 root@dcde95ca3e5c:/# exit
-docker ps -a
-docker commit -m="added huschihops.txt" -a="Oliver Nautsch" dcde95ca3e5c inventage/huschihops:1.0
+sudo docker ps -a
+sudo docker commit -m="added huschihops.txt" -a="Oliver Nautsch" dcde95ca3e5c inventage/huschihops:1.0
 ----
 
 === via Dockerfile
@@ -92,7 +92,7 @@ RUN touch huschihops.txt
 
 [source, bash]
 ----
-docker build -t ollin/huschihops:2.0 .
+sudo docker build -t ollin/huschihops:2.0 .
 Sending build context to Docker daemon  2.56 kB
 Sending build context to Docker daemon
 Step 0 : FROM ubuntu:14.04.1
@@ -106,7 +106,7 @@ Step 2 : RUN touch huschihops.txt
 Removing intermediate container 2d4d554cbf2a
 Successfully built 01ee073272ec
 
-docker images
+sudo docker images
 REPOSITORY                       TAG                   IMAGE ID            CREATED             VIRTUAL SIZE
 ollin/huschihops                 2.0                   01ee073272ec        31 seconds ago      225.4 MB
 . . .
