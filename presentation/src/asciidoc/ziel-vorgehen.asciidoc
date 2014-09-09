@@ -32,4 +32,6 @@ image::overview.png["Overview", width=900, link="./images/overview.png"]
 cd
 cd projects/issumy
 git pull origin master
+git push
+git config --global push.default simple
 ----
