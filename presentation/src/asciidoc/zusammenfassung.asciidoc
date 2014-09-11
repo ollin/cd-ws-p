@@ -16,3 +16,10 @@
 Vielen Dank für die Teilnahme!
 
 oliver.nautsch@inventage.com
+
+'''
+nächste Events:
+
+* 07.10.2014 18:00 - Basel - jug.ch Archibal - _Microservices_
+* 09.10.2014 12:00 - Zürich - ch/open Business Lunch - _Warum Docker die Softwareentwicklung ändert._
+* 30.10.2014 ~18:00 - Zürich - jug.ch - _Docker - Eine Einführung aus Sicht eines Softwareentwicklers_

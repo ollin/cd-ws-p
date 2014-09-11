@@ -13,8 +13,8 @@ das in der Java Virtual Machine läuft.
 
 Was ist es nicht::
 
-* eine JEE Implementierung
-* kein Servletcontainer
+* es ist keine JEE Implementierung
+* es ist kein Servletcontainer
 
 == vert.x - Begriffe
 
