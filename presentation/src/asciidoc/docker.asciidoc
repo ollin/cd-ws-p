@@ -38,8 +38,10 @@ image::docker-filesystems-multilayer.png["union file system",float="right", link
 * Image
 * Container
 * Registry
-  * Hub
-  * local/eigene
+  ** Hub
+  ** local/eigene
+* Docker Daemon
+* Docker CLI
 
 == Docker -  Erzeugen eines Containers
 
@@ -64,6 +66,8 @@ sudo docker ps -a
 ----
 sudo docker run --rm -i -t ubuntu:14.04.1 ls -al
 ----
+
+image::dockerstory.png["Docker Story",float="right"]
 
 == Docker - Erzeugen eines Image
 
