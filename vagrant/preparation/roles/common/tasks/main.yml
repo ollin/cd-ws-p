@@ -1,0 +1,9 @@
+---
+  - name: Update APT package cache
+    apt: update_cache=yes cache_valid_time=3600
+
+  - user: name=dev password="$6$oHCuWXE3Kg$dMpeOMWk215YfIon7mYyKyrQqKudfU6/6yIiI1gO2JYt5vvO8eEcVqduxvs1pKQzjqJu2N5B8.nOl114DE1Wb1" comment="Developer" groups="sudo,adm" shell="/bin/bash"
+
+  - name: run ansible galaxy
+    local_action: command ansible-galaxy install -r requirements.yml --ignore-errors
+

@@ -1,0 +1,21 @@
+---
+  - name: Install docker dependencies
+    apt: state=installed pkg={{ item }}
+    with_items: "{{ docker_required_packages }}"
+
+  - name: Install docker repo key
+    apt_key: keyserver=p80.pool.sks-keyservers.net id=58118E89F3A912897C070ADBF76221572C52609D
+
+  - name: Add docker repo
+    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present
+    when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == "{{ ansible_distribution_release }}"
+
+  - name: Install docker
+    apt: state=installed pkg=docker-engine
+
+  - name: Start docker service
+    service: name=docker state=started
+
+  - name: Add users to group docker
+    user: name={{ item }} groups=docker append=true
+    with_items: "{{ docker_users }}"

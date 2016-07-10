@@ -1,0 +1,50 @@
+---
+  - name: Install dependencies
+    apt: name={{ item }} state=latest update_cache=yes cache_valid_time=3600
+    with_items:
+      - tar
+      - unzip
+
+  - name: Check for Intellij is allready installed
+    stat: path=/opt/intellij
+    register: check_install
+
+  - name: Download and Unarchive IntelliJ
+    unarchive:
+      copy=no
+      src=https://download.jetbrains.com/idea/ideaIC-{{intellij_version}}.tar.gz
+      dest=/tmp
+    when: check_install.stat.exists == false
+
+  - shell: ls -d /tmp/idea-IC-*
+    register: intellij_tmp_folder
+    when: check_install.stat.exists == false
+
+  - name: Move IntelliJ folder
+    command: "mv {{intellij_tmp_folder.stdout}} /opt/intellij"
+    args:
+      chdir: /opt
+    ignore_errors: true
+    when: check_install.stat.exists == false
+
+  - name: Create symlink
+    file:
+      src=/opt/intellij/bin/idea.sh
+      dest=/usr/bin/idea
+      state=link
+    become: yes
+
+  - name: Create desktop entry
+    template:
+      src={{role_path}}/templates/desktopentry.j2
+      dest=/usr/share/applications/intellij.desktop
+      mode=755
+    with_items:
+      - {
+        name: "IntelliJ IDEA",
+        exec: "/opt/intellij/bin/idea.sh",
+        icon: "/opt/intellij/bin/idea.png",
+        comment: "Develop with Intellij!",
+        categories: "Development;IDE",
+        startupwmclass: "jetbrains-intellij"
+      }

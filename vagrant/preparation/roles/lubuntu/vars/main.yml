@@ -1,0 +1,3 @@
+lubuntu_packages:
+  - lubuntu-core
+  - lxde

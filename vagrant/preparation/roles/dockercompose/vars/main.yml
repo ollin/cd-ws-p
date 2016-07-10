@@ -1,0 +1,5 @@
+"docker_compose_required_packages":
+  - "python-setuptools"
+
+"docker_compose_version": "1.7.1"
+

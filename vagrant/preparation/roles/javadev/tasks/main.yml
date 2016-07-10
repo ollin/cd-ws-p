@@ -1,0 +1,4 @@
+---
+  - name: Install Java Development packages
+    apt: state=installed pkg={{ item }}
+    with_items: "{{ javadev_packages }}"

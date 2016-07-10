@@ -1,0 +1,16 @@
+---
+- name: provisioning developer machine
+  hosts: devcompi
+
+  become: true
+  become_method: sudo
+  become_user: root
+
+  roles:
+    - common
+    - { role: geerlingguy.ntp, ntp_timezone: Europe/Zurich }
+    - docker
+    - dockercompose
+    - lubuntu
+    - javadev
+    - intellij

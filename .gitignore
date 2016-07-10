@@ -17,4 +17,10 @@ hs_err_pid*
 atlassian-ide-plugin.xml
 
 # ignore vagrant storage
-.vagrant
+**/.vagrant
+**/playbook.retry
+**/*.log
+
+# idea
+.idea
+*.iml

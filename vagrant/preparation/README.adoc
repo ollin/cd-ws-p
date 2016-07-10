@@ -1,0 +1,17 @@
+Verzeichnis enthält Scripte zum Erstellen der Vagrant Box, welche
+im Workshop benutzt wird.
+
+## Software:
+
+### zum Erstellen der Box:
+
+* Virtualbox Version 5.0.20 r106931
+
+### Aufgaben für Anwender
+
+* Setzen der Timezone
+
+
+### Issues
+
+* Ubuntu Cloud Image ubuntu/xenial64 hat kein vbfs siehe: https://bugs.launchpad.net/cloud-images/+bug/1565985

@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version ">= 1.8.4"
+
+Vagrant.configure("2") do |config|
+
+  # config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "boxcutter/ubuntu1604"
+  config.vm.box_check_update = true
+  config.vm.synced_folder ".", "/vagrant/"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+    vb.name = "cd-ws-preparation"
+    vb.memory = 8192
+    vb.cpus = 4
+    vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
+  end
+
+  config.vm.define 'devcompi' do |machine|
+
+    machine.vm.provision :shell,
+        inline: "sudo apt-get update && sudo apt-get install ansible -y -qq &&  sudo ansible-galaxy install -r /vagrant/requirements.yml"
+
+    machine.vm.provision :ansible_local do |ansible|
+        ansible.playbook       = "playbook.yml"
+        ansible.verbose        = true
+        ansible.install        = true
+        ansible.limit          = "devcompi"
+        ansible.inventory_path = "inventory"
+    end
+  end
+end

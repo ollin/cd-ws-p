@@ -1,0 +1,7 @@
+docker_required_packages:
+  - apt-transport-https
+  - ca-certificates
+  - linux-image-extra-{{ ansible_kernel }}
+docker_users:
+  - ubuntu
+  - dev
