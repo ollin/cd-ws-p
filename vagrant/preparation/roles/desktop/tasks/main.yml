@@ -1,0 +1,11 @@
+---
+  - name: Create LeafPad destop entry
+    template:
+      src={{role_path}}/templates/leafpad.desktop.j2
+      dest=/home/dev/Desktop/leafpad.desktop
+      mode="u=rw,g=rw,o=r"
+  - name: Create LXTerminal destop entry
+    template:
+      src={{role_path}}/templates/lxterminal.desktop.j2
+      dest=/home/dev/Desktop/lxterminal.desktop
+      mode="u=rw,g=rw,o=r"

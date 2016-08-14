@@ -2,3 +2,9 @@
   - name: Install Java Development packages
     apt: state=installed pkg={{ item }}
     with_items: "{{ javadev_packages }}"
+
+  - name: Configure global JAVA_HOME
+    template:
+      src={{role_path}}/templates/java.profile.sh.j2
+      dest=/etc/profile.d/java.profile.sh
+      mode="u=rw,g=r,o=r"

@@ -2,8 +2,13 @@
   - name: Update APT package cache
     apt: update_cache=yes cache_valid_time=3600
 
-  - user: name=dev password="$6$oHCuWXE3Kg$dMpeOMWk215YfIon7mYyKyrQqKudfU6/6yIiI1gO2JYt5vvO8eEcVqduxvs1pKQzjqJu2N5B8.nOl114DE1Wb1" comment="Developer" groups="sudo,adm" shell="/bin/bash"
+                  #password="dev123" # created via mkpasswd --method=SHA-512 # see http://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module
+  - user: name=dev password="$6$9UEVStX2$O9dJOSFAfFqKxM8Mlmt8xXn1olSdrvCqZYFwWbJOHzlVzE1VjYczaEDcjfbOCsARstS/n6OG6SVRt4WzcOeiw1" comment="Developer" groups="sudo,adm" shell="/bin/bash"
+
+  - file: path=/home/dev/Desktop state=directory owner=dev group=dev mode="u=rwx,g=rx,o=rx"
 
   - name: run ansible galaxy
     local_action: command ansible-galaxy install -r requirements.yml --ignore-errors
+
+
 

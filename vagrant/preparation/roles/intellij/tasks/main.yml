@@ -34,9 +34,9 @@
       state=link
     become: yes
 
-  - name: Create desktop entry
+  - name: Create menu entry
     template:
-      src={{role_path}}/templates/desktopentry.j2
+      src={{role_path}}/templates/intellij.menu.j2
       dest=/usr/share/applications/intellij.desktop
       mode=755
     with_items:
@@ -47,4 +47,16 @@
         comment: "Develop with Intellij!",
         categories: "Development;IDE",
         startupwmclass: "jetbrains-intellij"
+      }
+
+  - name: Create destop entry
+    template:
+      src={{role_path}}/templates/intellij.desktop.j2
+      dest=/home/dev/Desktop/intellij.desktop
+      mode="u=rw,g=r,o=r"
+    with_items:
+      - {
+        name: "IntelliJ IDEA",
+        icon: "/opt/intellij/bin/idea.png",
+        url: "/usr/share/applications/intellij.desktop"
       }

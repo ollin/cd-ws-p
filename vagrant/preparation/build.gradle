@@ -1,0 +1,118 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "jp.classmethod.aws:gradle-aws-plugin:0.21"
+    }
+}
+
+apply plugin: 'base'
+apply plugin: "jp.classmethod.aws.s3"
+aws {
+    profileName = "ollincdws"
+    region = "eu-central-1"
+}
+import com.amazonaws.services.s3.model.ObjectMetadata
+import jp.classmethod.aws.gradle.s3.AmazonS3FileUploadTask
+import jp.classmethod.aws.gradle.s3.SyncTask
+
+def cdwsBucketName = 'cdworkshop.nautsch.com'
+def destDir = new File(buildDir, 'virtualbox')
+def destOvaFileName = 'cd-ws-box.ova'
+def destOvaFile = new File(destDir, destOvaFileName)
+def destBoxFileName = 'cd-ws-box.box'
+def destBoxFile = new File(destDir, destBoxFileName)
+
+task startBoxVm(type: Exec) {
+    description = 'Starts VM machine running on VirtualBox.'
+    group = 'VirtualBox VM'
+
+    commandLine 'vagrant', 'up'
+}
+
+task haltBoxVm(type: Exec) {
+    description = 'Stops/Halts the VM machine running on VirtualBox.'
+    group = 'VirtualBox VM'
+
+    commandLine 'vagrant', 'halt'
+    ignoreExitValue true
+}
+
+task destroyBoxVm(type: Exec) {
+    description = 'Destroys/Deletes the VM machine running on VirtualBox.'
+    group = 'VirtualBox VM'
+
+    commandLine 'vagrant', 'destroy', '-f'
+    ignoreExitValue true
+}
+
+task recreateBoxVm() {
+    dependsOn = ['clean', 'destroyBoxVm', 'haltBoxVm', 'startBoxVm']
+    description = 'Destroys/Deletes and creates the VM machine running on VirtualBox.'
+    group = 'VirtualBox VM'
+}
+
+task provisionBoxVm(type: Exec) {
+    dependsOn = ['haltBoxVm']
+
+    description = 'Destroys/Deletes and creates the VM machine running on VirtualBox.'
+    group = 'VirtualBox VM'
+
+    commandLine 'vagrant', 'up', '--provision'
+}
+
+task exportBoxVmAsOva(type: Exec) {
+    dependsOn = ['haltBoxVm']
+
+    description = 'Exports the VM machine running on VirtualBox into ova file.'
+    group = 'VirtualBox VM'
+
+    commandLine 'VBoxManage', 'export',  'cd-ws-box', '-o', "${destOvaFile}"
+
+    outputs.file destOvaFile
+
+    doFirst {
+        destDir.mkdirs()
+    }
+}
+
+task packageBoxVm(type: Exec) {
+    dependsOn = ['haltBoxVm']
+
+    description = 'Packages the VM machine running on VirtualBox as box file.'
+    group = 'VirtualBox VM'
+
+    commandLine 'vagrant', 'package', '--base', 'cd-ws-box', '--output', "${destBoxFile}"
+
+    outputs.file destBoxFile
+
+    doFirst {
+        destDir.mkdirs()
+    }
+}
+
+task deploy(type: SyncTask) {
+    dependsOn = ['exportBoxVmAsOva', 'packageBoxVm']
+
+    source destDir
+    bucketName cdwsBucketName
+
+    metadataProvider { bucket, key, file ->
+        ObjectMetadata m = new ObjectMetadata()
+        m.setCacheControl("no-cache, no-store")
+        return m
+    }
+}
+
+task newAndDeploy {
+    dependsOn = ['recreateBoxVm', 'deploy']
+
+}
+
+startBoxVm.mustRunAfter destroyBoxVm
+haltBoxVm.mustRunAfter startBoxVm
+exportBoxVmAsOva.mustRunAfter recreateBoxVm
+packageBoxVm.mustRunAfter recreateBoxVm
+
