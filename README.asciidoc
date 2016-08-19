@@ -40,8 +40,8 @@ Derzeit gestestet ist die Version 5.0.24
 
 ==== Installation via Import
 
-* kopiere die Datei http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box.ova
-  (dies ist ein Link auf die aktuelle Version) auf den Rechner (~3 GB)
+* kopiere die Datei http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box-0.4.ova
+  auf den Rechner (~3 GB)
 * Importiere die Datei via 'VirtualBox Manager -> File -> Import Appliance'
 * Einstellungen entsprechend der eigenen Hardware vornehmen
 
