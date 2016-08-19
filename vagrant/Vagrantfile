@@ -6,13 +6,17 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "ollin/cd-ws-v3.1"
-  config.vm.box_url = "http://images.workshoptage.ch/images/ws4/cd-ws-v3.1.box"
+  config.vm.box = "ollin/cd-ws-box"
+  config.vm.box_check_update = true
 
   config.vm.provider "virtualbox" do |vb|
-    
+
+    vb.name = "cd-ws-box-dev-dev123"
     vb.gui = true
-    vb.name = "cd-ws-v3.1"
+    vb.memory = 8192
+    vb.cpus = 4
+    vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
+    vb.customize ["modifyvm", :id, "--vram", "128"]
     
   end
 end

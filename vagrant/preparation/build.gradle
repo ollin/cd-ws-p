@@ -4,7 +4,8 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "jp.classmethod.aws:gradle-aws-plugin:0.21"
+        classpath "jp.classmethod.aws:gradle-aws-plugin:0.29"
+        classpath "org.codehaus.groovy.modules.http-builder:http-builder:0.7.2"
     }
 }
 
@@ -14,15 +15,32 @@ aws {
     profileName = "ollincdws"
     region = "eu-central-1"
 }
+
 import com.amazonaws.services.s3.model.ObjectMetadata
 import jp.classmethod.aws.gradle.s3.AmazonS3FileUploadTask
-import jp.classmethod.aws.gradle.s3.SyncTask
+import jp.classmethod.aws.gradle.s3.AmazonS3FileDeleteTask
+
+import groovyx.net.http.RESTClient
+import static groovyx.net.http.ContentType.*
+import static groovy.json.JsonOutput.*
+
+String readVersion() {
+    def versionPropsFile = file('version.properties')
+    def Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+
+    return "${versionProps.major}.${versionProps.minor}"
+}
+
+version=readVersion()
 
 def cdwsBucketName = 'cdworkshop.nautsch.com'
 def destDir = new File(buildDir, 'virtualbox')
-def destOvaFileName = 'cd-ws-box.ova'
+def destOvaFileName = "cd-ws-box-${version}.ova"
 def destOvaFile = new File(destDir, destOvaFileName)
-def destBoxFileName = 'cd-ws-box.box'
+def destOvaDummyFileName = "cd-ws-box.ova"
+def destOvaDummyFile = new File(destDir, destOvaDummyFileName)
+def destBoxFileName = "cd-ws-box-${version}.box"
 def destBoxFile = new File(destDir, destBoxFileName)
 
 task startBoxVm(type: Exec) {
@@ -78,6 +96,17 @@ task exportBoxVmAsOva(type: Exec) {
     }
 }
 
+task uploadOva(type: AmazonS3FileUploadTask) {
+    dependsOn = ['exportBoxVmAsOva']
+    file destOvaFile
+    bucketName cdwsBucketName
+    key destOvaFileName
+
+    def m = new ObjectMetadata()
+    m.setCacheControl("no-cache, no-store")
+    objectMetadata = m
+}
+
 task packageBoxVm(type: Exec) {
     dependsOn = ['haltBoxVm']
 
@@ -93,26 +122,118 @@ task packageBoxVm(type: Exec) {
     }
 }
 
-task deploy(type: SyncTask) {
-    dependsOn = ['exportBoxVmAsOva', 'packageBoxVm']
-
-    source destDir
+task uploadBox(type: AmazonS3FileUploadTask) {
+    dependsOn = ['packageBoxVm']
+    file destBoxFile
     bucketName cdwsBucketName
+    key destBoxFileName
 
-    metadataProvider { bucket, key, file ->
-        ObjectMetadata m = new ObjectMetadata()
-        m.setCacheControl("no-cache, no-store")
-        return m
+    def m = new ObjectMetadata()
+    m.setCacheControl("no-cache, no-store")
+    objectMetadata = m
+}
+
+task createOvaDummy() {
+    outputs.file destOvaDummyFile
+    doLast {
+        destOvaDummyFile.createNewFile()
     }
 }
 
-task newAndDeploy {
-    dependsOn = ['recreateBoxVm', 'deploy']
+task deleteOvaDummyOnS3(type: AmazonS3FileDeleteTask) {
+    bucketName cdwsBucketName
+    key destOvaDummyFileName
+}
 
+task uploadOvaDummy(type: AmazonS3FileUploadTask) {
+    dependsOn = ['createOvaDummy', 'deleteOvaDummyOnS3']
+    file destOvaDummyFile
+    bucketName cdwsBucketName
+    key destOvaDummyFileName
+
+    def m = new ObjectMetadata()
+    m.setCacheControl("no-cache, no-store")
+    m.addUserMetadata("x-amz-website-redirect-location", "http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box-${version}.ova")
+    objectMetadata = m
+}
+
+task upload() {
+    dependsOn = ['uploadOva', 'uploadBox', 'uploadOvaDummy']
 }
 
 startBoxVm.mustRunAfter destroyBoxVm
 haltBoxVm.mustRunAfter startBoxVm
 exportBoxVmAsOva.mustRunAfter recreateBoxVm
 packageBoxVm.mustRunAfter recreateBoxVm
+
+task atlasVersion() {
+    mustRunAfter 'uploadBox'
+    doLast {
+
+        def token = new File("${System.properties.'user.home'}/.atlas/cd-workshop-token").text.trim()
+        def RESTClient cdwsBox = new RESTClient( 'https://atlas.hashicorp.com/api/v1/box/ollin/cd-ws-box/' )
+
+        def versionAsString = version.toString()
+
+        cdwsBox.post(
+                path: "versions",
+                headers: [
+                        "X-Atlas-Token": token
+                ],
+                requestContentType: JSON,
+                body: [version: [version: versionAsString]]
+        )
+    }
+}
+
+task atlasProvider() {
+    mustRunAfter 'atlasVersion'
+    doLast {
+
+        def token = new File("${System.properties.'user.home'}/.atlas/cd-workshop-token").text.trim()
+        def RESTClient cdwsBox = new RESTClient( 'https://atlas.hashicorp.com/api/v1/box/ollin/cd-ws-box/' )
+
+        def versionAsString = version.toString()
+
+        cdwsBox.post(
+                path: "version/${versionAsString}/providers",
+                headers: [
+                        "X-Atlas-Token": token
+                ],
+                requestContentType: URLENC,
+                body: "provider[url]=https://s3.eu-central-1.amazonaws.com/cdworkshop.nautsch.com/cd-ws-box-${versionAsString}.box&provider[name]=virtualbox"
+        )
+    }
+}
+
+task atlasRelease() {
+    mustRunAfter 'atlasProvider'
+    doLast {
+
+        def token = new File("${System.properties.'user.home'}/.atlas/cd-workshop-token").text.trim()
+        def RESTClient cdwsBox = new RESTClient( 'https://atlas.hashicorp.com/api/v1/box/ollin/cd-ws-box/' )
+
+        def versionAsString = version.toString()
+
+        cdwsBox.put(
+                path: "version/${versionAsString}/release",
+                headers: [
+                        "X-Atlas-Token": token
+                ]
+        )
+    }
+}
+
+task atlasAll() {
+    dependsOn = ['atlasVersion', 'atlasProvider', 'atlasRelease']
+}
+
+task newRelease(group: 'Build', description: "Creates a new release (recreates the box, uploads the box and ova file to S3 and creates a release on atlas for vagrant") {
+    dependsOn = ['recreateBoxVm', 'upload', 'atlasAll']
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+}
 

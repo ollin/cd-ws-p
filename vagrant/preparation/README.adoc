@@ -7,6 +7,10 @@ im Workshop benutzt wird.
 
 * Virtualbox Version 5.0.20 r106931
 
+
+gradlew new
+
+
 ### Aufgaben für Anwender
 
 * Setzen der Timezone

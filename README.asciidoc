@@ -4,21 +4,18 @@ Continuous Delivery - Hands on
 
 image::https://badges.gitter.im/ollin/cd-ws-p.png["Gitter chat", float="right", link="https://gitter.im/ollin/cd-ws-p"]
 
-Dieses Repository beinhaltet die Unterlagen zum Workshop 04 und Workshop 16.
+Dieses Repository beinhaltet die Unterlagen zum Workshop
 
-"Continuous Delivery - Hands on"
+"Continuous Delivery - Hands on" von Oliver Nautsch
 
-an den CH OPEN Workshoptagen. Dieser Workshop findet am 09.09.2014 und 11.09.2014 statt.
-
-Alle Informationen über den Workshop und den Workshoptagen sind auf der Webseite der
-http://www.ch-open.ch/wstage/workshop-tage/programm-2014/ws-4-continuous-delivery-hands-on/[ch open] zu finden.
-
-Im Workshop arbeiten wir mit http://xubuntu.org/[Xubuntu] innerhalb von https://www.virtualbox.org/[VirtualBox]. In dem
+Im Workshop arbeiten wir mit http://lubuntu.net/[Lubuntu] innerhalb von https://www.virtualbox.org/[VirtualBox]. In dem
 VirtualBox-Image ist viel Software installiert und dementsprechend gross ist das Image auch.
 
 [IMPORTANT]
 Bitte genug Zeit (ca. 30min - 1h) für die Download und die Installation des Image einplanen!
 Die Zeit ist stark von der Bandbreite der Internetverbindung abhängig.
+
+Wenn etwas nicht funktioniert oder unklar ist, dann bitte im https://gitter.im/ollin/cd-ws-p[Gitter Chat] fragen.
 
 == Vorbereitung auf den Workshop
 === Installation des Images
@@ -26,61 +23,53 @@ Die Zeit ist stark von der Bandbreite der Internetverbindung abhängig.
 Voraussetzung um das Image benutzen zu können, ist eine
 https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem eigenen Laptop.
 
+Derzeit gestestet ist die Version 5.0.24
+
 ==== Installation via Vagrant (empfohlene Variante)
 
-IMPORTANT: Die vagrant box war bis 2014-09-05 17:00Uhr nicht in Ordnung. Wer es zuvor versucht hatte zu installieren - Bitte wiederholen. Sorry!
-
-
-* installiere Vagrant http://www.vagrantup.com/downloads.html
-* kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf den Rechner
+* installiere Vagrant auf dem Betriebssystems Deines Laptops (Host) http://www.vagrantup.com/downloads.html
+* kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf Deinen Laptop (Host)
   ** via +git clone https://github.com/ollin/cd-ws-p.git+
   ** via +wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant+
   ** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
      *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
 * wechsle ins Verzeichnis "cd-ws-p/vagrant"
 * starte mit +vagrant up+
-  ** es erfolgt nun der Download der Box (~5 GB)
+  ** es erfolgt nun der Download der Box (~3 GB)
   ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
 
 ==== Installation via Import
 
-* kopiere die Datei http://images.workshoptage.ch/images/ws4/cd-ws-v3.1.ova auf den Rechner (~5 GB)
+* kopiere die Datei http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box.ova
+  (dies ist ein Link auf die aktuelle Version) auf den Rechner (~3 GB)
 * Importiere die Datei via 'VirtualBox Manager -> File -> Import Appliance'
 * Einstellungen entsprechend der eigenen Hardware vornehmen
 
 == Inhalt des VirtualBox Image
 
-VirtualBox 4.3.10
+VirtualBox 5.0.24
 
 Das Image ist wie folgt konfiguriert:
 
-- CPU's:    2
-- RAM:      3072 MB
-- HD:       20GB , dynamisch, LVM
+- CPU's:    4
+- RAM:      8192 MB
+- HD:       64GB , dynamisch, LVM
 - Network:  NAT
 
 Das Image enthaelt:
 
-- Xubuntu 14.04 Desktop 64bit
-- VirtualBox Guest Additions 4.3.10
+- Lubuntu 16.04 Desktop 64bit
+- VirtualBox Guest Additions 5.0.24
 
-- Docker 1.1.1
-- Oracle JDK 8 "1.8.0_05"
-- Git 1.9.1
-- Firefox 30.0
-- Chromium 39.0 (Linux-Variante von Chrome)
-- Intellij Idea Community Edition 13.1
-- Jenkins ver. 1.565.1 ( http://localhost:8180 )
-- Nexus-2.8.1-01 OS ( http://localhost:8181/nexus )
-- ssh server (für vagrant)
+- Docker
+- OpenJDK
+- Git
+- Firefox
+- Intellij Idea Community Edition
 
-Docker Images::
-* ubuntu:14.04.1
-* registry
-* atcol/docker-registry-ui
-* ollin/ubuntu-14.04-oracle-jdk8
-  ** ubuntu 14.04.1
-  ** oracle jdk8 (1.8.0_20)
+- diverse Docker Container
+
+
 
 
 
