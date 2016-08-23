@@ -22,8 +22,15 @@ Vagrant.configure("2") do |config|
 
   config.vm.define 'devcompi' do |machine|
 
-    machine.vm.provision :shell,
-        inline: "sudo apt-get update && sudo apt-get install ansible -y -qq &&  sudo ansible-galaxy install -r /vagrant/requirements.yml"
+    $script = <<SCRIPT
+sudo apt-get update
+sudo apt-get install -y software-properties-common
+sudo apt-add-repository -y ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible -y -qq &&  sudo ansible-galaxy install -r /vagrant/requirements.yml
+SCRIPT
+
+    machine.vm.provision :shell, inline: $script
 
     machine.vm.provision :ansible_local do |ansible|
         ansible.playbook       = "playbook.yml"

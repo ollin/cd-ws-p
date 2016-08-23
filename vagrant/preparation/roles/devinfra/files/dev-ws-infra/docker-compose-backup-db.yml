@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  backup:
+    image: postgres:9.5.3
+    dns_search: .
+    command: pg_dumpall --clean --if-exists -h db -f /tmp/dumpdir/db-dump
+    environment:
+      - PGUSER=admin
+      - PGPASSWORD=admin123
+    volumes:
+      - "./db:/tmp/dumpdir"
+    external_links:
+      - db:db
+
+
+
+
+
+

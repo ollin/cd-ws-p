@@ -153,7 +153,7 @@ task uploadOvaDummy(type: AmazonS3FileUploadTask) {
 
     def m = new ObjectMetadata()
     m.setCacheControl("no-cache, no-store")
-    m.addUserMetadata("x-amz-website-redirect-location", "http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box-${version}.ova")
+    m.setHeader("x-amz-website-redirect-location", "http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box-${version}.ova")
     objectMetadata = m
 }
 

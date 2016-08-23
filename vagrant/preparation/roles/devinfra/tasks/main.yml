@@ -1,0 +1,35 @@
+---
+  - name: Install devinfra dependencies
+    apt: state=installed pkg={{ item }}
+    with_items: "{{ devinfra_required_packages }}"
+
+  - name: Sync folder with docker-compose.yml
+    synchronize:
+      src: "{{role_path}}/files/dev-ws-infra/"
+      dest: /home/dev/dev-ws-infra/
+      mode: push
+
+  - name: Set permissions to user dev
+    file:
+      path: /home/dev/dev-ws-infra
+      recurse: yes
+      group: dev
+      owner: dev
+
+  - name: Add hosts in /etc/hosts
+    lineinfile:
+      dest: /etc/hosts
+      line: "{{ item }}"
+    with_items: "{{ devinfra_hosts }}"
+
+  - name: Runs docker compose
+    docker_service:
+      state: present
+      project_src: "/home/dev/dev-ws-infra/"
+#    register: output
+#
+#  - debug: var=output
+
+
+
+

@@ -1,0 +1,10 @@
+devinfra_required_packages:
+  - rsync
+
+devinfra_hosts:
+  - "127.0.0.1       ci.nautsch.net"
+  - "127.0.0.1       git.nautsch.net"
+  - "127.0.0.1       nexus.nautsch.net"
+
+
+

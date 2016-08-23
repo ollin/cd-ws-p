@@ -9,3 +9,13 @@
       src={{role_path}}/templates/lxterminal.desktop.j2
       dest=/home/dev/Desktop/lxterminal.desktop
       mode="u=rw,g=rw,o=r"
+  - name: Create Firefox destop entry
+    template:
+      src={{role_path}}/templates/firefox.desktop.j2
+      dest=/home/dev/Desktop/firefox.desktop
+      mode="u=rw,g=rw,o=r"
+  - name: Copy Bookmarks HTML file
+    template:
+      src={{role_path}}/templates/bookmarks.html.j2
+      dest=/home/dev/Desktop/bookmarks.html
+      mode="u=rw,g=rw,o=r"

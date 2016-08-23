@@ -11,6 +11,7 @@
     - { role: geerlingguy.ntp, ntp_timezone: Europe/Zurich }
     - docker
     - dockercompose
+    - devinfra
     - lubuntu
     - javadev
     - intellij
