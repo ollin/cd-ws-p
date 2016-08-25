@@ -96,7 +96,7 @@ Das Image enthaelt:
 
 == Presentation
 
-Die link:./presentation/docs/asciidoc/presentation.adoc[Folien] sind mit
+Die link:./presentation/src/docs/asciidoc/presentation.adoc[Folien] sind mit
 http://asciidoctor.org/[Asciidoctor] geschrieben und online einsehbar.
 
 
