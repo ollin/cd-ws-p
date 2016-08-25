@@ -84,7 +84,7 @@ asciidoctor {
         'idprefix': '',
         'idseparator': '-',
         'docinfo1': '',
-        'deckjs_theme': 'swiss',
+        'deckjs_theme': 'neon',
         'deckjs_transition': 'fade'
 
 

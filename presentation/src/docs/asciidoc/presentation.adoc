@@ -1,10 +1,8 @@
 = Continuous Delivery
 Oliver Nautsch <oliver.nautsch@nautsch.com>
 2016
-:revnumber: {project-version}
 :author:    Oliver Nautsch
 ifndef::imagesdir[:imagesdir: images]
-:navigation:
 :menu:
 :goto:
 :scale:
@@ -53,7 +51,8 @@ _Einführung in CD_
 
 * Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. ...
 * agile Softwareentwicklung
-* Release in Produktion zu jeder Zeit möglich
+* DevOps
+* Release in Produktion zu jeder Zeit möglich <- -> jeder Commit ist ein potentieller Release
 
 ( Siehe auch bei http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia] und bei http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
 
@@ -73,6 +72,6 @@ _Einführung in CD_
 
 == Aufgabenstellung
 
-* _address_ - ein Bug Tracking Tool
+* _address_ - ein Adressverwaltungssystem
 * iterativ entwickeln
 
