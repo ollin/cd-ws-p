@@ -12,7 +12,8 @@ VirtualBox-Image ist viel Software installiert und dementsprechend gross ist das
 
 [IMPORTANT]
 Bitte genug Zeit (ca. 30min - 1h) für die Download und die Installation des Image einplanen!
-Die Zeit ist stark von der Bandbreite der Internetverbindung abhängig.
+Die Zeit ist stark von der Bandbreite der Internetverbindung abhängig. Im Workshop sind die WLAN-Verbindungen
+meist nicht ausreichend in vernünftiger Zeit die Vorbereitung zu machen!
 
 Wenn etwas nicht funktioniert oder unklar ist, dann bitte im https://gitter.im/ollin/cd-ws-p[Gitter Chat] fragen.
 
