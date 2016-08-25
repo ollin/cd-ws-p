@@ -1,4 +1,4 @@
-= Continuous Delivery - Hands on
+= Continuous Delivery
 Oliver Nautsch <oliver.nautsch@nautsch.com>
 2016
 :revnumber: {project-version}
@@ -7,16 +7,23 @@ ifndef::imagesdir[:imagesdir: images]
 :navigation:
 :menu:
 :goto:
+:scale:
+:help:
+:toc:
+:status:
+:blank:
 
 == Zur Person
 
-Oliver Nautsch
-
-_Software Crafter_
-
- * Microservices, TDD, DDD, CD, Virtualisierung, ...
-
+Oliver Nautsch +
+_Software Crafter_ (Engineering, Coaching, Consulting) +
 Nautsch GmbH | Im oberen Boden 1 | 8049 Zürich
+
+* Well rounded fullstack Java (Kotlin), JavaScript, HTML, SQL, ...
+* Microservices, CD, TDD, Build Tools, DB, Docker, Linux, ...
+* Coaching, Cultural Change, DevOps, ...
+* Von Startups bis Big Enterprise
+* Finanzindustrie, Bildungsumfeld
 
 '''
 
@@ -27,7 +34,45 @@ google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
 
 
 '''
+Vorsitzender des Vorstandes der http://jug.ch[Java User Group Switzerland] +
+Co-Organisator http://socrates-day.ch/[SoCraTes Day Switzerland] 2015 und 2016
 
-jug.ch Vorsitzender +
-Co-Organisator _SoCraTes Day Switzerland_ 2015 und 2016
+
+== Ziel
+
+_Einführung in CD_
+
+* Antworten – fragt bitte jederzeit
+* Begriffe – die wichtig sind
+* Werkzeuge - die man gebrauchen kann
+* Pipeline - als Beispiel
+
+== Was ist...
+
+=== Continuous Delivery ===
+
+* Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. ...
+* agile Softwareentwicklung
+* Release in Produktion zu jeder Zeit möglich
+
+( Siehe auch bei http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia] und bei http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
+
+=== Deployment Pipeline ===
+
+* Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
+
+== Warum?
+
+* Weniger Nacharbeiten
+* Mehr Automatisierung
+* Weniger Riskio bei Auslieferung
+* Mehr Durchsatz bei höherer Stabilität
+* Weniger Fehler bei Änderungen
+* Fehler einfacher zu finden
+* Schnellere Reaktionszeit
+
+== Aufgabenstellung
+
+* _address_ - ein Bug Tracking Tool
+* iterativ entwickeln
 

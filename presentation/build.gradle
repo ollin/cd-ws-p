@@ -73,6 +73,7 @@ asciidoctor {
 
     attributes \
         'build-gradle': file('build.gradle'),
+        'encoding': 'utf-8',
         'sourcedir': project.sourceSets.main.java.srcDirs[0],
         'endpoint-url': 'http://nautsch.com',
         'source-highlighter': 'coderay',
@@ -86,7 +87,10 @@ asciidoctor {
         'deckjs_theme': 'swiss',
         'deckjs_transition': 'fade'
 
+
+
     options template_dirs : [new File(templateDir,'haml').absolutePath ]
 
     dependsOn download
 }
+
