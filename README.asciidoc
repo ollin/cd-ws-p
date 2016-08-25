@@ -94,6 +94,11 @@ Das Image enthaelt:
 
 - diverse Docker Container
 
+== Presentation
+
+Die link:./presentation/docs/asciidoc/presentation.adoc[Folien] sind mit
+http://asciidoctor.org/[Asciidoctor] geschrieben und online einsehbar.
+
 
 
 

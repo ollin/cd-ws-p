@@ -1,0 +1,33 @@
+= Continuous Delivery - Hands on
+Oliver Nautsch <oliver.nautsch@nautsch.com>
+2016
+:revnumber: {project-version}
+:author:    Oliver Nautsch
+ifndef::imagesdir[:imagesdir: images]
+:navigation:
+:menu:
+:goto:
+
+== Zur Person
+
+Oliver Nautsch
+
+_Software Crafter_
+
+ * Microservices, TDD, DDD, CD, Virtualisierung, ...
+
+Nautsch GmbH | Im oberen Boden 1 | 8049 Zürich
+
+'''
+
+email:      oliver.nautsch@nautsch.com +
+twitter:    https://twitter.com/ollispieps[@ollispieps] +
+github:     https://github.com/ollin[@ollin] +
+google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
+
+
+'''
+
+jug.ch Vorsitzender +
+Co-Organisator _SoCraTes Day Switzerland_ 2015 und 2016
+
