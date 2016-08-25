@@ -12,6 +12,7 @@
     - docker
     - dockercompose
     - devinfra
+    - devproject
     - lubuntu
     - javadev
     - intellij

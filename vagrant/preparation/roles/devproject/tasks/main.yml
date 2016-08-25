@@ -1,0 +1,17 @@
+---
+  - name: Clone cd-ws-address project
+    git:
+      repo: 'https://github.com/ollin/cd-ws-address.git'
+      dest: '/home/dev/cd-ws-address'
+
+  - name: Set permissions to user dev
+    file:
+      path: '/home/dev/cd-ws-address'
+      recurse: yes
+      group: dev
+      owner: dev
+
+
+
+
+
