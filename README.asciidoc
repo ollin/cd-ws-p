@@ -1,5 +1,4 @@
-Continuous Delivery - Hands on
-==============================
+# Continuous Delivery - Hands on
 :author:    Oliver Nautsch
 
 image::https://badges.gitter.im/ollin/cd-ws-p.png["Gitter chat", float="right", link="https://gitter.im/ollin/cd-ws-p"]
@@ -27,16 +26,41 @@ Derzeit gestestet ist die Version 5.0.24
 
 ==== Installation via Vagrant (empfohlene Variante)
 
-* installiere Vagrant auf dem Betriebssystems Deines Laptops (Host) http://www.vagrantup.com/downloads.html
+* installiere http://www.vagrantup.com/downloads.html[Vagrant] auf dem Betriebssystems Deines Laptops (Host)
 * kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf Deinen Laptop (Host)
-  ** via +git clone https://github.com/ollin/cd-ws-p.git+
-  ** via +wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant+
-  ** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
-     *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
+** via git
+[source, bash]
+----
+git clone https://github.com/ollin/cd-ws-p.git
+----
+
+** via wget
+[source, bash]
+----
+wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant+
+----
+
+** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
+*** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
+
 * wechsle ins Verzeichnis "cd-ws-p/vagrant"
 * starte mit +vagrant up+
-  ** es erfolgt nun der Download der Box (~3 GB)
-  ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
+** es erfolgt nun der Download der Box (~3 GB)
+** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
+
+_Neuinstallation_
+
+Sollte eine vollständige Neuinstallation oder ein Upgrade notwenig sein, so wie folgt vorgehen:
+
+[source, bash]
+----
+cd cd-ws-p/vagrant    # Verzeichnis in dem die Datei Vagrantfile liegt
+vagrant destroy -f    # löscht die Box in Virtualbox
+vagrant box update    # holt die neuste Version der Box
+vagrant up            # startet die Box in Virtualbox
+----
+
+
 
 ==== Installation via Import
 
