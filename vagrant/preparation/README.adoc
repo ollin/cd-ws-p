@@ -7,8 +7,17 @@ im Workshop benutzt wird.
 
 * Virtualbox Version 5.0.20 r106931
 
+[source,bash]
+----
+./gradlew new
+----
 
-gradlew new
+### locales neubauen zum testen
+
+[source,bash]
+----
+./gradlew recreateBoxVm
+----
 
 
 ### Aufgaben für Anwender

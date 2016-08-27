@@ -1,0 +1,7 @@
+dev_util_packages:
+  - httpie
+  - curl
+  - wget
+  - htop
+  - tig
+  - tmux

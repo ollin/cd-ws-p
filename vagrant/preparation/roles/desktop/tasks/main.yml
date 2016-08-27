@@ -19,3 +19,22 @@
       src={{role_path}}/templates/bookmarks.html.j2
       dest=/home/dev/Desktop/bookmarks.html
       mode="u=rw,g=rw,o=r"
+  - name: create panel directory
+    file:
+      path=/home/dev/.config/lxpanel/LXDE/panels/
+      state=directory
+  - name: create panel directory
+    file:
+      path=/home/dev/.config/
+      state=directory
+      owner=dev
+      group=dev
+      mode=0755
+      recurse=yes
+  - name: Configure Panel
+    copy:
+      src={{role_path}}/templates/panel.j2
+      dest=/home/dev/.config/lxpanel/LXDE/panels/panel
+      mode="u=rw,g=rw,o=r"
+      owner=dev
+      group=dev

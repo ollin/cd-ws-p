@@ -1,0 +1,5 @@
+---
+  - name: 'Install dev tools (wget, httpie, etc)'
+    apt: state=installed pkg={{ item }}
+    with_items: "{{ dev_util_packages }}"
+

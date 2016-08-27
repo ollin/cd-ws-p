@@ -23,13 +23,15 @@ services:
     restart: always
 
   ci:
-    image: jenkins:2.7.2
+    build:
+      context: ./jenkins
     container_name: ci
     environment:
       - VIRTUAL_HOST=ci.nautsch.net
       - VIRTUAL_PORT=8080
     volumes:
       - jenkins-home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       nautsch.net:
         aliases:

@@ -2,4 +2,5 @@ lubuntu_packages:
   - lubuntu-core
   - lxde
   - lubuntu-software-center
-
+  - language-selector-gnome
+  - language-pack-de

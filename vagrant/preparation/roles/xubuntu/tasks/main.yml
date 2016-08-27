@@ -1,0 +1,4 @@
+---
+  - name: Install Lubuntu packages
+    apt: state=installed pkg={{ item }}
+    with_items: "{{ lubuntu_packages }}"
