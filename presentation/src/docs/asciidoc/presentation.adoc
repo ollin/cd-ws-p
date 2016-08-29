@@ -45,6 +45,160 @@ _Einführung in CD_
 * Werkzeuge - die man gebrauchen kann
 * Pipeline - als Beispiel
 
+== Das Projekt
+
+* _cd-ws-address_ - ein Adressverwaltungssystem
+* iterativ entwickeln
+
+== Git
+
+image::git.png[Git,150,150,float="right"]
+
+* Verteilte Versionsverwaltung von Dateien
+
+
+== Gradle
+
+image::gradlephant.png[Gradle,150,150,float="right"]
+
+
+== HandsOn 1:
+
+. Linux in Virtualbox gestartet
+. Projekt cd-ws-address gebaut
+. Server gestartet
+. Ergebniss des Servers in Browser oder via http angeschaut
+. optional
+.. Projekt in Intellij Idea importieren)
+
+== Erläuterung zu HandsOn 1
+
+image::keyboard-layout-applet.png[Keyboard Layout,,,float="right"]
+
+. Einloggen in Linux Guest innerhalb Virtualbox (`dev`, `dev123`)
+.. rechts unten im Panel ist ein Applet zur Auswahl des Tastaturlayouts
+. Starten des Teminal progammes
+
+[source,bash]
+----
+dev@vagrant:~$ cd /home/dev/cd-ws-address/      // <1>
+dev@vagrant:~/cd-ws-address$ git pull           // <2>
+dev@vagrant:~/cd-ws-address$ ./gradlew sync01   // <3>
+dev@vagrant:~/cd-ws-address$ ./gradlew build    // <4>
+dev@vagrant:~/cd-ws-address$ java -jar 00-workspace/build/libs/address-0.0.1.jar // <5>
+----
+<1> Wechsel ins Projektverzeichnis
+<2> Aktualisieren des Projekten von github
+<3> erste Uebung in den Workspace kopieren
+<4> bauen des Projektes
+<5> starten des servers
+
+[start=3]
+. zweites Terminal starten
+
+
+[source,bash]
+----
+dev@vagrant:~$ http localhost:8080/
+----
+
+== Continous Integration
+
+http://www.martinfowler.com/articles/continuousIntegration.html[nach Martin Fowler]
+
+* Gemeinsame Codebasis
+* Automatisierte Übersetzung
+* Kontinuierliche Test-Entwicklung
+  ** Test zusammen mit Produktionscode entwickeln
+  ** Code Coverage
+* Häufige Integration des Codes jedes Entwicklers in den Hauptentwicklungszweig
+* Schneller Build und schnelle Test für schnelles Feedback
+* Gespiegelte Produktionsumgebung
+* Einfacher Zugriff auf Ergebnisse
+* Automatisiertes Reporting
+* Automatisierte Verteilung
+
+http://de.wikipedia.org/wiki/Kontinuierliche_Integration[Siehe auch Wikipedia - Kontinuierliche Integration]
+
+== Gogs
+
+image::gogs.png[Gogs,,,float="right"]
+
+* Git-Repository-Verwaltung
+** Issue-Verwaltung
+** Issues
+** Git Hooks
+** ...
+
+[width=50,cols="1,1"]
+|====
+| URL:  | http://git.nautsch.net
+| User: | `dev`
+| PW:   | `dev123`
+|====
+
+== HandsOn 2
+
+* Erzeugen eines zentralen Repository in Gogs
+
+== Erläuterung zu HandsOn 2
+
+. Anmelden in Gogs (`dev`, `dev123`)
+. Erzeugen eines Repository mit dem Namen _cd-ws-address_
+. Terminal
+
+[source,bash]
+----
+$ cd /home/dev/cd-ws-address/
+$ git config --global user.email "dev@example.com"  # <1>
+$ git config --global user.name "dev"               # <2>
+$ git remote add upstream http://git.nautsch.net/dev/cd-ws-address.git # <3>
+$ git add -A && git commit -m "handson 01 in workspace" # <4>
+$ git push -u upstream master # <5>
+----
+
+<1> setze globale email
+<2> setze usernamen ueber alle Projekte
+<3> gogs als remote repository unter dem Namen _upstream_ hinzufügen
+<4> füge den Sync in den Workspace (Siehe HandsOn 1) dem Repository hinzu
+<5> code zu gogs push'en und den lokalen branch mit gogs verbinden (`-u`)
+
+== Jenkins
+
+== HandsOn 3
+
+* Job in Jenkins anlegen
+* verbinden mit zentralen Repo in Gogs
+
+== Erläuterung zu HandsOn 3
+
+. initiale Passwort holen
+
+[source,bash]
+----
+$ cd /home/dev/dev-ws-infra/
+$ docker-compose exec ci cat /var/jenkins_home/secrets/initialAdminPassword # <1>
+----
+
+<1> liefert das initiale Password fuer Jenkins
+
+[start=2]
+. Browser öffnen http://ci.nautsch.net
+. Passwort reinkompoieren (aus Schritt 1), next
+. "Install suggested plugins" auswählen
+. "Create First Admin User"
+[width=50,cols="1,1"]
+|====
+| Username:             | `dev`
+| Password:             | `dev123`
+| Confirm password:     | `dev123`
+| Full name:            | `dev devi`
+| E-mail address:       | `dev@example.com`
+|====
+
+[start=6]
+. Save and Finish
+
 == Was ist...
 
 === Continuous Delivery ===
@@ -60,6 +214,12 @@ _Einführung in CD_
 
 * Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
 
+== Wo kann man CD anwenden
+
+* Applikation
+* Datenbank
+* Infrastruktur
+
 == Warum?
 
 * Weniger Nacharbeiten
@@ -70,12 +230,38 @@ _Einführung in CD_
 * Fehler einfacher zu finden
 * Schnellere Reaktionszeit
 
-== Das Projekt
-
-* _address_ - ein Adressverwaltungssystem
-* iterativ entwickeln
 
 
+== Schranken
 
+[cols="4,^1,^1,^1,^1,^1,^1"]
+|=========================================================
+| ->                                    |Commit    | AAT      | Expl.T   | UAT      | Pre-Prod | Prod
+| Syntax Check                          |  X       |     _    |     _    |     _    |     _    |  _
+| Unit Tests                            |  X       |     _    |     _    |     _    |     _    |  _
+| Compile                               |  X       |     _    |     _    |     _    |     _    |  _
+| Code Metrics                          |  X       |     _    |     _    |     _    |     _    |  _
+| Story Level Tests                     |     _    |  X       |     _    |     _    |     _    |  _
+| Integration Tests                     |     _    |  X       |     _    |     _    |     _    |  _
+| BDD Tests                             |     _    |  X       |     _    |     _    |     _    |  _
+| Component Tests                       |     _    |  X       |     _    |     _    |     _    |  _
+| Feature-Level Testing                 |     _    |  X       |     _    |     _    |     _    |  _
+| Visual Tests                          |     _    |     _    |  X       |     _    |     _    |  _
+| Usability Tests                       |     _    |     _    |  X       |     _    |     _    |  _
+| Showcases                             |     _    |     _    |     _    | X        |     _    |  _
+| Feature-Level Testing beim Kunden     |     _    |     _    |     _    | X        |     _    |  _
+| Performance Tests                     |     _    |     _    |     _    |     _    |  X       |  _
+| Network Tests                         |     _    |     _    |     _    |     _    |  X       |  _
+| Capacity Tests                        |     _    |     _    |     _    |     _    |  X       |  _
+| Smoke Tests                           |     _    |     _    |     _    |     _    |  X       |  X
+| Post-Deployment-Tests                 |     _    |     _    |     _    |     _    |  X       |  X
+| Rollback & Redeploy                   |     _    |     _    |     _    |     _    |  X       |  X
+| Ongoing Live Tests                    |     _    |     _    |     _    |     _    |     _    |  X
+|=========================================================
 
+* AAT -- Automated Acceptance Testing
+* Expl.T -- Exploratory Testing
+* UAT -- User Acceptance Testing
+* Pre-Prod -- Pre-Production
+* Prod -- Production
 

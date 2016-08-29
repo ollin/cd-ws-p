@@ -19,3 +19,11 @@
   - name: Add users to group docker
     user: name={{ item }} groups=docker append=true
     with_items: "{{ docker_users }}"
+
+  - name: Change /etc/default/docker
+    template:
+      src={{role_path}}/templates/docker.j2
+      dest=/etc/default/docker
+      mode="u=rw,g=r,o=r"
+    notify:
+      - restart docker

@@ -10,4 +10,7 @@ RUN apt-get update && \
     gpasswd -a jenkins docker && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY plugins.txt /usr/share/jenkins/ref/
+RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
+ENV JAVA_OPTS=-Djenkins.install.runSetupWizard=false
 USER jenkins

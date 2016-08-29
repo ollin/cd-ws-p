@@ -92,6 +92,20 @@ services:
           - nexus.nautsch.net
     restart: always
 
+  registry:
+    image: registry:2
+    container_name: registry
+    ports:
+      - "5000:5000"
+    environment:
+      - VIRTUAL_HOST=registry.nautsch.net
+      - VIRTUAL_PORT=5000
+    networks:
+      nautsch.net:
+        aliases:
+          - registry.nautsch.net
+    restart: always
+
 
 
 

@@ -4,7 +4,7 @@
 ** `docker-compose stop && docker-compose rm -f`
 * entferne alle volumes aus dem projekt
 ** `docker volume rm $(docker volume ls -q)`
-** `docker volume rm $(docker volume ls -q | grep cdwsinfra)`
+** `docker volume rm $(docker volume ls -q | grep devwsinfra)`
 * baue alles neu
 ** `docker-compose build`
 * entferne `db/docker-entrypoint-initdb.d/01-init-gogs-db.sh` die db-dump instruktion und nehme die normalen statements

@@ -1,0 +1,41 @@
+== Find all Plugins (for plugin.sh)
+
+. Inside jenkins -> manage jenkins -> sript
+. copy and past the following
+
+[source,bash]
+----
+def pstr = ''
+def plist = jenkins.model.Jenkins.instance.pluginManager.plugins
+
+plist.sort{it}  // plugins list `it` defaults to shortName
+
+plist.each {
+  pname = "${it}".replaceAll("Plugin:", '')
+  pstr = pstr + pname + ':' + it.getVersion() + "\n"  // + "<br>"
+}
+
+println pstr  // Console Output
+
+return
+----
+
+== Find all Plugins (for install-plugin.sh)
+
+[source,bash]
+----
+def pstr = ''
+def plist = jenkins.model.Jenkins.instance.pluginManager.plugins
+
+plist.sort{it}  // plugins list `it` defaults to shortName
+
+plist.each {
+  pname = "${it}".replaceAll("Plugin:", '')
+  pstr = pstr + pname + ':' + it.getVersion() + ' '
+}
+
+println pstr  // Console Output
+
+return
+----
+

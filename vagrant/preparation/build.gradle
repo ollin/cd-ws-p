@@ -58,6 +58,13 @@ task haltBoxVm(type: Exec) {
     ignoreExitValue true
 }
 
+task downloadBaseBox(type: Exec) {
+description = 'Stops/Halts the VM machine running on VirtualBox.'
+    group = 'VirtualBox VM'
+
+    commandLine 'vagrant', 'box', 'update'
+}
+
 task destroyBoxVm(type: Exec) {
     description = 'Destroys/Deletes the VM machine running on VirtualBox.'
     group = 'VirtualBox VM'
@@ -67,7 +74,7 @@ task destroyBoxVm(type: Exec) {
 }
 
 task recreateBoxVm() {
-    dependsOn = ['clean', 'destroyBoxVm', 'haltBoxVm', 'startBoxVm']
+    dependsOn = ['clean', 'destroyBoxVm', 'haltBoxVm', 'downloadBaseBox', 'startBoxVm']
     description = 'Destroys/Deletes and creates the VM machine running on VirtualBox.'
     group = 'VirtualBox VM'
 }
@@ -164,6 +171,7 @@ task upload() {
 startBoxVm.mustRunAfter destroyBoxVm
 haltBoxVm.mustRunAfter startBoxVm
 exportBoxVmAsOva.mustRunAfter recreateBoxVm
+downloadBaseBox.mustRunAfter destroyBoxVm
 packageBoxVm.mustRunAfter recreateBoxVm
 
 task atlasVersion() {
