@@ -52,14 +52,40 @@ _Einführung in CD_
 
 == Git
 
-image::git.png[Git,150,150,float="right"]
+image::git.png[Git,150,150,float="right", link="https://git-scm.com/"]
 
 * Verteilte Versionsverwaltung von Dateien
+
+* `git init`
+* `git add <files>`
+* `git commit`
+* `git reset \-- <files>`
+* `git checkout \-- <files>`
+* `git status`
+* `git log`
+Manual::
+* `man git-init`
+Links::
+* Git Buch: http://git-scm.com/book/de
+* Visuelle Git Referenz: http://marklodato.github.io/visual-git-guide/index-de.html
+* Git CheatSheet: http://ndpsoftware.com/git-cheatsheet.html
 
 
 == Gradle
 
-image::gradlephant.png[Gradle,150,150,float="right"]
+image::gradle.png[Gradle,,,float="right", link="http://www.gradle.org/"]
+
+* *build.gradle*
+* Groovy-Skript, DSL
+* Plugins
+* Konvention vor Konfiguration (Convention over Configuration)
+  ** http://www.gradle.org/docs/current/userguide/java_plugin.html[Java-Plugin] benutzt Standard-Verzeichnis-Layout von Maven
+* Drei Phasen der Abarbeitung
+  ** Initialisierung -- findet heraus welche Projekte gebaut werden sollen
+  ** Konfiguration -- erzeugt _Directed acyclic graph_ (kurz DAG)
+  ** Ausführung -- arbeitet DAG ab oder Abbruch
+* deklarativ / imperativ
+* der Gradle-Wrapper
 
 
 == HandsOn 1:
@@ -79,7 +105,7 @@ image::keyboard-layout-applet.png[Keyboard Layout,,,float="right"]
 .. rechts unten im Panel ist ein Applet zur Auswahl des Tastaturlayouts
 . Starten des Teminal progammes
 
-[source,bash]
+[listing]
 ----
 dev@vagrant:~$ cd /home/dev/cd-ws-address/      // <1>
 dev@vagrant:~/cd-ws-address$ git pull           // <2>
@@ -97,7 +123,7 @@ dev@vagrant:~/cd-ws-address$ java -jar workspace/build/libs/address-0.0.1.jar //
 . zweites Terminal starten
 
 
-[source,bash]
+[listing]
 ----
 $ http http://localhost:8080/
 ----
@@ -149,7 +175,7 @@ image::gogs.png[Gogs,,,float="right"]
 . Erzeugen eines Repository mit dem Namen _cd-ws-address_
 . Terminal (mit Ctrl-C Server stoppen)
 
-[source,bash]
+[listing]
 ----
 $ cd /home/dev/cd-ws-address/
 $ git config --global user.email "dev@example.com"  # <1>
@@ -166,6 +192,19 @@ $ git push -u upstream master # <5>
 <5> code zu gogs push'en und den lokalen branch mit gogs verbinden (`-u`)
 
 == Jenkins
+
+image::jenkins.png[Jenkins,150,150,float="right", link="http://jenkins-ci.org/"]
+
+* erweiterbares, webbasisertes System zur kontinuierlichen Integration von Komponenten
+* ursprünglich entwickelt von Kohsuke Kawaguchi unter dem Namen _Hudson_
+
+Begriffe::
+
+* Jobs (Projects)
+* Steps
+* Post-build Actions
+* Views
+* Plugins (z.B. https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin[Git-Plugin])
 
 == HandsOn 3
 
@@ -206,9 +245,9 @@ $ git push -u upstream master # <5>
 == Erläuterung zu HandsOn 4
 
 . benutze die Url via CLI zum testen
-[source, bash]
+[listing]
 ----
-curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws-address.git
+$ curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws-address.git
 ----
 [start=2]
 . wenn +Scheduled polling of handson_3+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
@@ -232,15 +271,13 @@ curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws
 . add und commit ins lokale Repo und
 . push zum Remote
 
-[source,bash]
+[listing]
 ----
 $ cd /home/dev/cd-ws-address/workspace/
 $ touch neuedatei.txt
 $ git add -A && git commit -m "handson 04 via git hook"
 $ git push
 ----
-
-
 
 == Was ist...
 
@@ -253,6 +290,7 @@ $ git push
 
 ( Siehe auch bei http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia] und bei http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
 
+
 === Deployment Pipeline ===
 
 * Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
@@ -263,7 +301,30 @@ $ git push
 * Datenbank
 * Infrastruktur
 
+== Nexus
+
+image::nexus.png[Nexus,150,150,float="right", link="https://www.sonatype.com/nexus-repository-oss"]
+
+Nexus ist ein Software Repository Manager. Ein Softwarerepository ist ein Speicherort von
+welchen man Softwarepakete beziehen kann. Es enthält neben den Programmpaketen auch Metadaten über diese.
+
+Begriffe::
+* Repository
+  ** Hosted
+  ** Proxy
+  ** Group
+* User
+* Rollen
+
 == Warum?
+
+[quote, Principles behind the Agile Manifesto]
+____
+Our highest priority is to satisfy the customer
+through early and continuous delivery
+of valuable software. ...
+____
+
 
 * Weniger Nacharbeiten
 * Mehr Automatisierung
@@ -272,6 +333,7 @@ $ git push
 * Weniger Fehler bei Änderungen
 * Fehler einfacher zu finden
 * Schnellere Reaktionszeit
+
 
 
 
