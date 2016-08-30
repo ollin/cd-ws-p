@@ -15,8 +15,23 @@
     command: ./gradlew build clean
     args:
       chdir: /home/dev/cd-ws-address/handson-01
-    become: yes
-    become_user: dev
+
+  - name: mv .gradle from root (workaround for non-privileged user)
+    command:  mv /root/.gradle /home/dev/.gradle
+    args:
+      creates: "/home/dev/.gradle"
+      removes: "/root/.gradle"
+
+  - name: Set permissions of /home/dev/.gradle to user dev (workaround for non-privileged user)
+    file:
+      path: '/home/dev/.gradle'
+      recurse: yes
+      group: dev
+      owner: dev
+
+
+
+
 
 
 
