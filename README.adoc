@@ -45,9 +45,16 @@ wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile 
 *** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
 
 * wechsle ins Verzeichnis "cd-ws-p/vagrant"
-* starte mit +vagrant up+
+* starte die Box
+[source, bash]
+----
+vagrant up
+----
 ** es erfolgt nun der Download der Box (~3 GB)
 ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
+** Einloggen in Linux Guest innerhalb Virtualbox (`dev`, `dev123`)
+** Linux wieder beenden
+** FERTIG
 
 _Neuinstallation_
 
@@ -84,9 +91,9 @@ Das Image ist wie folgt konfiguriert:
 Das Image enthaelt:
 
 - Lubuntu 16.04 Desktop 64bit
-- VirtualBox Guest Additions 5.0.24
+- VirtualBox Guest Additions 5.0.26
 
-- Docker
+- Docker, Docker Compose
 - OpenJDK
 - Git
 - Firefox
