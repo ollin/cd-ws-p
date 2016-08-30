@@ -38,7 +38,7 @@ git clone https://github.com/ollin/cd-ws-p.git
 ** via wget
 [source, bash]
 ----
-wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant+
+wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant
 ----
 
 ** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
