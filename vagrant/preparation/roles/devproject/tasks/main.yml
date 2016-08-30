@@ -15,6 +15,8 @@
     command: ./gradlew build clean
     args:
       chdir: /home/dev/cd-ws-address/handson-01
+    become: yes
+    become_user: dev
 
 
 
