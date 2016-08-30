@@ -2,6 +2,7 @@ buildscript {
     dependencies {
         classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta1'
         classpath 'commons-httpclient:commons-httpclient:3.1'
+        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.11'
     }
 }
 
@@ -69,7 +70,7 @@ asciidoctor {
         }
     }
 
-    backends 'html5'
+    backends 'html5', 'pdf'
 
     attributes \
         'build-gradle': file('build.gradle'),
