@@ -11,6 +11,12 @@
       group: dev
       owner: dev
 
+  - name: build project to download files
+    command: ./gradlew build clean
+    args:
+      chdir: /home/dev/cd-ws-address/handson-01
+
+
 
 
 

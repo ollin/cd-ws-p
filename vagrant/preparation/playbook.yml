@@ -12,9 +12,9 @@
     - docker
     - dockercompose
     - devinfra
+    - javadev
     - devproject
     - devutils
     - lubuntu
-    - javadev
     - intellij
     - desktop

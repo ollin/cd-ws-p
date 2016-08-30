@@ -3,15 +3,14 @@
     apt: state=installed pkg={{ item }}
     with_items: "{{ devinfra_required_packages }}"
 
-  - name: Sync folder with docker-compose.yml
-    synchronize:
-      src: "{{role_path}}/files/dev-ws-infra/"
-      dest: /home/dev/dev-ws-infra/
-      mode: push
+  - name: Clone cd-ws-infa project
+    git:
+      repo: 'https://github.com/ollin/cd-ws-infa.git'
+      dest: '/home/dev/cd-ws-infa'
 
   - name: Set permissions to user dev
     file:
-      path: /home/dev/dev-ws-infra
+      path: '/home/dev/cd-ws-infa'
       recurse: yes
       group: dev
       owner: dev
@@ -25,7 +24,7 @@
   - name: Runs docker compose
     docker_service:
       state: present
-      project_src: "/home/dev/dev-ws-infra/"
+      project_src: "/home/dev/cd-ws-infa"
 #    register: output
 #
 #  - debug: var=output

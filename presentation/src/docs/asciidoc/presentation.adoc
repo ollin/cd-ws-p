@@ -85,7 +85,7 @@ dev@vagrant:~$ cd /home/dev/cd-ws-address/      // <1>
 dev@vagrant:~/cd-ws-address$ git pull           // <2>
 dev@vagrant:~/cd-ws-address$ ./gradlew sync01   // <3>
 dev@vagrant:~/cd-ws-address$ ./gradlew build    // <4>
-dev@vagrant:~/cd-ws-address$ java -jar 00-workspace/build/libs/address-0.0.1.jar // <5>
+dev@vagrant:~/cd-ws-address$ java -jar workspace/build/libs/address-0.0.1.jar // <5>
 ----
 <1> Wechsel ins Projektverzeichnis
 <2> Aktualisieren des Projekten von github
@@ -99,7 +99,7 @@ dev@vagrant:~/cd-ws-address$ java -jar 00-workspace/build/libs/address-0.0.1.jar
 
 [source,bash]
 ----
-dev@vagrant:~$ http localhost:8080/
+$ http http://localhost:8080/
 ----
 
 == Continous Integration
@@ -130,6 +130,14 @@ image::gogs.png[Gogs,,,float="right"]
 ** Git Hooks
 ** ...
 
+== HandsOn 2
+
+* Erzeugen eines zentralen Repository in Gogs
+
+== Erläuterung zu HandsOn 2
+
+. Anmelden in Gogs
+
 [width=50,cols="1,1"]
 |====
 | URL:  | http://git.nautsch.net
@@ -137,15 +145,9 @@ image::gogs.png[Gogs,,,float="right"]
 | PW:   | `dev123`
 |====
 
-== HandsOn 2
-
-* Erzeugen eines zentralen Repository in Gogs
-
-== Erläuterung zu HandsOn 2
-
-. Anmelden in Gogs (`dev`, `dev123`)
+[start=2]
 . Erzeugen eines Repository mit dem Namen _cd-ws-address_
-. Terminal
+. Terminal (mit Ctrl-C Server stoppen)
 
 [source,bash]
 ----
@@ -172,32 +174,73 @@ $ git push -u upstream master # <5>
 
 == Erläuterung zu HandsOn 3
 
-. initiale Passwort holen
+[start=2]
+. Browser öffnen -> http://ci.nautsch.net
+. Job anlegen
+.. "New Item"
+.. "Enter an item name" -> `handson_3`
+.. "Free Style Project" -> "Ok"
+.. Source Code Management
+... git
+... Repository URL -> `http://git.nautsch.net/dev/cd-ws-address.git`
+.. Build Triggers
+... Poll SCM
+... Schedule leer lassen
+.. Add build step
+... Invoke Gradle script
+... Use Gradle Wrapper
+... From Root Build Script Dir (Haken wegnehmen)
+... Root Build script -> `${workspace}/workspace/`
+... Tasks -> `build`
+... Save
+.. Build Now
+
+== Hooks
+
+* automatisiere das Starten des Jenkins Jobs bei jedem Commit
+** keine Scheduled Builds! (erzeugt unnötig Last)
+* benutze dazu "Hooks" von git
+* das Git-Plugin von Jenkins unterstützt spezielle URL's um Jobs zu starten welche das Repository benutzen
+  ** +http://<ciserver>/git/notifyCommit?url=<eingetragenes repository>+
+
+== Erläuterung zu HandsOn 4
+
+. benutze die Url via CLI zum testen
+[source, bash]
+----
+curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws-address.git
+----
+[start=2]
+. wenn +Scheduled polling of handson_3+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
+
+IMPORTANT: Job läuft aber nicht an (kein Änderung in git)
+
+[start=3]
+. nun hook von git in Gogs eintragen ( http://git.nautsch.net/dev/cd-ws-address )
+.. Settings -> Git Hooks -> _post-receive_ -> Edit
+.. Hook Content:
 
 [source,bash]
 ----
-$ cd /home/dev/dev-ws-infra/
-$ docker-compose exec ci cat /var/jenkins_home/secrets/initialAdminPassword # <1>
+#!/bin/bash
+curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws-address.git
+#
 ----
 
-<1> liefert das initiale Password fuer Jenkins
+[start=4]
+. Fuege lokal im workspace eine Datei hinzu,
+. add und commit ins lokale Repo und
+. push zum Remote
 
-[start=2]
-. Browser öffnen http://ci.nautsch.net
-. Passwort reinkompoieren (aus Schritt 1), next
-. "Install suggested plugins" auswählen
-. "Create First Admin User"
-[width=50,cols="1,1"]
-|====
-| Username:             | `dev`
-| Password:             | `dev123`
-| Confirm password:     | `dev123`
-| Full name:            | `dev devi`
-| E-mail address:       | `dev@example.com`
-|====
+[source,bash]
+----
+$ cd /home/dev/cd-ws-address/workspace/
+$ touch neuedatei.txt
+$ git add -A && git commit -m "handson 04 via git hook"
+$ git push
+----
 
-[start=6]
-. Save and Finish
+
 
 == Was ist...
 
