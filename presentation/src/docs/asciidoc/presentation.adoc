@@ -242,6 +242,11 @@ Begriffe::
 * das Git-Plugin von Jenkins unterstützt spezielle URL's um Jobs zu starten welche das Repository benutzen
   ** +http://<ciserver>/git/notifyCommit?url=<eingetragenes repository>+
 
+== HandsOn 4
+
+* Verbinde das zentrale Repository mit dem Jenkins Build, dass bei jedem push ins zentrale
+  Repository ein Build ausgelöst wird.
+
 == Erläuterung zu HandsOn 4
 
 . benutze die Url via CLI zum testen
@@ -283,10 +288,12 @@ $ git push
 
 === Continuous Delivery ===
 
-* Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern. ...
+* Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern.
 * agile Softwareentwicklung
 * DevOps
 * Release in Produktion zu jeder Zeit möglich <- -> jeder Commit ist ein potentieller Release
+** das bedeutet auch, dass jedes Artefakt eindeutig sein muss ( -> Versionsnummer) und
+   sicher gespeichert werden muss ( -> Artefakt Repository).
 
 ( Siehe auch bei http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia] und bei http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
 
