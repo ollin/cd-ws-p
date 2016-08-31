@@ -83,7 +83,7 @@ Links::
 image::gradle.png[Gradle,,,float="right", link="http://www.gradle.org/"]
 
 * *build.gradle*
-* Groovy-Skript, DSL
+* Groovy-Skript, DSL, Kotlin (ab Version 3)
 * Plugins
 * Konvention vor Konfiguration (Convention over Configuration)
   ** http://www.gradle.org/docs/current/userguide/java_plugin.html[Java-Plugin] benutzt Standard-Verzeichnis-Layout von Maven
