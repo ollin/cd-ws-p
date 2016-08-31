@@ -13,6 +13,8 @@ ifndef::imagesdir[:imagesdir: images]
 
 == Zur Person
 
+image::ollin.png[Oliver Nautsch,,,float="right", link="http://nautsch.net/"]
+
 Oliver Nautsch +
 _Software Crafter_ (Engineering, Coaching, Consulting) +
 Nautsch GmbH | Im oberen Boden 1 | 8049 Zürich
@@ -25,6 +27,8 @@ Nautsch GmbH | Im oberen Boden 1 | 8049 Zürich
 
 '''
 
+image::nautsch-gmbh.png[Nautsch GmbH,,,float="right", link="http://nautsch.com/"]
+
 email:      oliver.nautsch@nautsch.com +
 twitter:    https://twitter.com/ollispieps[@ollispieps] +
 github:     https://github.com/ollin[@ollin] +
@@ -32,6 +36,9 @@ google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
 
 
 '''
+
+image::jugch.png[JUG CH,,,float="right", link="http://jug.ch"]
+
 Vorsitzender des Vorstandes der http://jug.ch[Java User Group Switzerland] +
 Co-Organisator http://socrates-day.ch/[SoCraTes Day Switzerland] 2015 und 2016
 
