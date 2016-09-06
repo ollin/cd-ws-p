@@ -388,11 +388,110 @@ $ git add . && git push
 ... -> _Save_
 . Erzeuge wieder Datei im Arbeitsbereich und push ins gogs.
 
+== Jenkinsfile
+
+* _Jenkinsfile_ steuert das Erzeugen einer Pipeline in Jenkins.
+* Unter Versionskontrolle
+* Gehört zum Projekt
+* alle Teile die Jenkins-spezifisch sind in `Jenkinsfile`
+* alle Teile die unspezifisch sind in 'build.gradle
+
+WARNING: Ein Build sollte aber immer mit und ohne Jenkins funktionieren!
+
+---
+Links::
+
+* https://jenkins.io/doc/[Jenkins Documentation]
+* https://jenkins.io/doc/pipeline/[Einführung in Pipeline]
+* https://github.com/jenkinsci/pipeline-plugin/blob/master/COMPATIBILITY.md[Plugin Compatibility with Pipeline]
+
 
 == Docker
 
+image::docker_logo.png["Docker Logo",float="right", link="https://www.docker.com/"]
+
+[quote, , Docker Dokumentation]
+Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+
+[quote, , OpenStack Dokumentation]
+Docker ist eine open-source Engine zur automatisierten Bereitstellung von Software als sehr portable und eigenständige Container.
+Diese Container sind unabhängig von Hardware, Frameworks, Paketverwaltung und Hosting Provider.
+
+== Docker - Techniken
+
+image::container-layers.jpg["Docker Layers",float="right", link="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/"]
+
+* cgroups - control groups - Linux Kernel Funktion zum begrenzen, messen und isolieren von
+  Ressourcen (CPU, Speicher, disc I/O etc.)
+* kernel namespaces - trennen der Sichtbarkeit von Ressourcen
+  in anderen Gruppen (Prozesse, Netzwerk, user IDs, Dateisysteme, etc.)
+* Overlay-Dateisystem (AuFS, Btrfs, ...)
+
+== Docker - Begriffe
+
+image::dockerstory.png["Docker Story",float="right"]
+
+* Image
+* Container
+* Registry
+  ** Hub
+  ** local/eigene
+* Docker Daemon
+* Docker CLI
+
+== Docker -  Erzeugen eines Containers
+
+[source, bash]
+----
+docker run -t -i alpine sh
+root@35d2e9236656:/# exit
+docker ps -a
+----
+
+[source, bash]
+----
+docker run -t -i alpine ls -al
+----
+
+== Docker - Erzeugen eines Image
+
+=== via commit
+
+[source, bash]
+----
+docker run -t -i alpine sh
+root@dcde95ca3e5c:/# touch huschihops.txt
+root@dcde95ca3e5c:/# exit
+docker ps -a
+docker commit -m="added huschihops.txt" -a="Oliver Nautsch" $(docker ps -aql) ollin/huschihops:1.0
+----
+
+=== via Dockerfile
+
+erzeuge Datei +/home/dev/docker-test/Dockerfile+
+
+[source, txt]
+----
+FROM alpine
+MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>
+
+RUN touch huschihops.txt
+----
+
+[source, bash]
+----
+$ docker build -t ollin/huschihops:2.0 .
+Sending build context to Docker daemon 2.048 kB
+Step 1 : FROM alpine:latest
+ ---> 13e1761bf172
+...
 
 
+$ docker images
+REPOSITORY                       TAG                   IMAGE ID            CREATED             VIRTUAL SIZE
+ollin/huschihops                 2.0                   01ee073272ec        31 seconds ago      4.797 MB
+. . .
+----
 
 
 == Nexus
