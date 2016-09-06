@@ -143,14 +143,14 @@ TIP: Mit `Ctrl C` wird der Server gestoppt.
 == Update dev infrastruktur
 
 * aktuelle Version der development infrastruktur holen und aktualisieren
-** dies dauert ein Weilchen
 
 [listing]
 ----
 $ cd /home/dev/cd-ws-infa
 $ git pull
-$ docker-compose stop && docker-compose build && docker-compose up -d
+$ docker-compose up -d --build // <1>
 ----
+<1> kann ein Weilchen dauern
 
 == Continous Integration
 
