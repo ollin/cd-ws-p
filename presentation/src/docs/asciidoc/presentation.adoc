@@ -98,11 +98,12 @@ image::gradle.png[Gradle,,,float="right", link="http://www.gradle.org/"]
 == HandsOn 1:
 
 . Linux in Virtualbox gestartet
+. Screensaver abgeschaltet (bei mir friert immer der Desktop ein :(
 . Projekt cd-ws-address gebaut
 . Server gestartet
 . Ergebniss des Servers in Browser oder via http angeschaut
 . optional
-.. Projekt in Intellij Idea importieren)
+.. Projekt in Intellij Idea importieren
 
 == Erläuterung zu HandsOn 1
 
@@ -110,6 +111,7 @@ image::keyboard-layout-applet.png[Keyboard Layout,,,float="right"]
 
 . Einloggen in Linux Guest innerhalb Virtualbox (`dev`, `dev123`)
 .. rechts unten im Panel ist ein Applet zur Auswahl des Tastaturlayouts
+.. links unten -> Preferences -> Screensaver -> Mode: _Disable Screen Saver_
 . Starten des Teminal progammes
 
 [listing]
@@ -117,22 +119,37 @@ image::keyboard-layout-applet.png[Keyboard Layout,,,float="right"]
 dev@vagrant:~$ cd /home/dev/cd-ws-address/      // <1>
 dev@vagrant:~/cd-ws-address$ git pull           // <2>
 dev@vagrant:~/cd-ws-address$ ./gradlew sync01   // <3>
-dev@vagrant:~/cd-ws-address$ ./gradlew build    // <4>
-dev@vagrant:~/cd-ws-address$ java -jar workspace/build/libs/address-0.0.1.jar // <5>
+dev@vagrant:~/cd-ws-address$ cd workspace/      // <4>
+dev@vagrant:~/cd-ws-address/workspace$ ./gradlew build    // <5>
+dev@vagrant:~/cd-ws-address/workspace$ java -jar build/libs/address-0.0.1.jar // <6>
 ----
 <1> Wechsel ins Projektverzeichnis
-<2> Aktualisieren des Projekten von github
-<3> erste Uebung in den Workspace kopieren
-<4> bauen des Projektes
-<5> starten des servers
+<2> Aktualisieren des Projekten von Github
+<3> Kopieren der ersten Uebung in den Arbeitsbereich
+<4> Wechseln in Arbeitsbereich
+<5> Bauen des Projektes im Arbeitsbereich
+<6> Starten des servers
 
 [start=3]
-. zweites Terminal starten
-
+. Zweites Terminal starten
 
 [listing]
 ----
-$ http http://localhost:8080/
+$ http http://localhost:8888/
+----
+
+TIP: Mit `Ctrl C` wird der Server gestoppt.
+
+== Update dev infrastruktur
+
+* aktuelle Version der development infrastruktur holen und aktualisieren
+** dies dauert ein Weilchen
+
+[listing]
+----
+$ cd /home/dev/cd-ws-infa
+$ git pull
+$ docker-compose stop && docker-compose build && docker-compose up -d
 ----
 
 == Continous Integration
@@ -220,7 +237,6 @@ Begriffe::
 
 == Erläuterung zu HandsOn 3
 
-[start=2]
 . Browser öffnen -> http://ci.nautsch.net
 . Job anlegen
 .. "New Item"
@@ -315,6 +331,70 @@ $ git push
 * Datenbank
 * Infrastruktur
 
+== Warum?
+
+[quote, Principles behind the Agile Manifesto]
+____
+Our highest priority is to satisfy the customer
+through early and continuous delivery
+of valuable software. ...
+____
+
+* Weniger Nacharbeiten
+* Mehr Automatisierung
+* Weniger Riskio bei Auslieferung
+* Mehr Durchsatz bei höherer Stabilität
+* Weniger Fehler bei Änderungen
+* Fehler einfacher zu finden
+* Schnellere Reaktionszeit
+
+== HandsOn 5
+
+* Infrastruktur aktualisieren
+* Automatische Pipeline in Jenkins konfigurieren
+* Artefakt (Docker Image in Registry)
+
+== Erläuterung zu HandsOn 5
+
+* die Infrastruktur ist docker-compose basiert also einfach zu aktualisieren
+** docker schauen wir uns später noch an
+
+[listing]
+----
+$ cd /home/dev/cd-ws-infa/
+$ git pull
+$ docker-compose up -d
+----
+
+* Projekt aus Verzeichnis _handson-05_ in _workspace_ kopieren
+
+[listing]
+----
+$ cd /home/dev/cd-ws-address/
+$ ./gradlew sync05
+$ git add . && git push
+----
+
+. Job anlegen
+.. "New Item"
+.. "Enter an item name" -> `address`
+.. "Pipeline" -> "Ok"
+.. Build Triggers ("Poll SCM")
+.. Pipeline
+... _Pipeline script from SCM_
+... SCM: _Git_
+... Repository URL: `http://git.nautsch.net/dev/cd-ws-address.git`
+... Script Path: `workspace/Jenkinsfile`
+... -> _Save_
+. Erzeuge wieder Datei im Arbeitsbereich und push ins gogs.
+
+
+== Docker
+
+
+
+
+
 == Nexus
 
 image::nexus.png[Nexus,150,150,float="right", link="https://www.sonatype.com/nexus-repository-oss"]
@@ -330,23 +410,7 @@ Begriffe::
 * User
 * Rollen
 
-== Warum?
 
-[quote, Principles behind the Agile Manifesto]
-____
-Our highest priority is to satisfy the customer
-through early and continuous delivery
-of valuable software. ...
-____
-
-
-* Weniger Nacharbeiten
-* Mehr Automatisierung
-* Weniger Riskio bei Auslieferung
-* Mehr Durchsatz bei höherer Stabilität
-* Weniger Fehler bei Änderungen
-* Fehler einfacher zu finden
-* Schnellere Reaktionszeit
 
 
 
