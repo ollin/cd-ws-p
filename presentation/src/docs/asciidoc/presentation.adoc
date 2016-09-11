@@ -10,6 +10,7 @@ ifndef::imagesdir[:imagesdir: images]
 :toc:
 :status:
 :blank:
+:figure-caption!:
 
 == Zur Person
 
@@ -52,10 +53,18 @@ _Einführung in CD_
 * Werkzeuge - die man gebrauchen kann
 * Pipeline - als Beispiel
 
-== Das Projekt
+== Vorgehen
+
+=== Ein kleies Beispiel - Projekt
 
 * _cd-ws-address_ - ein Adressverwaltungssystem
 * iterativ entwickeln
+
+=== Vorgehen
+
+* Einführen Tool oder Thema
+* HandsOn
+* ganz am Schluss Diskussions- und Feedbackrunde
 
 == Git
 
@@ -350,21 +359,10 @@ ____
 
 == HandsOn 5
 
-* Infrastruktur aktualisieren
 * Automatische Pipeline in Jenkins konfigurieren
 * Artefakt (Docker Image in Registry)
 
 == Erläuterung zu HandsOn 5
-
-* die Infrastruktur ist docker-compose basiert also einfach zu aktualisieren
-** docker schauen wir uns später noch an
-
-[listing]
-----
-$ cd /home/dev/cd-ws-infa/
-$ git pull
-$ docker-compose up -d
-----
 
 * Projekt aus Verzeichnis _handson-05_ in _workspace_ kopieren
 
@@ -387,6 +385,7 @@ $ git add . && git push
 ... Script Path: `workspace/Jenkinsfile`
 ... -> _Save_
 . Erzeuge wieder Datei im Arbeitsbereich und push ins gogs.
+. Wenn der build fertig ist öffne: http://
 
 == Jenkinsfile
 
@@ -441,29 +440,29 @@ image::dockerstory.png["Docker Story",float="right"]
 
 == Docker -  Erzeugen eines Containers
 
-[source, bash]
+[listing]
 ----
-docker run -t -i alpine sh
+$ docker run -t -i alpine sh
 root@35d2e9236656:/# exit
-docker ps -a
+$ docker ps -a
 ----
 
-[source, bash]
+[listing]
 ----
-docker run -t -i alpine ls -al
+$ docker run -t -i alpine ls -al
 ----
 
 == Docker - Erzeugen eines Image
 
 === via commit
 
-[source, bash]
+[listing]
 ----
-docker run -t -i alpine sh
+$ docker run -t -i alpine sh
 root@dcde95ca3e5c:/# touch huschihops.txt
 root@dcde95ca3e5c:/# exit
-docker ps -a
-docker commit -m="added huschihops.txt" -a="Oliver Nautsch" $(docker ps -aql) ollin/huschihops:1.0
+$ docker ps -a
+$ docker commit -m="added huschihops.txt" -a="Oliver Nautsch" $(docker ps -aql) ollin/huschihops:1.0
 ----
 
 === via Dockerfile
@@ -478,7 +477,7 @@ MAINTAINER Oliver Nautsch <oliver.nautsch@gmail.com>
 RUN touch huschihops.txt
 ----
 
-[source, bash]
+[listing]
 ----
 $ docker build -t ollin/huschihops:2.0 .
 Sending build context to Docker daemon 2.048 kB
@@ -493,28 +492,105 @@ ollin/huschihops                 2.0                   01ee073272ec        31 se
 . . .
 ----
 
+== Docker Compose
 
-== Nexus
+image::compose.png[Docker Compose,150,150,float="right", link="https://docs.docker.com/compose/"]
 
-image::nexus.png[Nexus,150,150,float="right", link="https://www.sonatype.com/nexus-repository-oss"]
+* Command Line Tool
+* `docker-compose.yml` Datei
+* Veralten und zusammenhängen von Containern oder
+* Datei zum Speichern aller Startparameter
 
-Nexus ist ein Software Repository Manager. Ein Softwarerepository ist ein Speicherort von
-welchen man Softwarepakete beziehen kann. Es enthält neben den Programmpaketen auch Metadaten über diese.
+== HandsOn 6
 
-Begriffe::
-* Repository
-  ** Hosted
-  ** Proxy
-  ** Group
-* User
-* Rollen
+* "In die Produktion stellen"
+
+== Erläuterung zu HandsOn 6
+
+[listing]
+----
+$ cd /home/dev/cd-ws-address/
+$ ./gradlew sync06
+$ cd workspace
+$ ./gradlew test
+$ git commit -a -m "handson 6"
+$ git push
+----
+
+* manuellen Schritt in Jenkins ausführen
+
+image::manueller-schritt.png[Manueller Schritt,,,,]
+
+== Testpyramide
+
+=== Pattern
+
+image::test-pyramid.png[Test Pyramid,500,,, link="http://martinfowler.com/bliki/TestPyramid.html"]
+
+* urspünglich von Mike Cohn
+
+=== Anti - Pattern
+
+image::softwaretestingicecreamconeantipattern.png[software testing ice-cream cone - anti-pattern,500,,, link="https://watirmelon.blog/2012/01/31/introducing-the-software-testing-ice-cream-cone/"]
+
+* by Alister Scott
+
+== Teams
+
+=== Annahme
+
+* Entwicklung von Software wird stark beeinflusst aus Mix von
+** Menschen
+** Tools
+** Infrastruktur
+** Prozessen
+* Die Abstimmung ist der Schlüssel
+
+Siehe auch Wikipedia: https://de.wikipedia.org/wiki/DevOps[DevOps]
+
+=== Test ( http://www.nautsch.net/2016/02/07/wie-schnell-bringt-mein-unternehmen-eine-index-html-seite-in-die-produktion-the-zero-dev-walk/[The Zero Dev Walk])
+
+* Wie lange braucht ihre Organisation um eine leere `index.html` Seite ins Web zu stellen?
+
+=== Wie sieht mein "ideales" Team aus
+
+* Cross functional
+* Selbstverwaltet und Selbstorganisierend
+* Setzt selbst Prioritäten
+* Lernend
+* Geführt über das *WAS*
+* *WIE* entscheided das Team
+
+== Wie ich an automatisierte Tests herangehe
+
+image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="https://watirmelon.blog/2012/01/31/introducing-the-software-testing-ice-cream-cone/"]
+
+* DDD - Domain Driven Design
+** bessere Domänenmodelle
+** Design in allgegenwärtiger (ubiquitous) Sprache
+** core domain, bounded context, context map, ...
+* BDD - Behavior Driven Development (Automated Acceptance Tests)
+** starkte Einbeziehung von Stakeholdern
+** textuelle Beschreibung von Fallbeispielen
+** Automatisierung der Fallbeispiele mit Mocks,
+** Sukzessive Implementierung
+* TDD - Test Driven Development (Automated Unit Tests)
+** TDD Zyklus, sehr kurz
+** erhöht die Sicherheit / keine Angst
+** Weniger Bugs
+** Spass
+
+'''
+
+* http://globalday.coderetreat.org/[Global Day of Coderetreat] http://coderetreat.org/events/event/listByDate?date=2016-10-22[October 22, 2016] (Zürich, Bern, St. Gallen, ...)
+* http://www.meetup.com/Software-Craftsmanship-Zurich/[Software Craftsmanship Zürich]
 
 
+== Phasen / Stages
 
-
-
-
-== Schranken
+* Ziel -  schnell Feedback zu bekommen
+* je längert etwas dauert - je weiter hinten
+* _Commit_ nicht länger als 5 Minuten
 
 [cols="4,^1,^1,^1,^1,^1,^1"]
 |=========================================================
@@ -547,3 +623,99 @@ Begriffe::
 * Pre-Prod -- Pre-Production
 * Prod -- Production
 
+== HandsOn 7
+
+* Phase für Automated Acceptance Test
+* Phase für Exploratives Testen
+
+== Erläuterung zu HandsOn 7
+
+[listing]
+----
+$ cd /home/dev/cd-ws-address/
+$ ./gradlew sync07
+$ cd workspace
+$ ./gradlew test
+$ git commit -a -m "handson 7"
+$ git push
+----
+
+* manuellen Schritte in Jenkins ausführen
+* `Jenkinsfile` anschauen
+
+=== Fragen ins Plenum
+
+* Warum erreiche ich nicht http://address.nautsch.net vom Linux Host aus?
+* Wann sollte der Tag im Git gemacht werden, der eine Version bestimmt?
+
+== BDD
+
+=== ... mit Spock
+
+image::spockphases.png[Spock Phases,,,float="right", link="http://spockframework.org/spock/docs/1.1-rc-2/spock_primer.html"]
+
+[quote]
+____
+http://spockframework.org/[Spock] is a testing and specification framework for Java and Groovy applications
+____
+
+Beispiel: Siehe in `stage-060-aat` - Klasse: `net.nautsch.address.aat.AddressesRestSpec.groovy`
+
+=== ... mit Geb
+
+[quote]
+____
+http://www.gebish.org/[Geb] - very groovy browser automation… web testing, screen scraping and more
+____
+
+[source, groovy]
+----
+import geb.Page
+import geb.spock.GebSpec
+
+class LoginSpec extends GebSpec {
+    def "login to admin section"() {
+        given:
+        to LoginPage
+
+        when:
+        loginForm.with {
+            username = "admin"
+            password = "password"
+        }
+
+        and:
+        loginButton.click()
+
+        then:
+        at AdminPage
+    }
+}
+----
+
+== ???
+
+image::pill.jpg[Red or Blue,,,,]
+
+== Vielen Dank!
+
+email:      oliver.nautsch@nautsch.com +
+twitter:    https://twitter.com/ollispieps[@ollispieps] +
+github:     https://github.com/ollin[@ollin] +
+google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
+
+
+== Nexus
+
+image::nexus.png[Nexus,150,150,float="right", link="https://www.sonatype.com/nexus-repository-oss"]
+
+Nexus ist ein Software Repository Manager. Ein Softwarerepository ist ein Speicherort von
+welchen man Softwarepakete beziehen kann. Es enthält neben den Programmpaketen auch Metadaten über diese.
+
+Begriffe::
+* Repository
+  ** Hosted
+  ** Proxy
+  ** Group
+* User
+* Rollen
