@@ -55,7 +55,7 @@ _Einführung in CD_
 
 == Vorgehen
 
-=== Ein kleies Beispiel - Projekt
+=== Ein kleines Beispiel - Projekt
 
 * _cd-ws-address_ - ein Adressverwaltungssystem
 * iterativ entwickeln
