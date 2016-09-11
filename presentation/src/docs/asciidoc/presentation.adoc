@@ -370,7 +370,7 @@ ____
 ----
 $ cd /home/dev/cd-ws-address/
 $ ./gradlew sync05
-$ git add . && git push
+$ git add . && git commit -m "handson 5" && git push
 ----
 . Job _handson_3_ löschen
 . Job anlegen
