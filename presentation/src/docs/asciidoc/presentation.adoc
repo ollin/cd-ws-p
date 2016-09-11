@@ -287,7 +287,7 @@ Begriffe::
 $ curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws-address.git
 ----
 [start=2]
-. wenn +Scheduled polling of handson_3+ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
+. wenn _Scheduled polling of handson_3_ zu sehen ist, dann ist die URL und Konfiguration in Jenkins richtig)
 
 IMPORTANT: Job läuft aber nicht an (kein Änderung in git)
 
