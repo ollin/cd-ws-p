@@ -53,7 +53,7 @@ _Einführung in CD_
 * Werkzeuge - die man gebrauchen kann
 * Pipeline - als Beispiel
 
-image::overview.with.draw.io.svg[overview,,,, link="images/overview.with.draw.io.svg"]
+image::overview.with.draw.io.png[overview,,,, link="images/overview.with.draw.io.png"]
 
 == Vorgehen
 
