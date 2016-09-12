@@ -37,23 +37,36 @@ Beide Varianten werden nun beschrieben:
 * installiere https://www.virtualbox.org/wiki/Downloads[VirtualBox] auf dem Betriebssystems Deines Laptops (Host)
 * installiere http://www.vagrantup.com/downloads.html[Vagrant] auf dem Betriebssystems Deines Laptops (Host)
 * kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf Deinen Laptop (Host)
-** via git
-[source, bash]
-----
-git clone https://github.com/ollin/cd-ws-p.git
-----
 
-** via wget
+'''
+
+* via git
+
+[listing]
+....
+git clone https://github.com/ollin/cd-ws-p.git
+....
+
+'''
+
+* via wget
+
 [source, bash]
 ----
 wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile -P cd-ws-p/vagrant
 ----
 
-** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
-*** speichere die Datei unter dem Namen `Vagrantfile` in einem Verzeichnis "cd-ws-p/vagrant"
+'''
 
-* wechsle ins Verzeichnis "cd-ws-p/vagrant"
-* starte die Box
+* via Browser
+** https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
+** speichere die Datei unter dem Namen `Vagrantfile` in einem Verzeichnis "cd-ws-p/vagrant"
+
+'''
+
+- wechsle ins Verzeichnis "cd-ws-p/vagrant"
+- starte die Box
+
 [source, bash]
 ----
 vagrant up -d
