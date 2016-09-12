@@ -28,7 +28,7 @@ Derzeit gestestet ist die Version 5.0.24
 Es gibt zwei Installationsvarianten
 
 * Installation via Vagrant (empfohlene Variante)
-* Installation via Import in Virtualbox
+* Installation via Import
 
 Beide Varianten werden nun beschrieben:
 
