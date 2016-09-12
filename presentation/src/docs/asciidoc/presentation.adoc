@@ -758,15 +758,17 @@ class LoginSpec extends GebSpec {
 
 image::pill.jpg[Red or Blue,,,,]
 
-== Tools zum Aufbau der Schulungsumgebung
+== mehr Tools
 
-* Vagrant
-* Ansible
+* https://www.vagrantup.com/[Vagrant]
+* https://www.ansible.com/[Ansible]
 
-=== nicht verwendet:
+'''
 
-* Terraform
-* Consul
+* https://github.com/realestate-com-au/pact[pact] - consumer driven contract testing z.B für Microservices
+* https://www.terraform.io/[Terraform] - Infrastructure as Code
+* https://www.consul.io/[Consul] - Servicediscovery (and K-V-Store, and DNS)
+* https://fabric8.io/[fabric8] - opinionated open source microservices platform
 
 == Vielen Dank!
 
