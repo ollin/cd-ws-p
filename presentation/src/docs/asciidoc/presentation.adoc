@@ -116,6 +116,8 @@ image::gradle.png[Gradle,,,float="right", link="http://www.gradle.org/"]
 . optional
 .. Projekt in Intellij Idea importieren
 
+image::overview.handson01.with.draw.io.png[overview,,,, link="images/overview.handson01.with.draw.io.png"]
+
 == Erläuterung zu HandsOn 1
 
 image::keyboard-layout-applet.png[Keyboard Layout,,,float="right"]
@@ -159,9 +161,10 @@ TIP: Mit `Ctrl C` wird der Server gestoppt.
 ----
 $ cd /home/dev/cd-ws-infa
 $ git pull
-$ docker-compose up -d --build // <1>
+$ docker-compose up -d --build
 ----
-<1> kann ein Weilchen dauern
+image::overview.update.infra.with.draw.io.png[overview,,,, link="images/overview.update.infra.with.draw.io.png"]
+
 
 == Continous Integration
 
@@ -194,6 +197,8 @@ image::gogs.png[Gogs,,,float="right"]
 == HandsOn 2
 
 * Erzeugen eines zentralen Repository in Gogs
+
+image::overview.handson02.with.draw.io.png[overview,,,, link="images/overview.handson02.with.draw.io.png"]
 
 == Erläuterung zu HandsOn 2
 
@@ -246,6 +251,8 @@ Begriffe::
 * Job in Jenkins anlegen
 * verbinden mit zentralen Repo in Gogs
 
+image::overview.handson03.with.draw.io.png[overview,,,, link="images/overview.handson03.with.draw.io.png"]
+
 == Erläuterung zu HandsOn 3
 
 . Browser öffnen -> http://ci.nautsch.net
@@ -280,6 +287,8 @@ Begriffe::
 
 * Verbinde das zentrale Repository mit dem Jenkins Build, dass bei jedem push ins zentrale
   Repository ein Build ausgelöst wird.
+
+image::overview.handson04.with.draw.io.png[overview,,,, link="images/overview.handson04.with.draw.io.png"]
 
 == Erläuterung zu HandsOn 4
 
@@ -366,6 +375,8 @@ ____
 
 * Automatische Pipeline in Jenkins konfigurieren
 * Artefakt (Docker Image in Registry)
+
+image::overview.handson05.with.draw.io.png[overview,,,, link="images/overview.handson05.with.draw.io.png"]
 
 == Erläuterung zu HandsOn 5
 
@@ -518,6 +529,8 @@ image::compose.png[Docker Compose,350,350,float="right", link="https://docs.dock
 
 * "In die Produktion stellen"
 
+image::overview.handson06.with.draw.io.png[overview,,,, link="images/overview.handson06.with.draw.io.png"]
+
 == Erläuterung zu HandsOn 6
 
 [listing]
@@ -644,6 +657,8 @@ image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="http://blog.andolasoft
 * Mache die Services von ausserhalb Docker erreichbar
 * Phase für Automated Acceptance Test (automatische Phase)
 * Phase für Exploratives Testen (manuelle Phase)
+
+image::overview.handson07.with.draw.io.png[overview,,,, link="images/overview.handson07.with.draw.io.png"]
 
 == Erläuterung zu HandsOn 7
 
