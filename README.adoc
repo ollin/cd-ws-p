@@ -35,6 +35,7 @@ Beide Varianten werden nun beschrieben:
 ==== Installation via Vagrant (empfohlene Variante)
 
 * installiere https://www.virtualbox.org/wiki/Downloads[VirtualBox] auf dem Betriebssystems Deines Laptops (Host)
+** eventuell muss dazu im BIOS des Rechners die Virtalisierungs-Option eingeschaltet sein.
 * installiere http://www.vagrantup.com/downloads.html[Vagrant] auf dem Betriebssystems Deines Laptops (Host)
 * kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf Deinen Laptop (Host)
 
@@ -93,6 +94,8 @@ vagrant up            # startet die Box in Virtualbox
 
 ==== Installation via Import
 
+* installiere https://www.virtualbox.org/wiki/Downloads[VirtualBox] auf dem Betriebssystems Deines Laptops (Host)
+** eventuell muss dazu im BIOS des Rechners die Virtalisierungs-Option eingeschaltet sein.
 * kopiere die Datei http://cdworkshop.nautsch.com.s3-website.eu-central-1.amazonaws.com/cd-ws-box.ova
   auf den Rechner (~3 GB)
 * Importiere die Datei via 'VirtualBox Manager -> File -> Import Appliance'
