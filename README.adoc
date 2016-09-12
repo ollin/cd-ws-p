@@ -20,13 +20,21 @@ Wenn etwas nicht funktioniert oder unklar ist, dann bitte im https://gitter.im/o
 == Vorbereitung auf den Workshop
 === Installation des Images
 
-Voraussetzung um das Image benutzen zu können, ist eine
+Minimale Voraussetzung um das Image benutzen zu können, ist eine
 https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem eigenen Laptop.
 
 Derzeit gestestet ist die Version 5.0.24
 
+Es gibt zwei Installationsvarianten
+
+* Installation via Vagrant (empfohlene Variante)
+* Installation via Import in Virtualbox
+
+Beide Varianten werden nun beschrieben:
+
 ==== Installation via Vagrant (empfohlene Variante)
 
+* installiere https://www.virtualbox.org/wiki/Downloads[VirtualBox] auf dem Betriebssystems Deines Laptops (Host)
 * installiere http://www.vagrantup.com/downloads.html[Vagrant] auf dem Betriebssystems Deines Laptops (Host)
 * kopiere die Datei https://github.com/ollin/cd-ws-p.git/vagrant/Vagrantfile auf Deinen Laptop (Host)
 ** via git
@@ -42,13 +50,13 @@ wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile 
 ----
 
 ** via Browser https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
-*** speichere die Datei unter gleichem Namen in einem Verzeichnis "cd-ws-p/vagrant"
+*** speichere die Datei unter dem Namen `Vagrantfile` in einem Verzeichnis "cd-ws-p/vagrant"
 
 * wechsle ins Verzeichnis "cd-ws-p/vagrant"
 * starte die Box
 [source, bash]
 ----
-vagrant up
+vagrant up -d
 ----
 ** es erfolgt nun der Download der Box (~3 GB)
 ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet

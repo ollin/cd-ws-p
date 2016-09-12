@@ -305,8 +305,6 @@ curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws
 
 [start=4]
 . Fuege lokal im workspace eine Datei hinzu,
-. add und commit ins lokale Repo und
-. push zum Remote
 
 [listing]
 ----
@@ -315,6 +313,11 @@ $ touch neuedatei.txt
 $ git add -A && git commit -m "handson 04 via git hook"
 $ git push
 ----
+
+[start=5]
+. add und commit ins lokale Repo und
+. push zum Remote
+. im Jenkins sollte nun ein zweiter Build automatisch anlaufen
 
 == Was ist...
 
