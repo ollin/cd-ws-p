@@ -385,7 +385,8 @@ $ git add . && git commit -m "handson 5" && git push
 ... -> _Save_
 . 1x manuell den Build starten mit _Build Now_ (liest _Jenkinsfile_ ein)
 . Erzeuge wieder Datei im Arbeitsbereich und push ins gogs.
-. Wenn der build fertig ist öffne: http://localhost:7000/
+. Job soll nun automatisch in Jenkins anlaufen
+.. (wenn nicht, bitte Jenkins neu starten via Link - _Restart Safely_ -  und mit zweiter neuer Datei nochmals versuchen)
 
 == Jenkinsfile
 
@@ -449,8 +450,15 @@ $ docker ps -a
 
 [listing]
 ----
-$ docker run -t -i alpine ls -al
+$ time docker run --rm -t -i alpine ls -al
 ----
+
+* `time` misst die Zeit
+* `docker run` erzeugt aus Image einen Container, startet den Container
+* `-t -i` terminal, interactive
+* `alpine` der Name des Images
+* `ls -al` Kommando zum Starten im Container
+* `--rm` löscht den Container nach beenden
 
 == Docker - Erzeugen eines Image
 
@@ -494,7 +502,7 @@ ollin/huschihops                 2.0                   01ee073272ec        31 se
 
 == Docker Compose
 
-image::compose.png[Docker Compose,150,150,float="right", link="https://docs.docker.com/compose/"]
+image::compose.png[Docker Compose,350,350,float="right", link="https://docs.docker.com/compose/"]
 
 * Command Line Tool
 * `docker-compose.yml` Datei
@@ -511,15 +519,18 @@ image::compose.png[Docker Compose,150,150,float="right", link="https://docs.dock
 ----
 $ cd /home/dev/cd-ws-address/
 $ ./gradlew sync06
+$ git add .
 $ cd workspace
 $ ./gradlew test
-$ git commit -a -m "handson 6"
+$ git commit -m "handson 6"
 $ git push
 ----
 
 * manuellen Schritt _"Produktiv gehen?"_ in Jenkins ausführen (z.B. mit Maus über _deploy to prod_ gehen)
 
 image::manueller-schritt.png[Manueller Schritt,,,,]
+
+* gehe zu http://localhost:7000/
 
 == Testpyramide
 
@@ -625,15 +636,43 @@ image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="http://blog.andolasoft
 
 == HandsOn 7
 
-* Phase für Automated Acceptance Test
-* Phase für Exploratives Testen
+* Mache die Services von ausserhalb Docker erreichbar
+* Phase für Automated Acceptance Test (automatische Phase)
+* Phase für Exploratives Testen (manuelle Phase)
 
 == Erläuterung zu HandsOn 7
 
 [listing]
 ----
+$ sudo cp /etc/hosts /etc/hosts.bak
+$ echo "127.0.0.1    aat.address.nautsch.net" | sudo tee --append /etc/hosts
+$ cat /etc/hosts
+----
+
+Es sollte dann wir folgt aussehen:
+
+[source]
+----
+127.0.0.1	localhost
+127.0.1.1	vagrant
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+127.0.0.1       ci.nautsch.net
+127.0.0.1       git.nautsch.net
+127.0.0.1       nexus.nautsch.net
+127.0.0.1       registry.nautsch.net
+127.0.0.1       sonarqube.nautsch.net
+127.0.0.1    aat.address.nautsch.net
+----
+
+[listing]
+----
 $ cd /home/dev/cd-ws-address/
 $ ./gradlew sync07
+$ git add .
 $ cd workspace
 $ ./gradlew test
 $ git commit -a -m "handson 7"
@@ -641,6 +680,8 @@ $ git push
 ----
 
 * manuellen Schritte in Jenkins ausführen
+** _extest_ erreichbar unter http://localhost:7001/
+** _prod_ erreichbar unter http://localhost:7000/
 * `Jenkinsfile` anschauen
 
 === Fragen ins Plenum
@@ -696,6 +737,16 @@ class LoginSpec extends GebSpec {
 == ???
 
 image::pill.jpg[Red or Blue,,,,]
+
+== Tools zum Aufbau der Schulungsumgebung
+
+* Vagrant
+* Ansible
+
+=== nicht verwendet:
+
+* Terraform
+* Consul
 
 == Vielen Dank!
 
