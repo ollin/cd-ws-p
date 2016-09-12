@@ -264,7 +264,7 @@ Begriffe::
 ... Root Build script -> `${workspace}/workspace/`
 ... Tasks -> `build`
 ... Save
-.. Build Now
+.. _Build Now_ clicken
 
 == Hooks
 
@@ -372,7 +372,6 @@ $ cd /home/dev/cd-ws-address/
 $ ./gradlew sync05
 $ git add . && git commit -m "handson 5" && git push
 ----
-. Job _handson_3_ löschen
 . Job anlegen
 .. "New Item"
 .. "Enter an item name" -> `address`
@@ -384,8 +383,9 @@ $ git add . && git commit -m "handson 5" && git push
 ... Repository URL: `http://git.nautsch.net/dev/cd-ws-address.git`
 ... Script Path: `workspace/Jenkinsfile`
 ... -> _Save_
+. 1x manuell den Build starten mit _Build Now_ (liest _Jenkinsfile_ ein)
 . Erzeuge wieder Datei im Arbeitsbereich und push ins gogs.
-. Wenn der build fertig ist öffne: http://
+. Wenn der build fertig ist öffne: http://localhost:7000/
 
 == Jenkinsfile
 
@@ -517,7 +517,7 @@ $ git commit -a -m "handson 6"
 $ git push
 ----
 
-* manuellen Schritt in Jenkins ausführen
+* manuellen Schritt _"Produktiv gehen?"_ in Jenkins ausführen (z.B. mit Maus über _deploy to prod_ gehen)
 
 image::manueller-schritt.png[Manueller Schritt,,,,]
 
@@ -563,7 +563,7 @@ Siehe auch Wikipedia: https://de.wikipedia.org/wiki/DevOps[DevOps]
 
 == Wie ich an automatisierte Tests herangehe
 
-image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="https://watirmelon.blog/2012/01/31/introducing-the-software-testing-ice-cream-cone/"]
+image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="http://blog.andolasoft.com/2014/06/rails-things-you-must-know-about-tdd-and-bdd.html"]
 
 * DDD - Domain Driven Design
 ** bessere Domänenmodelle
