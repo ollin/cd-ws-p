@@ -49,7 +49,7 @@ git clone https://github.com/ollin/cd-ws-p.git
 
 '''
 
-* via wget
+* oder via wget
 
 [source, bash]
 ----
@@ -58,7 +58,7 @@ wget https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile 
 
 '''
 
-* via Browser
+* oder via Browser
 ** https://raw.githubusercontent.com/ollin/cd-ws-p/master/vagrant/Vagrantfile
 ** speichere die Datei unter dem Namen `Vagrantfile` in einem Verzeichnis "cd-ws-p/vagrant"
 
