@@ -168,6 +168,8 @@ image::overview.update.infra.with.draw.io.png[overview,,,, link="images/overview
 
 == Continous Integration
 
+image::ci.jpg[ci book,,,float="right", link="http://martinfowler.com/books/duvall.html"]
+
 http://www.martinfowler.com/articles/continuousIntegration.html[nach Martin Fowler]
 
 * Gemeinsame Codebasis
@@ -334,6 +336,8 @@ $ git push
 
 === Continuous Delivery ===
 
+image::cd-book.jpg[Continuous Delivery Book,,,float="right", link="http://martinfowler.com/books/continuousDelivery.html"]
+
 * Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern.
 * agile Softwareentwicklung
 * DevOps
@@ -346,7 +350,10 @@ $ git push
 
 === Deployment Pipeline ===
 
+image::devopstoolkit.png[The Devops 2.0 Toolkit Book,,,float="right", link="https://leanpub.com/the-devops-2-toolkit"]
+
 * Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
+* aufteilen in Phasen um schneller Feedback zu bekommen
 
 == Wo kann man CD anwenden
 
@@ -362,6 +369,8 @@ Our highest priority is to satisfy the customer
 through early and continuous delivery
 of valuable software. ...
 ____
+
+image::phoenix-project.jpg[The Phoenix Project,,,float="right", link="http://itrevolution.com/books/phoenix-project-devops-book/"]
 
 * Weniger Nacharbeiten
 * Mehr Automatisierung
@@ -400,9 +409,10 @@ $ git add . && git commit -m "handson 5" && git push
 ... Script Path: `workspace/Jenkinsfile`
 ... -> _Save_
 . 1x manuell den Build starten mit _Build Now_ (liest _Jenkinsfile_ ein)
+.. (bitte Jenkins an dieser Stelle neu starten via Link - _Restart Safely_ -  Bug?)
 . Erzeuge wieder Datei im Arbeitsbereich und push ins gogs.
 . Job soll nun automatisch in Jenkins anlaufen
-.. (wenn nicht, bitte Jenkins neu starten via Link - _Restart Safely_ -  und mit zweiter neuer Datei nochmals versuchen)
+. Siehe auch via http://registry.nautsch.net/v2/address/tags/list was in Registry ist
 
 == Jenkinsfile
 
@@ -428,6 +438,8 @@ image::docker_logo.png["Docker Logo",float="right", link="https://www.docker.com
 
 [quote, , Docker Dokumentation]
 Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.
+
+image::the-docker-book.jpg["The Docker Book",float="right", link="https://www.dockerbook.com/"]
 
 [quote, , OpenStack Dokumentation]
 Docker ist eine open-source Engine zur automatisierten Bereitstellung von Software als sehr portable und eigenständige Container.
@@ -554,7 +566,10 @@ image::manueller-schritt.png[Manueller Schritt,,,,]
 
 === Pattern
 
+image::growing-oo-systems.jpg[Growing OO Software Guided by Tests,,,float="right", link="http://www.growing-object-oriented-software.com/"]
+
 image::test-pyramid.png[Test Pyramid,500,,, link="http://martinfowler.com/bliki/TestPyramid.html"]
+
 
 * urspünglich von Mike Cohn
 
@@ -702,7 +717,8 @@ $ git push
 * manuellen Schritte in Jenkins ausführen
 ** _extest_ erreichbar unter http://localhost:7001/
 ** _prod_ erreichbar unter http://localhost:7000/
-* `Jenkinsfile` anschauen
+* `/home/dev/cd-ws-address/workspace/Jenkinsfile` anschauen (z.B. mit _leafpad_ Editor)
+* `/home/dev/cd-ws-address/workspace/stage-090-deploy-to-prod/src/main/dockercompose/docker-compose.yml` anschauen
 
 === Fragen ins Plenum
 
