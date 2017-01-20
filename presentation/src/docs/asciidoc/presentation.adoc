@@ -773,6 +773,44 @@ class LoginSpec extends GebSpec {
 }
 ----
 
+== HandsOn 8
+
+Modularisiere das Jenkinsfile was im Stage AAT ausgeführt wird.
+
+* erstelle Datei `stage-060-aat.groovy` und kopiere den Befehl aus `stage("AAT") node { <Befehl> }` in diese Datei
+* programmiere eine Methode `def execute() { <Befehl> }`
+* schliesse mit `return this` das Script ab
+* im `Jenkinsfile` lade die Datei und führe die Methode aus
+** Siehe https://jenkins.io/doc/pipeline/steps/workflow-cps/#load-evaluate-a-groovy-source-file-into-the-pipeline-script[Beschreibung load()]
+** Siehe https://jenkins.io/doc/pipeline/examples/#load-from-file[Beispiel für load()]
+* _commit_, _push_ und in Jenkins schauen
+
+Optional: Lade die Datei aus einem separatem Repository.
+
+== Erläuterung zu HandsOn 8
+
+[source, groovy]
+.stage-060-aat.groovy
+----
+def execute(){
+    sh "./gradlew -b ./workspace/build.gradle clean :stage-060-aat:test --info"
+}
+return this
+----
+
+[source, groovy]
+.Jenkinsfile
+----
+...
+  stage ("AAT")
+  node {
+    def stage060aat = load("workspace/stage-060-aat.groovy")
+    stage060aat.execute()
+  }
+...
+----
+
+
 == ???
 
 image::pill.jpg[Red or Blue,,,,]
