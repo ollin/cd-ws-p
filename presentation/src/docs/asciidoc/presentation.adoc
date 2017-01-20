@@ -785,7 +785,7 @@ Modularisiere das Jenkinsfile was im Stage AAT ausgeführt wird.
 ** Siehe https://jenkins.io/doc/pipeline/examples/#load-from-file[Beispiel für load()]
 * _commit_, _push_ und in Jenkins schauen
 
-Optional: Lade die Datei aus einem separatem Repository.
+Optional: Lade die Datei aus einem separaten Repository.
 
 == Erläuterung zu HandsOn 8
 
