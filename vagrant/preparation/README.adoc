@@ -9,7 +9,7 @@ im Workshop benutzt wird.
 
 [source,bash]
 ----
-./gradlew new
+./gradlew newRelease
 ----
 
 ### locales neubauen zum testen
