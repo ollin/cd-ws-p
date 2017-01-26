@@ -5,9 +5,11 @@ Vagrant.require_version ">= 1.8.4"
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "ubuntu/xenial64"
-  #config.vm.box = "boxcutter/ubuntu1604"
+  #config.vm.box = "ubuntu/xenial64" # problem is it exports UART with hardcoded path for logging via serial port see https://bugs.launchpad.net/cloud-images/+bug/1627844
+  #config.vm.box = "boxcutter/ubuntu1604" nicht mehr so aktuell
+  config.vm.box = "geerlingguy/ubuntu1604"
   config.vm.box_check_update = true
+
   config.vm.synced_folder ".", "/vagrant/"
   config.ssh.insert_key = false
 
@@ -18,6 +20,7 @@ Vagrant.configure("2") do |config|
     vb.cpus = 4
     vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
     vb.customize ["modifyvm", :id, "--vram", "128"]
+    vb.customize ["modifyvm", :id, "--audio", "none"]
   end
 
   config.vm.define 'devcompi' do |machine|

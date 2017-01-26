@@ -103,7 +103,7 @@ vagrant up            # startet die Box in Virtualbox
 
 == Inhalt des VirtualBox Image
 
-VirtualBox 5.0.24
+VirtualBox 5.1.14
 
 Das Image ist wie folgt konfiguriert:
 
@@ -115,7 +115,7 @@ Das Image ist wie folgt konfiguriert:
 Das Image enthaelt:
 
 - Lubuntu 16.04 Desktop 64bit
-- VirtualBox Guest Additions 5.0.26
+- VirtualBox Guest Additions 5.1.14
 
 - Docker, Docker Compose
 - OpenJDK
