@@ -74,7 +74,7 @@ vagrant up -d
 ----
 ** es erfolgt nun der Download der Box (~3 GB)
 ** die Box wird nun als Guest Machine in VirtualBox erzeugt und gestartet
-** Einloggen in Linux Guest innerhalb Virtualbox (`dev`, `dev123`)
+** Einloggen in Linux innerhalb Virtualbox (user: `dev`, password: `dev123`)
 ** Linux wieder beenden
 ** FERTIG
 

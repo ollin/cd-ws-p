@@ -1,4 +1,4 @@
 ---
-  - name: Install Lubuntu packages
+  - name: Install xubuntu packages
     apt: state=installed pkg={{ item }}
-    with_items: "{{ lubuntu_packages }}"
+    with_items: "{{ xubuntu_packages }}"

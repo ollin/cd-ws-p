@@ -3,17 +3,17 @@
     template:
       src={{role_path}}/templates/leafpad.desktop.j2
       dest=/home/dev/Desktop/leafpad.desktop
-      mode="u=rw,g=rw,o=r"
+      mode="u=rwx,g=rwx,o=r"
   - name: Create LXTerminal destop entry
     template:
       src={{role_path}}/templates/lxterminal.desktop.j2
       dest=/home/dev/Desktop/lxterminal.desktop
-      mode="u=rw,g=rw,o=r"
+      mode="u=rwx,g=rwx,o=r"
   - name: Create Firefox destop entry
     template:
       src={{role_path}}/templates/firefox.desktop.j2
       dest=/home/dev/Desktop/firefox.desktop
-      mode="u=rw,g=rw,o=r"
+      mode="u=rwx,g=rwx,o=r"
   - name: Copy Bookmarks HTML file
     template:
       src={{role_path}}/templates/bookmarks.html.j2

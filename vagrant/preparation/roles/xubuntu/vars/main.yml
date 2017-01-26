@@ -1,6 +1,9 @@
-lubuntu_packages:
-  - lubuntu-core
-  - lxde
-  - lubuntu-software-center
+xubuntu_packages:
+  - xfce4
+  - leafpad
+  - lxdm
+  - lxterminal
+  - software-center
+  - xfce4-xkb-plugin
   - language-selector-gnome
   - language-pack-de
