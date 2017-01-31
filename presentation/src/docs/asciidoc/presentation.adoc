@@ -810,6 +810,42 @@ return this
 ...
 ----
 
+== Multibranch Build
+
+* automatisches Erzeugen von neuen Workflows per Branch https://jenkins.io/doc/pipeline/steps/[.]
+* History per Branch
+* automatisches Löschen von Jobs wenn Branch gelöscht
+* Branch spezifische Properties
+
+Einschränkung:
+
+* _Jenkinsfile_ muss im root-Verzeichnis liegen
+
+
+== HandsOn 9
+
+* Kopiere _workspace_ Verzeichnis ins _home_ Verzeichnis
+* Erzeuge neues lokales Repository
+* Erzeuge git remote Repository mit dem Namen _address-mb_
+* Verbinde lokales Repository mit Remote und push von master
+* Erzeuge in Jenkins einen neuen Job _address-mb_ als *Multibranch Pipeline*
+* Erzeuge lokal neuen Branch
+* Push von Branch
+* Manuelles ausführen von _Branch Indexing_ in Jenkins
+
+Optional:
+
+* Richte einen hook in gogs ein und
+* teste das au
+
+== Erläuterung zu HandsOn 9
+
+[listing]
+----
+$ git branch featureX                       # (create featureX branch)
+$ git checkout featureX                     # (switches to featureX branch)
+$ git push --set-upstream upstream featureX # (pushes featureX branch)
+----
 
 == ???
 
