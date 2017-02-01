@@ -104,14 +104,14 @@ image::gradle.png[Gradle,,,float="right", link="http://www.gradle.org/"]
   ** Konfiguration -- erzeugt _Directed acyclic graph_ (kurz DAG)
   ** Ausführung -- arbeitet DAG ab oder Abbruch
 * deklarativ / imperativ
-* der Gradle-Wrapper
+* der Gradle-Wrapper (`./gradlew <befehl>` z.B.: `./gradlew tasks`)
 
 
 == HandsOn 1:
 
 . Linux in Virtualbox gestartet
 . Screensaver abgeschaltet (bei mir friert immer der Desktop ein :(
-. Projekt cd-ws-address gebaut
+. Projekt `/home/dev/cd-ws-address` aktualisiert (git pull) und gebaut
 . Server gestartet
 . Ergebniss des Servers in Browser oder via http angeschaut
 . optional
