@@ -1,6 +1,6 @@
 = Continuous Delivery
 Oliver Nautsch <oliver.nautsch@nautsch.com>
-2016
+2017
 :author:    Oliver Nautsch
 ifndef::imagesdir[:imagesdir: images]
 :menu:
@@ -20,10 +20,10 @@ Oliver Nautsch +
 _Software Crafter_ (Engineering, Coaching, Consulting) +
 Nautsch GmbH | Im oberen Boden 1 | 8049 Zürich
 
-* Well rounded fullstack Java (Kotlin), JavaScript, HTML, SQL, ...
-* Microservices, CD, TDD, Build Tools, DB, Docker, Linux, ...
+* JVM, Java (Groovy, Kotlin), Go, JavaScript, HTML, SQL, ...
+* Microservices, CI/CD, TDD, Build Tools, DB, Docker, Linux, ...
 * Coaching, Cultural Change, DevOps, ...
-* Von Startups bis Big Enterprise
+* Von Startups bis Big Enterprise, von C bis C
 * Finanzindustrie, Bildungsumfeld
 
 '''
