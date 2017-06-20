@@ -790,7 +790,7 @@ Optional: Lade die Datei aus einem separaten Repository.
 
 == Erläuterung zu HandsOn 8
 
-[source, groovy]
+[source]
 .stage-060-aat.groovy
 ----
 def execute(){
@@ -799,7 +799,7 @@ def execute(){
 return this
 ----
 
-[source, groovy]
+[source]
 .Jenkinsfile
 ----
 ...
