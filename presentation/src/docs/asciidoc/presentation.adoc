@@ -627,7 +627,7 @@ image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="http://blog.andolasoft
 
 '''
 
-* http://globalday.coderetreat.org/[Global Day of Coderetreat] http://coderetreat.org/events/event/listByDate?date=2016-10-22[October 22, 2016] (Zürich, Bern, St. Gallen, ...)
+* http://gdcr.coderetreat.org/[Global Day of Coderetreat]
 * http://www.meetup.com/Software-Craftsmanship-Zurich/[Software Craftsmanship Zürich]
 
 
