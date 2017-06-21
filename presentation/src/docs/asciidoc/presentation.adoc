@@ -529,6 +529,17 @@ ollin/huschihops                 2.0                   01ee073272ec        31 se
 . . .
 ----
 
+
+== Docker und Daten
+
+* Docker volumes
+** ein "anonymes" Verzeichnis - ein Volume - in den Container einhängen
+** ein Verzeichnis oder Datei des Host's in den Container einhängen
+* Docker volume containers
+** Vorgehen:
+*** erzeuge einen Daten Container mit einem Volume
+*** hänge das Volume des Daten Containers in einen Container ohne Persistance ein.
+
 == Docker Compose
 
 image::compose.png[Docker Compose,350,350,float="right", link="https://docs.docker.com/compose/"]
