@@ -539,6 +539,9 @@ ollin/huschihops                 2.0                   01ee073272ec        31 se
 ** Vorgehen:
 *** erzeuge einen Daten Container mit einem Volume
 *** hänge das Volume des Daten Containers in einen Container ohne Persistance ein.
+----
+docker run --rm -t -i -v /home/dev/docker-test/:/workspace alpine less /workspace/Dockerfile
+----
 
 == Docker Compose
 
