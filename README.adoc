@@ -23,7 +23,7 @@ Wenn etwas nicht funktioniert oder unklar ist, dann bitte im https://gitter.im/o
 Minimale Voraussetzung um das Image benutzen zu können, ist eine
 https://www.virtualbox.org/wiki/Downloads[VirtualBox Installation] auf dem eigenen Laptop.
 
-Derzeit gestestet ist die Version 5.0.24
+Derzeit gestestet ist die Version 5.1
 
 Es gibt zwei Installationsvarianten
 
