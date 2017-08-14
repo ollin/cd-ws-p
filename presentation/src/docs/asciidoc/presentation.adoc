@@ -41,7 +41,7 @@ google+:     https://plus.google.com/+OliverNautsch/[OliverNautsch] +
 image::jugch.png[JUG CH,,,float="right", link="http://jug.ch"]
 
 Vorsitzender des Vorstandes der http://jug.ch[Java User Group Switzerland] +
-Co-Organisator http://socrates-day.ch/[SoCraTes Day Switzerland] 2015 und 2016
+Co-Organisator http://socrates-day.ch/[SoCraTes Day Switzerland]
 
 
 == Ziel
