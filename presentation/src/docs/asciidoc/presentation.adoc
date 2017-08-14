@@ -684,7 +684,7 @@ image::tdd-and-bdd.jpg[bdd and tdd,,,float="right", link="http://blog.andolasoft
 
 == HandsOn 7
 
-* Mache die Services von ausserhalb Docker erreichbar
+* Services von ausserhalb Docker erreichbar machen
 ** Phase für Automated Acceptance Test (automatische Phase)
 *** erstelle Eintrag in `/etc/hosts` der `aat.address.nautsch.net` auf `127.0.0.1` abbildet.
 
@@ -699,6 +699,7 @@ image::overview.handson07.with.draw.io.png[overview,,,, link="images/overview.ha
 ----
 $ sudo cp /etc/hosts /etc/hosts.bak
 $ echo "127.0.0.1    aat.address.nautsch.net" | sudo tee --append /etc/hosts
+$ echo "127.0.0.1    extest.address.nautsch.net" | sudo tee --append /etc/hosts
 $ cat /etc/hosts
 ----
 
@@ -719,6 +720,7 @@ ff02::2 ip6-allrouters
 127.0.0.1       registry.nautsch.net
 127.0.0.1       sonarqube.nautsch.net
 127.0.0.1    aat.address.nautsch.net
+127.0.0.1    extest.address.nautsch.net
 ----
 
 [listing]
