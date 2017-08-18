@@ -353,7 +353,17 @@ image::devopstoolkit.png[The Devops 2.0 Toolkit Book,,,float="right", link="http
 * Menge von Validierungen, die eine Software auf ihrem Weg zur Veröffentlichung bestehen muss. (Wikipedia)
 * aufteilen in Phasen um schneller Feedback zu bekommen
 
-== Wo kann man CD anwenden
+== CD anwenden
+=== Warum
+
+* kein Trade-off -> es ist ein Game-Changer
+* High IT Performers sind statistisch signifiant besser in
+** Deployment frequency
+** Lead time for changes
+** Mean time to recover
+** Change failure rate
+
+=== Wo
 
 * Applikation
 * Datenbank
