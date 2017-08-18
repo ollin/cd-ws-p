@@ -339,14 +339,11 @@ $ git push
 
 image::cd-book.jpg[Continuous Delivery Book,,,float="right", link="http://martinfowler.com/books/continuousDelivery.html"]
 
-* Sammlung von Techniken, Prozessen und Werkzeugen, die den Softwarelieferprozess verbessern.
-* agile Softwareentwicklung
-* DevOps
-* Release in Produktion zu jeder Zeit möglich <- -> jeder Commit ist ein potentieller Release
-** das bedeutet auch, dass jedes Artefakt eindeutig sein muss ( -> Versionsnummer) und
-   sicher gespeichert werden muss ( -> Artefakt Repository).
+The ability to get changes - features, configuration changes, bug
+fixes, experiments - into production or into the hands of
+users #safely# and #quickly# in a #sustainable# way.
 
-( Siehe auch bei http://de.wikipedia.org/wiki/Continuous_Delivery[Wikipedia] und bei http://martinfowler.com/bliki/ContinuousDelivery.html[Martin Fowler] )
+( Siehe: https://www.youtube.com/watch?v=837Z_oehhRg["Continuous Delivery Sounds Great but it Won't Work Here"] - Jez Humble )
 
 
 === Deployment Pipeline ===
