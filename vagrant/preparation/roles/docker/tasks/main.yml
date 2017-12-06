@@ -4,14 +4,16 @@
     with_items: "{{ docker_required_packages }}"
 
   - name: Install docker repo key
-    apt_key: keyserver=p80.pool.sks-keyservers.net id=58118E89F3A912897C070ADBF76221572C52609D
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
 
   - name: Add docker repo
-    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present
-    when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == "{{ ansible_distribution_release }}"
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
 
   - name: Install docker
-    apt: state=installed pkg=docker-engine
+    apt: state=installed pkg=docker-ce
 
   - name: Start docker service
     service: name=docker state=started
