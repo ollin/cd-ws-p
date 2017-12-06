@@ -178,15 +178,15 @@ task atlasVersion() {
     mustRunAfter 'uploadBox'
     doLast {
 
-        def token = new File("${System.properties.'user.home'}/.atlas/cd-workshop-token").text.trim()
-        def RESTClient cdwsBox = new RESTClient( 'https://atlas.hashicorp.com/api/v1/box/ollin/cd-ws-box/' )
+        def token = new File("${System.properties.'user.home'}/.vagrantup.com/cd-ws-box.token").text.trim()
+        def RESTClient cdwsBox = new RESTClient( 'https://app.vagrantup.com/api/v1/box/ollin/cd-ws-box/' )
 
         def versionAsString = version.toString()
 
         cdwsBox.post(
                 path: "versions",
                 headers: [
-                        "X-Atlas-Token": token
+                        "Authorization": "Bearer $token"
                 ],
                 requestContentType: JSON,
                 body: [version: [version: versionAsString]]
@@ -198,15 +198,15 @@ task atlasProvider() {
     mustRunAfter 'atlasVersion'
     doLast {
 
-        def token = new File("${System.properties.'user.home'}/.atlas/cd-workshop-token").text.trim()
-        def RESTClient cdwsBox = new RESTClient( 'https://atlas.hashicorp.com/api/v1/box/ollin/cd-ws-box/' )
+        def token = new File("${System.properties.'user.home'}/.vagrantup.com/cd-ws-box.token").text.trim()
+        def RESTClient cdwsBox = new RESTClient( 'https://app.vagrantup.com/api/v1/box/ollin/cd-ws-box/' )
 
         def versionAsString = version.toString()
 
         cdwsBox.post(
                 path: "version/${versionAsString}/providers",
                 headers: [
-                        "X-Atlas-Token": token
+                        "Authorization": "Bearer $token"
                 ],
                 requestContentType: URLENC,
                 body: "provider[url]=https://s3.eu-central-1.amazonaws.com/cdworkshop.nautsch.com/cd-ws-box-${versionAsString}.box&provider[name]=virtualbox"
@@ -218,16 +218,16 @@ task atlasRelease() {
     mustRunAfter 'atlasProvider'
     doLast {
 
-        def token = new File("${System.properties.'user.home'}/.atlas/cd-workshop-token").text.trim()
-        def RESTClient cdwsBox = new RESTClient( 'https://atlas.hashicorp.com/api/v1/box/ollin/cd-ws-box/' )
+        def token = new File("${System.properties.'user.home'}/.vagrantup.com/cd-ws-box.token").text.trim()
+        def RESTClient cdwsBox = new RESTClient( 'https://app.vagrantup.com/api/v1/box/ollin/cd-ws-box/' )
 
         def versionAsString = version.toString()
 
         cdwsBox.put(
                 path: "version/${versionAsString}/release",
                 headers: [
-                        "X-Atlas-Token": token
-                ]
+                        "Authorization": "Bearer $token"
+                ],
         )
     }
 }
