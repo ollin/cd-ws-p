@@ -12,9 +12,14 @@
       owner: dev
 
   - name: build project to download files
-    command: ./gradlew build clean
+    command: su dev -c './gradlew build clean'
     args:
       chdir: /home/dev/cd-ws-address/handson-01
+
+  - name: download root gradle infra
+    command: su dev -c './gradlew sync01'
+    args:
+      chdir: /home/dev/cd-ws-address
 
   - name: mv .gradle from root (workaround for non-privileged user)
     command:  mv /root/.gradle /home/dev/.gradle

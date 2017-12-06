@@ -242,6 +242,6 @@ task newRelease(group: 'Build', description: "Creates a new release (recreates t
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.0'
+    gradleVersion = '4.4'
 }
 

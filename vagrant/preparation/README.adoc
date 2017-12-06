@@ -5,7 +5,7 @@ im Workshop benutzt wird.
 
 ### zum Erstellen der Box:
 
-* Virtualbox Version 5.1.22 r115126
+* Virtualbox Version 5.1.30 r118389
 
 [source,bash]
 ----
