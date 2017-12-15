@@ -272,9 +272,10 @@ image::overview.handson03.with.draw.io.png[overview,,,, link="images/overview.ha
 .. Add build step
 ... Invoke Gradle script
 ... Use Gradle Wrapper
-... From Root Build Script Dir (Haken wegnehmen)
-... Root Build script -> `${workspace}/workspace/`
-... Tasks -> `build`
+.... Wrapper Location -> `${workspace}/workspace/`
+.... Tasks -> `build`
+... Advanced... (Button rechts)
+.... Root Build script -> `${workspace}/workspace/`
 ... Save
 .. _Build Now_ clicken
 
