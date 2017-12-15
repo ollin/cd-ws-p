@@ -318,6 +318,8 @@ curl http://ci.nautsch.net/git/notifyCommit?url=http://git.nautsch.net/dev/cd-ws
 #
 ----
 
+WARNING: keine Leerzeilen in Git Hooks erlaubt
+
 [start=4]
 . Fuege lokal im workspace eine Datei hinzu,
 
