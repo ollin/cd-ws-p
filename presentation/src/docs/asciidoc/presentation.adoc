@@ -362,6 +362,7 @@ image::devopstoolkit.png[The Devops 2.0 Toolkit Book,,,float="right", link="http
 ** Lead time for changes
 ** Mean time to recover
 ** Change failure rate
+* Für Zahlen siehe https://puppet.com/resources/whitepaper/state-of-devops-report["2017 State of DevOps Report"] (und Reports aus den Jahren zuvor)
 
 === Wo
 
