@@ -560,7 +560,7 @@ image::compose.png[Docker Compose,350,350,float="right", link="https://docs.dock
 
 * Command Line Tool
 * `docker-compose.yml` Datei
-* Veralten und zusammenhängen von Containern oder
+* Verwalten und 'zusammenhängen' von Containern
 * Datei zum Speichern aller Startparameter
 
 == HandsOn 6
